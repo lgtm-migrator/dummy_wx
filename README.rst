@@ -1,5 +1,5 @@
 ****************
-package_name
+dummy_wx
 ****************
 
-description goes here
+Dummy wxPython module to allow documentation to be built with ReadTheDocs
