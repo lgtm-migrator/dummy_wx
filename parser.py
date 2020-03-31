@@ -5,9 +5,13 @@ Script to generate wx/__init__.py
 import sys
 del sys.path[0]
 
+import pathlib
+
 import wx
 import wx.html2
 import wx.stc
+import wx.lib
+import wx.lib.embeddedimage
 
 
 def parse(module, fp):
@@ -77,3 +81,12 @@ with open("wx/html2.py", "w") as fp:
 
 with open("wx/stc.py", "w") as fp:
 	parse(wx.stc, fp)
+	
+if not pathlib.Path("./wx/lib").exists():
+	pathlib.Path("./wx/lib").mkdir()
+	
+with open("wx/lib/__init__.py", "w") as fp:
+	parse(wx.lib, fp)
+
+with open("wx/lib/embeddedimage.py", "w") as fp:
+	parse(wx.lib.embeddedimage, fp)
