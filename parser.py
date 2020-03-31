@@ -7,6 +7,28 @@ del sys.path[0]
 
 import pathlib
 
+import wx
+import wx.ribbon, wx.grid, wx.dataview, wx.richtext, wx.html
+import wx.html2, wx.stc, wx.media, wx.propgrid, wx.xrc, wx.xml
+import wx.py, wx.tools, wx.adv, wx.lib, wx.aui
+from wx.lib import (
+	anchors, busy, buttons, calendar, CDate,
+	ClickableHtmlWindow, colourdb, colourselect,
+	colourutils, combotreebox, delayedresult,
+	dialogs, docview, dragscroller,	embeddedimage,
+	eventStack,	eventwatcher, evtmgr, expando,
+	fancytext, filebrowsebutton, foldmenu, gestures,
+	gridmovers, imagebrowser, imageutils, infoframe,
+	inspection, intctrl, itemspicker, langlistctrl,
+	layoutf, msgpanel, multisash, newevent, nvdlg,
+	pdfwin, platebtn, popupctl, printout, progressindicator,
+	pydocview, rcsizer, resizewidget, scrolledpanel,
+	sheet, sized_controls, softwareupdate, splitter,
+	statbmp, stattext, throbber, ticker, ticker_xrc,
+	utils, wordwrap, wxpTag,
+	)
+# Don't remove these imports: they are actually used
+
 
 def parse(module, fp):
 	fp.write("""# Based on wxPython
@@ -69,8 +91,17 @@ def dummy_function(*args, **kwargs):
 		if val:
 			fp.write(f"{name} = {val}\n")
 
-import wx
 
+def parse_module(module_name):
+	with open(f"wx/{module_name}.py", "w") as fp:
+		parse(getattr(wx, module_name), fp)
+
+
+def parse_lib_submodule(submodule_name):
+	with open(f"wx/lib/{submodule_name}.py", "w") as fp:
+		parse(globals()[submodule_name], fp)
+		
+		
 with open("wx/__init__.py", "w") as fp:
 	parse(wx, fp)
 	
@@ -94,66 +125,6 @@ class PyEventBinder(object):
 
 """)
 
-import wx.adv
-
-if not pathlib.Path("./wx/adv").exists():
-	pathlib.Path("./wx/adv").mkdir()
-	
-with open("wx/adv/__init__.py", "w") as fp:
-	parse(wx.adv, fp)
-
-#####
-
-import wx.grid
-
-with open("wx/grid.py", "w") as fp:
-	parse(wx.grid, fp)
-
-#####
-
-import wx.dataview
-
-with open("wx/dataview.py", "w") as fp:
-	parse(wx.dataview, fp)
-
-#####
-
-import wx.richtext
-
-with open("wx/richtext.py", "w") as fp:
-	parse(wx.richtext, fp)
-
-#####
-
-import wx.ribbon
-	
-with open("wx/ribbon.py", "w") as fp:
-	parse(wx.ribbon, fp)
-
-#####
-
-import wx.html
-
-with open("wx/html.py", "w") as fp:
-	parse(wx.html, fp)
-
-#####
-
-import wx.html2
-
-with open("wx/html2.py", "w") as fp:
-	parse(wx.html2, fp)
-
-#####
-
-import wx.stc
-
-with open("wx/stc.py", "w") as fp:
-	parse(wx.stc, fp)
-
-#####
-
-import wx.lib
 
 if not pathlib.Path("./wx/lib").exists():
 	pathlib.Path("./wx/lib").mkdir()
@@ -161,16 +132,29 @@ if not pathlib.Path("./wx/lib").exists():
 with open("wx/lib/__init__.py", "w") as fp:
 	parse(wx.lib, fp)
 
-#####
+for submodule in [
+		"anchors", "busy", "buttons", "calendar", "CDate",
+		"ClickableHtmlWindow", "colourdb", "colourselect",
+		"colourutils", "combotreebox", "delayedresult",
+		"dialogs", "docview", "dragscroller", "embeddedimage",
+		"eventStack", "eventwatcher", "evtmgr", "expando",
+		"fancytext", "filebrowsebutton", "foldmenu", "gestures",
+		"gridmovers", "imagebrowser", "imageutils", "infoframe",
+		"inspection", "intctrl", "itemspicker", "langlistctrl",
+		"layoutf", "msgpanel", "multisash", "newevent", "nvdlg",
+		"pdfwin", "platebtn", "popupctl", "printout",
+		"progressindicator", "pydocview", "rcsizer", "resizewidget",
+		"scrolledpanel", "sheet", "sized_controls", "softwareupdate",
+		"splitter", "statbmp", "stattext", "throbber", "ticker",
+		"ticker_xrc", "utils", "wordwrap", "wxpTag",
+		]:
+	parse_lib_submodule(submodule)
 
-import wx.lib.embeddedimage
 
-with open("wx/lib/embeddedimage.py", "w") as fp:
-	parse(wx.lib.embeddedimage, fp)
+for module in [
+		"grid",	"dataview",	"richtext",	"ribbon", "aui",
+		"html", "html2", "stc", "media", "adv",
+		"propgrid", "xrc", "xml", "py", "tools",
+		]:
+	parse_module(module)
 
-#####
-
-import wx.lib.filebrowsebutton
-
-with open("wx/lib/filebrowsebutton.py", "w") as fp:
-	parse(wx.lib.filebrowsebutton, fp)
