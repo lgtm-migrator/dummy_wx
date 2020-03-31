@@ -12,6 +12,7 @@ import wx.html2
 import wx.stc
 import wx.lib
 import wx.lib.embeddedimage
+import wx.adv
 
 
 def parse(module, fp):
@@ -90,3 +91,10 @@ with open("wx/lib/__init__.py", "w") as fp:
 
 with open("wx/lib/embeddedimage.py", "w") as fp:
 	parse(wx.lib.embeddedimage, fp)
+	
+if not pathlib.Path("./wx/adv").exists():
+	pathlib.Path("./wx/adv").mkdir()
+	
+with open("wx/adv/__init__.py", "w") as fp:
+	parse(wx.adv, fp)
+
