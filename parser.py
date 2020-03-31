@@ -7,6 +7,7 @@ del sys.path[0]
 
 import pathlib
 
+
 def parse(module, fp):
 	fp.write("""# Based on wxPython
 # Copyright: (c) 2018 by Total Control Software
@@ -28,6 +29,9 @@ def dummy_function(*args, **kwargs):
 		
 		# ignore magic methods
 		if name.startswith("__") and name.endswith("__"):
+			continue
+		# Special case for PyEventBinder; it needs to be a custom class as it might get called
+		elif name == "PyEventBinder":
 			continue
 		elif name.startswith("IMAGE_OPTION_") and obj_type == "<class 'str'>":
 			val = f"'{(getattr(wx, obj))}'"
@@ -69,6 +73,26 @@ import wx
 
 with open("wx/__init__.py", "w") as fp:
 	parse(wx, fp)
+	
+	fp.write("""
+
+class PyEventBinder(object):
+	def __init__(self, evtType, expectedIDs=0):
+		pass
+	
+	def Bind(self, target, id1, id2, function):
+		pass
+	
+	def Unbind(self, target, id1, id2, handler=None):
+		return False
+	
+	def _getEvtType(self):
+		return 0
+	
+	typeId = property(_getEvtType)
+
+
+""")
 
 import wx.adv
 
