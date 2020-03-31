@@ -20,5 +20,5 @@ setup(
     long_description="",
     name="dummy_wx",
     packages=find_packages(),
-    version="0.1.1",
+    version="0.1.2",
     )
