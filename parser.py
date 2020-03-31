@@ -7,14 +7,6 @@ del sys.path[0]
 
 import pathlib
 
-import wx
-import wx.html2
-import wx.stc
-import wx.lib
-import wx.lib.embeddedimage
-import wx.adv
-
-
 def parse(module, fp):
 	fp.write("""# Based on wxPython
 # Copyright: (c) 2018 by Total Control Software
@@ -73,28 +65,52 @@ def dummy_function(*args, **kwargs):
 		if val:
 			fp.write(f"{name} = {val}\n")
 
+import wx
 
 with open("wx/__init__.py", "w") as fp:
 	parse(wx, fp)
 
+import wx.html2
+
 with open("wx/html2.py", "w") as fp:
 	parse(wx.html2, fp)
+
+import wx.stc
 
 with open("wx/stc.py", "w") as fp:
 	parse(wx.stc, fp)
 	
 if not pathlib.Path("./wx/lib").exists():
 	pathlib.Path("./wx/lib").mkdir()
-	
+
+import wx.lib
+
 with open("wx/lib/__init__.py", "w") as fp:
 	parse(wx.lib, fp)
+
+import wx.lib.embeddedimage
 
 with open("wx/lib/embeddedimage.py", "w") as fp:
 	parse(wx.lib.embeddedimage, fp)
 	
+import wx.lib.filebrowsebutton
+
+with open("wx/lib/filebrowsebutton.py", "w") as fp:
+	parse(wx.lib.filebrowsebutton, fp)
+
+import wx.adv
+
 if not pathlib.Path("./wx/adv").exists():
 	pathlib.Path("./wx/adv").mkdir()
 	
 with open("wx/adv/__init__.py", "w") as fp:
 	parse(wx.adv, fp)
+
+import wx.grid
+
+if not pathlib.Path("./wx/grid").exists():
+	pathlib.Path("./wx/grid").mkdir()
+	
+with open("wx/grid/__init__.py", "w") as fp:
+	parse(wx.grid, fp)
 
