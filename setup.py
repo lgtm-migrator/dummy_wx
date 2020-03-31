@@ -10,5 +10,5 @@ setup(
     long_description="This module does nothing, but us useful when trying to build documentation for modules that require wxpython.",
     name="dummy_wx",
     packages=find_packages(),
-    version="0.0.1",
+    version="0.1.0",
     )
