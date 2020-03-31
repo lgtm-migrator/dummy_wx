@@ -113,4 +113,28 @@ if not pathlib.Path("./wx/grid").exists():
 	
 with open("wx/grid/__init__.py", "w") as fp:
 	parse(wx.grid, fp)
+	
+import wx.dataview
+
+if not pathlib.Path("./wx/dataview").exists():
+	pathlib.Path("./wx/dataview").mkdir()
+	
+with open("wx/dataview/__init__.py", "w") as fp:
+	parse(wx.dataview, fp)
+	
+import wx.richtext
+
+if not pathlib.Path("./wx/richtext").exists():
+	pathlib.Path("./wx/richtext").mkdir()
+	
+with open("wx/richtext/__init__.py", "w") as fp:
+	parse(wx.richtext, fp)
+
+import wx.ribbon
+
+if not pathlib.Path("./wx/ribbon").exists():
+	pathlib.Path("./wx/ribbon").mkdir()
+	
+with open("wx/ribbon/__init__.py", "w") as fp:
+	parse(wx.ribbon, fp)
 
