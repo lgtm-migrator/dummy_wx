@@ -17,7 +17,7 @@ setup(
     author_email="dominic@davis-foster.co.uk",
     description="This module does nothing",
     license="LGPLv3+",
-    long_description="",
+    long_description=description,
     name="dummy_wx",
     packages=find_packages(),
     version="0.2.0",
