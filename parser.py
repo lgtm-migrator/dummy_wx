@@ -10,11 +10,13 @@ import pathlib
 import wx
 import wx.ribbon, wx.grid, wx.dataview, wx.richtext, wx.html
 import wx.html2, wx.stc, wx.media, wx.propgrid, wx.xrc, wx.xml
-import wx.tools, wx.adv, wx.lib, wx.aui, wx.py
+import wx.adv, wx.aui
 
+import wx.tools
 import wx.tools.dbg, wx.tools.helpviewer, wx.tools.img2img, wx.tools.img2png
 import wx.tools.img2py, wx.tools.img2xpm, wx.tools.pywxrc, wx.tools.wxget
 
+import wx.py
 import wx.py.buffer, wx.py.crust, wx.py.crustslices, wx.py.dispatcher
 import wx.py.document, wx.py.editor, wx.py.editwindow, wx.py.filling
 import wx.py.frame, wx.py.images, wx.py.interpreter, wx.py.introspect
@@ -23,6 +25,7 @@ import wx.py.PyAlaMode, wx.py.PyAlaModeTest, wx.py.PyCrust, wx.py.PyFilling
 import wx.py.PyShell, wx.py.PySlices, wx.py.PySlicesShell, wx.py.PyWrap
 import wx.py.shell, wx.py.sliceshell, wx.py.version
 
+import wx.lib
 import wx.lib.anchors, wx.lib.busy, wx.lib.buttons, wx.lib.calendar
 import wx.lib.ClickableHtmlWindow, wx.lib.colourdb, wx.lib.colourselect
 import wx.lib.colourutils, wx.lib.combotreebox, wx.lib.delayedresult
@@ -38,12 +41,21 @@ import wx.lib.sheet, wx.lib.sized_controls, wx.lib.softwareupdate
 import wx.lib.statbmp, wx.lib.stattext, wx.lib.throbber, wx.lib.ticker
 import wx.lib.utils, wx.lib.wordwrap, wx.lib.wxpTag, wx.lib.progressindicator
 import wx.lib.langlistctrl, wx.lib.embeddedimage, wx.lib.expando
-import wx.lib.gestures, wx.lib.infoframe, wx.lib.scrolledpanel
+import wx.lib.gestures, wx.lib.infoframe, wx.lib.scrolledpanel, wx.lib.wxcairo
 
 
-
-
-# Don't remove these imports: they are actually used
+import wx.lib.agw
+import wx.lib.analogclock
+import wx.lib.art
+import wx.lib.colourchooser
+import wx.lib.editor
+import wx.lib.floatcanvas
+import wx.lib.gizmos
+import wx.lib.masked
+import wx.lib.mixins
+import wx.lib.ogl
+import wx.lib.plot
+import wx.lib.pubsub
 
 
 def parse(module, fp):
@@ -172,7 +184,7 @@ for submodule in [
 		"progressindicator", "pydocview", "rcsizer", "resizewidget",
 		"scrolledpanel", "sheet", "sized_controls", "softwareupdate",
 		"splitter", "statbmp", "stattext", "throbber", "ticker",
-		"ticker_xrc", "utils", "wordwrap", "wxpTag",
+		"ticker_xrc", "utils", "wordwrap", "wxpTag", "wxcairo"
 		]:
 	parse_lib_submodule(submodule)
 
@@ -217,16 +229,145 @@ for module in [
 # TODO: The following in wx.lib:
 """
 agw
+	aui
+		aui_constants
+		aui_switcherdialog
+		aui_utilities
+		auibar
+		auibook
+		dockart
+		framemanager
+		tabart
+		tabmdi
+	persist
+		persist_constants
+		persist_handler
+		persistencemanager
+	ribbon
+		art
+		art_aui
+		art_default
+		art_internal
+		art_msw
+		art_osx
+		bar
+		buttonbar
+		control
+		gallery
+		page
+		panel
+		toolbar
+		
+	advancedsplash
+	aquabutton
+	artmanager
+	balloontip
+	buttonpanel
+	cubecolourdialog
+	customtreectrl
+	flatmenu
+	flatnotebook
+	floatspin
+	fmcustomizedlg
+	fmresources
+	foldpanelbar
+	fourwaysplitter
+	genericmessagedialog
+	gradientbutton
+	hyperlink
+	hypertreelist
+	infobar
+	knobctrl
+	labelbook
+	multidirdialog
+	peakmeter
+	piectrl
+	pybusyinfo
+	pycollapsiblepane
+	pygauge
+	pyprogress
+	rulerctrl
+	shapedbutton
+	shortcuteditor
+	speedmeter
+	supertooltip
+	thumbnailctrl
+	toasterbox
+	ultimatelistctrl
+	xlsgrid
+	zoombar
+
+
 analogclock
+	lib_setup
+		buttontreectrlpanel
+		fontselect
+	analogclick
+	helpers
+	setup
+	styles
 art
+	flatart
+	img2pyartprov
 colourchooser
+	canvas
+	intl
+	pycolourbox
+	pycolourchooser
+	pycolourslider
+	pypalette
 editor
+	editor
+	images
+	selection
 floatcanvas
+	Utilities
+		BBox
+		Colors
+		GUI
+	FCEvents
+	FCObjects
+	FloatCanvas
+	GUIMode
+	NavCanvas
+	Resources
+	ScreenShot
 gizmos
+	dynamicsash
+	ledctrl
+	treelistctrl
 masked
+	combobox
+	ctrl
+	ipaddrctrl
+	maskededit
+	numctrl
+	textctrl
+	timectrl
 mixins
+	grid
+	gridlabelrenderer
+	imagelist
+	inspection
+	listctrl
+	rubberband
+	treemixin
 ogl
+	basic
+	bmpshape
+	canvas
+	composit
+	diagram
+	divided
+	drawn
+	lines
+	oglmisc
 plot
-pubsub
-wxcairo
+	examples
+		demo
+		simple_example
+	__main__
+	plotcanvas
+	plotobjects
+	utils
 """
