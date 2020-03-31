@@ -43,7 +43,6 @@ import wx.lib.utils, wx.lib.wordwrap, wx.lib.wxpTag, wx.lib.progressindicator
 import wx.lib.langlistctrl, wx.lib.embeddedimage, wx.lib.expando
 import wx.lib.gestures, wx.lib.infoframe, wx.lib.scrolledpanel, wx.lib.wxcairo
 
-
 import wx.lib.agw
 import wx.lib.analogclock
 import wx.lib.art
