@@ -102,53 +102,73 @@ if not pathlib.Path("./wx/adv").exists():
 with open("wx/adv/__init__.py", "w") as fp:
 	parse(wx.adv, fp)
 
+#####
+
 import wx.grid
 
 with open("wx/grid.py", "w") as fp:
 	parse(wx.grid, fp)
 
+#####
+
 import wx.dataview
 
 with open("wx/dataview.py", "w") as fp:
 	parse(wx.dataview, fp)
-	
+
+#####
+
 import wx.richtext
 
 with open("wx/richtext.py", "w") as fp:
 	parse(wx.richtext, fp)
+
+#####
 
 import wx.ribbon
 	
 with open("wx/ribbon.py", "w") as fp:
 	parse(wx.ribbon, fp)
 
+#####
+
 import wx.html
 
 with open("wx/html.py", "w") as fp:
 	parse(wx.html, fp)
+
+#####
 
 import wx.html2
 
 with open("wx/html2.py", "w") as fp:
 	parse(wx.html2, fp)
 
+#####
+
 import wx.stc
 
 with open("wx/stc.py", "w") as fp:
 	parse(wx.stc, fp)
 
-if not pathlib.Path("./wx/lib").exists():
-	pathlib.Path("./wx/lib").mkdir()
+#####
 
 import wx.lib
 
+if not pathlib.Path("./wx/lib").exists():
+	pathlib.Path("./wx/lib").mkdir()
+
 with open("wx/lib/__init__.py", "w") as fp:
 	parse(wx.lib, fp)
+
+#####
 
 import wx.lib.embeddedimage
 
 with open("wx/lib/embeddedimage.py", "w") as fp:
 	parse(wx.lib.embeddedimage, fp)
+
+#####
 
 import wx.lib.filebrowsebutton
 
