@@ -8,7 +8,7 @@ setup(
     description="This module does nothing",
     license="GPLv3",
     long_description="This module does nothing, but us useful when trying to build documentation for modules that require wxpython.",
-    name= "dummy_wx",
+    name="dummy_wx",
     packages=find_packages(),
     version="0.0.1",
     )
