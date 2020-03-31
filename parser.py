@@ -29,7 +29,10 @@ def dummy_function(*args, **kwargs):
 		
 		val = None
 		
-		if name.startswith("IMAGE_OPTION_") and obj_type == "<class 'str'>":
+		# ignore magic methods
+		if name.startswith("__") and name.endswith("__"):
+			continue
+		elif name.startswith("IMAGE_OPTION_") and obj_type == "<class 'str'>":
 			val = f"'{(getattr(wx, obj))}'"
 		elif obj_type == "<class 'bytes'>":
 			val = "bytes()"
