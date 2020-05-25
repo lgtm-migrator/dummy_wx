@@ -1,18 +1,55 @@
+# This file is managed by `git_helper`. Don't edit it directly
+
 language: python
 dist: xenial
+cache: pip
 python:
-- '3.6'
-- '3.7'
-- '3.8'
+  - '3.6'
+  - '3.7'
+  - '3.8'
+
+install:
+
+  - pip install pip  --upgrade
+  - pip install tox tox-travis
+  - pip install coveralls
+
 script:
-- echo "skipping tests"
-deploy:
-  provider: pypi
-  user: DomDF
-  on:
-    tags: true
-    python: '3.6'
-  distributions: sdist bdist_wheel
-  skip_existing: true
-  password:
-    secure: t1lIh47t+zHMY0xZz2O+ymOm8TsiLEm5dOiA8NRhL0w2Doo9748xduiCMhKqqixKqgmpYaGWt37DujqRWY+/vCQc4RVQ+1WSbF8Ms7Il0AeM6un43XGr1g/GldGTQwk1pPfc7aFuqW90Iu0h4Flesq6nGdlFM4W7Dl8iUnXiupz6cZ02UIMVEZ8o6BAWEv8mThmUIJSqErsrE8qir0VxdWauR2zKJAytizYdC6dzPOODydD0FcFtK9PzwXhHVn3vnhoiX//TthtYkSyl2WSafdP1bvk1SovwtcESREL8XBpWvkMWWJgr+xrgak05XxwjtBj5IUR0tA1L45OOL/f3wlUEYkTc7jAWHiyTBBEgZTKvAiIthatKd1t7pqCqIQk6ANuEwtErfmip07/QyB7cpR9/RkL1a6xVFH66K31wHnxjkwkbglsiWO08Eqk8ijcJ60QZ92BLzUWnxlI/Hlmpt8FO32K6ciB8WeMAabUU3EzBd+jkLzYFOhZCGQRXhPj3QJdZPUQ5NCUrU78fOp7fGj0orrwprYdttW9iY+x/Nop3Nz75CjNe27ak6ESWjK0F3PfAjK7jIRngUQcXb+C2MmDl+BXVaKF7oTExSe0Mi7Pcl91+LuiOfbibbdOO+3X7vpa3ziyjwRe8wFmnH4o/Z/q4W7wja9JAlTwShRJmRqk=
+  - tox
+after_success:
+  - coveralls
+
+
+stages:
+  - test
+  - deploy_pypi
+
+  - deploy_releases
+
+jobs:
+  include:
+    - stage: deploy_pypi
+      python: "3.6"
+      script: skip
+      deploy:
+        on:
+          tags: true
+          repo: domdfcoding/dummy_wx
+        provider: pypi
+        user: "DomDF"
+        password:
+          secure: t1lIh47t+zHMY0xZz2O+ymOm8TsiLEm5dOiA8NRhL0w2Doo9748xduiCMhKqqixKqgmpYaGWt37DujqRWY+/vCQc4RVQ+1WSbF8Ms7Il0AeM6un43XGr1g/GldGTQwk1pPfc7aFuqW90Iu0h4Flesq6nGdlFM4W7Dl8iUnXiupz6cZ02UIMVEZ8o6BAWEv8mThmUIJSqErsrE8qir0VxdWauR2zKJAytizYdC6dzPOODydD0FcFtK9PzwXhHVn3vnhoiX//TthtYkSyl2WSafdP1bvk1SovwtcESREL8XBpWvkMWWJgr+xrgak05XxwjtBj5IUR0tA1L45OOL/f3wlUEYkTc7jAWHiyTBBEgZTKvAiIthatKd1t7pqCqIQk6ANuEwtErfmip07/QyB7cpR9/RkL1a6xVFH66K31wHnxjkwkbglsiWO08Eqk8ijcJ60QZ92BLzUWnxlI/Hlmpt8FO32K6ciB8WeMAabUU3EzBd+jkLzYFOhZCGQRXhPj3QJdZPUQ5NCUrU78fOp7fGj0orrwprYdttW9iY+x/Nop3Nz75CjNe27ak6ESWjK0F3PfAjK7jIRngUQcXb+C2MmDl+BXVaKF7oTExSe0Mi7Pcl91+LuiOfbibbdOO+3X7vpa3ziyjwRe8wFmnH4o/Z/q4W7wja9JAlTwShRJmRqk=
+        distributions: "sdist bdist_wheel"
+        skip_existing: true
+
+
+    - stage: deploy_releases
+      python: "3.6"
+      install:
+        - pip install PyGithub requests
+      script: skip
+      deploy:
+        on:
+          repo: domdfcoding/dummy_wx
+        provider: script
+        script: python .ci/copy_pypi_2_github.py || travis_terminate 1
