@@ -1,0 +1,37 @@
+modname: dummy_wx
+copyright_years: "2019-2020"
+author: "Dominic Davis-Foster"
+email: "dominic@davis-foster.co.uk"
+version: "0.2.4"
+username: "domdfcoding"
+license: 'LGPLv3+'
+short_desc: 'This module does nothing.'
+
+enable_tests: False
+enable_conda: False
+
+additional_ignore:
+  - "**/dist"
+
+python_deploy_version: 3.6
+
+# Versions to run tests for
+python_versions:
+  - '3.6'
+  - '3.7'
+  - '3.8'
+
+# travis secure password for PyPI
+#travis_pypi_secure:
+
+# additional lines for MANIFEST.in
+#manifest_additional:
+#  - "recursive-include git_helper/templates *"
+
+classifiers:
+  - 'Intended Audience :: Developers'
+  - 'Operating System :: OS Independent'
+  - 'Topic :: Utilities'
+
+#extra_sphinx_extensions:
+#  - tox_conf_directive
