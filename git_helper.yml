@@ -7,7 +7,6 @@ username: "domdfcoding"
 license: 'LGPLv3+'
 short_desc: 'This module does nothing.'
 
-#enable_tests: False
 enable_conda: False
 
 additional_ignore:
