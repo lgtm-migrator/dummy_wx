@@ -3,7 +3,7 @@ import_name: wx
 copyright_years: "2019-2020"
 author: "Dominic Davis-Foster"
 email: "dominic@davis-foster.co.uk"
-version: "0.2.4"
+version: "0.2.5"
 username: "domdfcoding"
 license: 'LGPLv3+'
 short_desc: 'This module does nothing.'

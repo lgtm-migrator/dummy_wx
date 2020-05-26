@@ -2,7 +2,7 @@
 # Copyright: (c) 2018 by Total Control Software
 # License:   wxWindows License
 
-__version__ = "0.2.4"
+__version__ = "0.2.5"
 
 
 def dummy_function(*args, **kwargs):

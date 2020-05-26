@@ -46,7 +46,7 @@ __copyright__ = """
 2019-2020 Dominic Davis-Foster <dominic@davis-foster.co.uk>
 """
 
-__version__ = "0.2.4"
+__version__ = "0.2.5"
 
 modname = "dummy_wx"
 pypi_name = "dummy_wx"
@@ -73,7 +73,7 @@ project_urls = {
 repo_root = pathlib.Path(__file__).parent
 
 # Get info from files; set: long_description
-long_description = (repo_root / "README.rst").read_text().replace("0.2.4", __version__) + '\n'
+long_description = (repo_root / "README.rst").read_text().replace("0.2.5", __version__) + '\n'
 
 install_requires = (repo_root / "requirements.txt").read_text().split('\n')
 extras_require = {'all': []}
