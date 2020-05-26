@@ -14,8 +14,6 @@ the same "wx" package name to pretend to be wxPython.
 	:stub-columns: 1
 	:widths: 10 90
 
-	* - Docs
-	  - |docs|
 	* - Tests
 	  - |travis| |requires| |coveralls| |codefactor|
 	* - PyPI
@@ -23,9 +21,7 @@ the same "wx" package name to pretend to be wxPython.
 	* - Other
 	  - |license| |language| |commits-since| |commits-latest| |maintained| 
 	
-.. |docs| image:: https://readthedocs.org/projects/dummy_wx/badge/?version=latest
-	:target: https://dummy_wx.readthedocs.io/en/latest/?badge=latest
-	:alt: Documentation Status
+
 
 .. |travis| image:: https://img.shields.io/travis/com/domdfcoding/dummy_wx/master?logo=travis
 	:target: https://travis-ci.com/domdfcoding/dummy_wx
