@@ -15,9 +15,9 @@ if [ -z "$(git status --porcelain --untracked-files=no)" ] || [ "$1" == "-f" ]; 
 
   echo "Running autopep8"
 
-  autopep8 --in-place --select "$errors" -a --recursive dummy_wx/
-  autopep8 --in-place --select "$belligerent" -a -a -a -a -a --recursive dummy_wx/
-  >&2 flake8 --select "$errors$belligerent" dummy_wx/
+  autopep8 --in-place --select "$errors" -a --recursive wx/
+  autopep8 --in-place --select "$belligerent" -a -a -a -a -a --recursive wx/
+  >&2 flake8 --select "$errors$belligerent" wx/
 
 
   autopep8 --in-place --select "$errors" -a --recursive tests/
@@ -27,7 +27,7 @@ if [ -z "$(git status --porcelain --untracked-files=no)" ] || [ "$1" == "-f" ]; 
 
   echo "Running flake8"
 
-    >&2 flake8 dummy_wx/
+    >&2 flake8 wx/
 
     >&2 flake8 tests/
 

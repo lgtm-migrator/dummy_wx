@@ -50,7 +50,7 @@ __version__ = "0.2.4"
 
 modname = "dummy_wx"
 pypi_name = "dummy_wx"
-import_name = "dummy_wx"
+import_name = "wx"
 py_modules = []
 entry_points = {
 		"console_scripts": []
