@@ -20,13 +20,13 @@ the same "wx" package name to pretend to be wxPython.
 	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
 	* - Other
 	  - |license| |language| |commits-since| |commits-latest| |maintained| 
-	
+
 
 
 .. |travis| image:: https://img.shields.io/travis/com/domdfcoding/dummy_wx/master?logo=travis
 	:target: https://travis-ci.com/domdfcoding/dummy_wx
 	:alt: Travis Build Status
-	
+
 .. |requires| image:: https://requires.io/github/domdfcoding/dummy_wx/requirements.svg?branch=master
 	:target: https://requires.io/github/domdfcoding/dummy_wx/requirements/?branch=master
 	:alt: Requirements Status
