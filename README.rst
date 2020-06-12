@@ -31,19 +31,19 @@ the same "wx" package name to pretend to be wxPython.
 	:target: https://requires.io/github/domdfcoding/dummy_wx/requirements/?branch=master
 	:alt: Requirements Status
 
-.. |coveralls| image:: https://coveralls.io/repos/github/domdfcoding/dummy_wx/badge.svg?branch=master
+.. |coveralls| image:: https://shields.io/coveralls/github/domdfcoding/dummy_wx/master?logo=coveralls
 	:target: https://coveralls.io/github/domdfcoding/dummy_wx?branch=master
 	:alt: Coverage
 
-.. |codefactor| image:: https://img.shields.io/codefactor/grade/github/domdfcoding/dummy_wx
+.. |codefactor| image:: https://img.shields.io/codefactor/grade/github/domdfcoding/dummy_wx?logo=codefactor
 	:target: https://www.codefactor.io/repository/github/domdfcoding/dummy_wx
 	:alt: CodeFactor Grade
 
-.. |pypi-version| image:: https://img.shields.io/pypi/v/dummy_wx.svg
+.. |pypi-version| image:: https://img.shields.io/pypi/v/dummy_wx
 	:target: https://pypi.org/project/dummy_wx/
 	:alt: PyPI - Package Version
 
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/dummy_wx.svg
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/dummy_wx
 	:target: https://pypi.org/project/dummy_wx/
 	:alt: PyPI - Supported Python Versions
 

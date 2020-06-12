@@ -3796,7 +3796,7 @@ wxWidgets_version = ''
 wxdate2pydate = dummy_function
 
 
-class PyEventBinder(object):
+class PyEventBinder:
 
 	def __init__(self, evtType, expectedIDs=0):
 		pass
