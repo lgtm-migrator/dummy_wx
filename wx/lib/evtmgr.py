@@ -12,5 +12,5 @@ EventMacroInfo = object
 EventManager = object
 FakeWindow = object
 MessageAdapter = object
-_macroInfo = object
-eventManager = object
+_macroInfo = ''
+eventManager = ''

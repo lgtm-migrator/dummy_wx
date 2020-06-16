@@ -9,12 +9,12 @@ def dummy_function(*args, **kwargs):
 
 Animation = object
 EmptyXmlResource = dummy_function
-ID_NONE = object
+ID_NONE = ''
 XRCCTRL = dummy_function
 XRCID = dummy_function
-XRC_NO_RELOADING = object
-XRC_NO_SUBCLASSING = object
-XRC_USE_LOCALE = object
+XRC_NO_RELOADING = ''
+XRC_NO_SUBCLASSING = ''
+XRC_USE_LOCALE = ''
 XmlResource = object
 XmlResourceFlags = object
 XmlResourceHandler = object

@@ -7,7 +7,7 @@ def dummy_function(*args, **kwargs):
 	return 0
 
 
-EVT_INT = object
+EVT_INT = ''
 IntCtrl = object
 IntUpdatedEvent = object
 IntValidator = object

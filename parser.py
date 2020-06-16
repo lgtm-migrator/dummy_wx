@@ -72,10 +72,12 @@ def dummy_function(*args, **kwargs):
 	for obj in dir(module):
 		name = obj
 		
-		obj_type = str(type(getattr(module, obj)))
+		the_object = getattr(module, obj)
+		obj_type = str(type(the_object))
+		doc = the_object.__doc__
 		
 		val = None
-		
+
 		# ignore magic methods
 		if name.startswith("__") and name.endswith("__"):
 			continue
@@ -106,7 +108,21 @@ def dummy_function(*args, **kwargs):
 		elif obj_type.startswith("<class 'sip"):
 			val = "object"
 		elif obj_type.startswith("<class 'wx"):
-			val = "object"
+			if obj.__doc__ == """str(object='') -> str
+str(bytes_or_buffer[, encoding[, errors]]) -> str
+
+Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.__str__() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.""":
+				val = "''"
+
+			else:
+				val = "object"
+
 		elif obj_type == "<class 'type'>":
 			val = "object"
 		elif obj_type == "<class 'PyCapsule'>":
@@ -138,7 +154,9 @@ def parse_py_submodule(submodule_name):
 	with open(f"wx/py/{submodule_name}.py", "w") as fp:
 		parse(getattr(wx.py, submodule_name), fp)
 		
-		
+
+pathlib.Path("wx").mkdir()
+
 with open("wx/__init__.py", "w") as fp:
 	parse(wx, fp)
 	

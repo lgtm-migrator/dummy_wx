@@ -7,7 +7,7 @@ def dummy_function(*args, **kwargs):
 	return 0
 
 
-EVT_UPDATE_THROBBER = object
+EVT_UPDATE_THROBBER = ''
 THROBBER_EVENT = 0
 Throbber = object
 UpdateThrobberEvent = object

@@ -7,8 +7,8 @@ def dummy_function(*args, **kwargs):
 	return 0
 
 
-Anonymous = object
-Any = object
+Anonymous = ''
+Any = ''
 BoundMethodWeakref = object
 DispatcherError = object
 Parameter = object

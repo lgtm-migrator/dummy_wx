@@ -88,4 +88,4 @@ classifiers = [
 
 		]
 
-keywords = ""
+keywords = "wxpython sphinx"

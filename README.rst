@@ -31,7 +31,7 @@ the same "wx" package name to pretend to be wxPython.
 	:target: https://requires.io/github/domdfcoding/dummy_wx/requirements/?branch=master
 	:alt: Requirements Status
 
-.. |coveralls| image:: https://shields.io/coveralls/github/domdfcoding/dummy_wx/master?logo=coveralls
+.. |coveralls| image:: https://img.shields.io/coveralls/github/domdfcoding/dummy_wx/master?logo=coveralls
 	:target: https://coveralls.io/github/domdfcoding/dummy_wx?branch=master
 	:alt: Coverage
 

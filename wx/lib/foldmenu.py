@@ -9,4 +9,4 @@ def dummy_function(*args, **kwargs):
 
 FoldOutMenu = object
 FoldOutWindow = object
-eventManager = object
+eventManager = ''

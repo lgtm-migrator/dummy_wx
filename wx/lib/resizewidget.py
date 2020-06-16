@@ -7,7 +7,7 @@ def dummy_function(*args, **kwargs):
 	return 0
 
 
-EVT_RW_LAYOUT_NEEDED = object
+EVT_RW_LAYOUT_NEEDED = ''
 RW_FILL = ''
 RW_FILL2 = ''
 RW_LENGTH = 0

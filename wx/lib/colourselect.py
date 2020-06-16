@@ -10,5 +10,5 @@ def dummy_function(*args, **kwargs):
 ColourSelect = object
 ColourSelectEvent = object
 CustomColourData = object
-EVT_COLOURSELECT = object
+EVT_COLOURSELECT = ''
 wxEVT_COMMAND_COLOURSELECT = 0

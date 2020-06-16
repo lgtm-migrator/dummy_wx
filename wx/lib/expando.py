@@ -7,6 +7,6 @@ def dummy_function(*args, **kwargs):
 	return 0
 
 
-EVT_ETC_LAYOUT_NEEDED = object
+EVT_ETC_LAYOUT_NEEDED = ''
 ExpandoTextCtrl = object
 wxEVT_ETC_LAYOUT_NEEDED = 0

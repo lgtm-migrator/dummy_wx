@@ -10,7 +10,7 @@ def dummy_function(*args, **kwargs):
 AdjustAlpha = dummy_function
 AdjustColour = dummy_function
 BestLabelColour = dummy_function
-EVT_PLATEBTN_DROPARROW_PRESSED = object
+EVT_PLATEBTN_DROPARROW_PRESSED = ''
 GetHighlightColour = dummy_function
 PB_STYLE_DEFAULT = 0
 PB_STYLE_DROPARROW = 0

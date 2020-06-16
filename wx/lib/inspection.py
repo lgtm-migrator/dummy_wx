@@ -7,21 +7,21 @@ def dummy_function(*args, **kwargs):
 	return 0
 
 
-CollapseTree = object
-EvtWatcher = object
-ExpandTree = object
-Find = object
+CollapseTree = ''
+EvtWatcher = ''
+ExpandTree = ''
+Find = ''
 FlagsFormatter = object
-HighlightItem = object
-Icon = object
+HighlightItem = ''
+Icon = ''
 InspectionFrame = object
 InspectionInfoPanel = object
 InspectionTool = object
 InspectionTree = object
 PyEmbeddedImage = object
-Refresh = object
-ShowFilling = object
-ShowSizers = object
+Refresh = ''
+ShowFilling = ''
+ShowSizers = ''
 TreeBaseClass = object
 _InspectionHighlighter = object
 flexmodeFlags = dict()

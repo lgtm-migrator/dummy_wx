@@ -7,7 +7,7 @@ def dummy_function(*args, **kwargs):
 	return 0
 
 
-EVT_IP_SELECTION_CHANGED = object
+EVT_IP_SELECTION_CHANGED = ''
 IP_DEFAULT_STYLE = 0
 IP_REMOVE_FROM_CHOICES = 0
 IP_SORT_CHOICES = 0

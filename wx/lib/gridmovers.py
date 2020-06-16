@@ -8,8 +8,8 @@ def dummy_function(*args, **kwargs):
 
 
 ColDragWindow = object
-EVT_GRID_COL_MOVE = object
-EVT_GRID_ROW_MOVE = object
+EVT_GRID_COL_MOVE = ''
+EVT_GRID_ROW_MOVE = ''
 GridColMoveEvent = object
 GridColMover = object
 GridRowMoveEvent = object
