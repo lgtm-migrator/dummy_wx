@@ -15,17 +15,28 @@ the same "wx" package name to pretend to be wxPython.
 	:widths: 10 90
 
 	* - Tests
-	  - |travis| |requires| |coveralls| |codefactor|
+	  - |travis| |actions_windows| |actions_macos|
+	    |coveralls| |codefactor|
 	* - PyPI
 	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
+	* - Activity
+	  - |commits-latest| |commits-since| |maintained|
 	* - Other
-	  - |license| |language| |commits-since| |commits-latest| |maintained| 
+	  - |license| |language| |requires|
 
 
 
 .. |travis| image:: https://img.shields.io/travis/com/domdfcoding/dummy_wx/master?logo=travis
 	:target: https://travis-ci.com/domdfcoding/dummy_wx
 	:alt: Travis Build Status
+
+.. |actions_windows| image:: https://github.com/domdfcoding/dummy_wx/workflows/Windows%20Tests/badge.svg
+	:target: https://github.com/domdfcoding/dummy_wx/actions?query=workflow%3A%22Windows+Tests%22
+	:alt: Windows Tests Status
+	
+.. |actions_macos| image:: https://github.com/domdfcoding/dummy_wx/workflows/macOS%20Tests/badge.svg
+	:target: https://github.com/domdfcoding/dummy_wx/actions?query=workflow%3A%22macOS+Tests%22
+	:alt: macOS Tests Status
 
 .. |requires| image:: https://requires.io/github/domdfcoding/dummy_wx/requirements.svg?branch=master
 	:target: https://requires.io/github/domdfcoding/dummy_wx/requirements/?branch=master
