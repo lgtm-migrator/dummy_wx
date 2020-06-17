@@ -15,8 +15,7 @@ the same "wx" package name to pretend to be wxPython.
 	:widths: 10 90
 
 	* - Tests
-	  - |travis| |actions_windows| |actions_macos|
-	    |coveralls| |codefactor|
+	  - |travis| |actions_windows| |actions_macos| |coveralls| |codefactor|
 	* - PyPI
 	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
 	* - Activity
@@ -33,7 +32,7 @@ the same "wx" package name to pretend to be wxPython.
 .. |actions_windows| image:: https://github.com/domdfcoding/dummy_wx/workflows/Windows%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/dummy_wx/actions?query=workflow%3A%22Windows+Tests%22
 	:alt: Windows Tests Status
-	
+
 .. |actions_macos| image:: https://github.com/domdfcoding/dummy_wx/workflows/macOS%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/dummy_wx/actions?query=workflow%3A%22macOS+Tests%22
 	:alt: macOS Tests Status
