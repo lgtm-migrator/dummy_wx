@@ -8,7 +8,7 @@ for modules that require wxPython.
 Do NOT install this module if you already have wxPython installed, as it uses
 the same "wx" package name to pretend to be wxPython.
 
-.. start shields 
+.. start shields
 
 .. list-table::
 	:stub-columns: 1
@@ -53,7 +53,7 @@ the same "wx" package name to pretend to be wxPython.
 	:target: https://pypi.org/project/dummy_wx/
 	:alt: PyPI - Package Version
 
-.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/dummy_wx
+.. |supported-versions| image:: https://img.shields.io/pypi/pyversions/dummy_wx?logo=python&logoColor=white
 	:target: https://pypi.org/project/dummy_wx/
 	:alt: PyPI - Supported Python Versions
 
@@ -66,8 +66,8 @@ the same "wx" package name to pretend to be wxPython.
 	:alt: PyPI - Wheel
 
 .. |license| image:: https://img.shields.io/github/license/domdfcoding/dummy_wx
-	:alt: License
 	:target: https://github.com/domdfcoding/dummy_wx/blob/master/LICENSE
+	:alt: License
 
 .. |language| image:: https://img.shields.io/github/languages/top/domdfcoding/dummy_wx
 	:alt: GitHub top language
