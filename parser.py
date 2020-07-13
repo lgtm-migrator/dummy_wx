@@ -58,7 +58,8 @@ import wx.lib.pubsub
 
 
 def parse(module, fp):
-	fp.write("""# Based on wxPython
+	fp.write(
+			"""# Based on wxPython
 # Copyright: (c) 2018 by Total Control Software
 # License:   wxWindows License
 
@@ -67,15 +68,16 @@ def dummy_function(*args, **kwargs):
 	return 0
 
 
-""")
-	
+"""
+			)
+
 	for obj in dir(module):
 		name = obj
-		
+
 		the_object = getattr(module, obj)
 		obj_type = str(type(the_object))
 		doc = the_object.__doc__
-		
+
 		val = None
 
 		# ignore magic methods
@@ -102,7 +104,7 @@ def dummy_function(*args, **kwargs):
 			val = "None"
 		elif obj_type == "<class 'dict'>":
 			val = "dict()"
-		
+
 		elif obj_type in {"<class 'function'>", "<class 'builtin_function_or_method'>"}:
 			val = "dummy_function"
 		elif obj_type.startswith("<class 'sip"):
@@ -127,10 +129,10 @@ errors defaults to 'strict'.""":
 			val = "object"
 		elif obj_type == "<class 'PyCapsule'>":
 			val = "object"
-		
+
 		else:
 			print(name, obj_type)
-		
+
 		if val:
 			fp.write(f"{name} = {val}\n")
 
@@ -143,43 +145,44 @@ def parse_module(module_name):
 def parse_lib_submodule(submodule_name):
 	with open(f"wx/lib/{submodule_name}.py", "w") as fp:
 		parse(getattr(wx.lib, submodule_name), fp)
-		
-		
+
+
 def parse_tools_submodule(submodule_name):
 	with open(f"wx/tools/{submodule_name}.py", "w") as fp:
 		parse(getattr(wx.tools, submodule_name), fp)
-		
-		
+
+
 def parse_py_submodule(submodule_name):
 	with open(f"wx/py/{submodule_name}.py", "w") as fp:
 		parse(getattr(wx.py, submodule_name), fp)
-		
+
 
 pathlib.Path("wx").mkdir()
 
 with open("wx/__init__.py", "w") as fp:
 	parse(wx, fp)
-	
-	fp.write("""
+
+	fp.write(
+			"""
 
 class PyEventBinder(object):
 	def __init__(self, evtType, expectedIDs=0):
 		pass
-	
+
 	def Bind(self, target, id1, id2, function):
 		pass
-	
+
 	def Unbind(self, target, id1, id2, handler=None):
 		return False
-	
+
 	def _getEvtType(self):
 		return 0
-	
+
 	typeId = property(_getEvtType)
 
 
-""")
-
+"""
+			)
 
 if not pathlib.Path("./wx/lib").exists():
 	pathlib.Path("./wx/lib").mkdir()
@@ -188,23 +191,66 @@ with open("wx/lib/__init__.py", "w") as fp:
 	parse(wx.lib, fp)
 
 for submodule in [
-		"anchors", "busy", "buttons", "calendar", "CDate",
-		"ClickableHtmlWindow", "colourdb", "colourselect",
-		"colourutils", "combotreebox", "delayedresult",
-		"dialogs", "docview", "dragscroller", "embeddedimage",
-		"eventStack", "eventwatcher", "evtmgr", "expando",
-		"fancytext", "filebrowsebutton", "foldmenu", "gestures",
-		"gridmovers", "imagebrowser", "imageutils", "infoframe",
-		"inspection", "intctrl", "itemspicker", "langlistctrl",
-		"layoutf", "msgpanel", "multisash", "newevent", "nvdlg",
-		"pdfwin", "platebtn", "popupctl", "printout",
-		"progressindicator", "pydocview", "rcsizer", "resizewidget",
-		"scrolledpanel", "sheet", "sized_controls", "softwareupdate",
-		"splitter", "statbmp", "stattext", "throbber", "ticker",
-		"ticker_xrc", "utils", "wordwrap", "wxpTag", "wxcairo"
+		"anchors",
+		"busy",
+		"buttons",
+		"calendar",
+		"CDate",
+		"ClickableHtmlWindow",
+		"colourdb",
+		"colourselect",
+		"colourutils",
+		"combotreebox",
+		"delayedresult",
+		"dialogs",
+		"docview",
+		"dragscroller",
+		"embeddedimage",
+		"eventStack",
+		"eventwatcher",
+		"evtmgr",
+		"expando",
+		"fancytext",
+		"filebrowsebutton",
+		"foldmenu",
+		"gestures",
+		"gridmovers",
+		"imagebrowser",
+		"imageutils",
+		"infoframe",
+		"inspection",
+		"intctrl",
+		"itemspicker",
+		"langlistctrl",
+		"layoutf",
+		"msgpanel",
+		"multisash",
+		"newevent",
+		"nvdlg",
+		"pdfwin",
+		"platebtn",
+		"popupctl",
+		"printout",
+		"progressindicator",
+		"pydocview",
+		"rcsizer",
+		"resizewidget",
+		"scrolledpanel",
+		"sheet",
+		"sized_controls",
+		"softwareupdate",
+		"splitter",
+		"statbmp",
+		"stattext",
+		"throbber",
+		"ticker",
+		"ticker_xrc",
+		"utils",
+		"wordwrap",
+		"wxpTag",
+		"wxcairo"
 		]:
 	parse_lib_submodule(submodule)
-
 
 if not pathlib.Path("./wx/tools").exists():
 	pathlib.Path("./wx/tools").mkdir()
@@ -213,11 +259,17 @@ with open("wx/tools/__init__.py", "w") as fp:
 	parse(wx.lib, fp)
 
 for submodule in [
-		"dbg", "helpviewer", "img2img", "img2png",
-		"img2py", "img2xpm", "pywxrc", "wxget",
+		"dbg",
+		"helpviewer",
+		"img2img",
+		"img2png",
+		"img2py",
+		"img2xpm",
+		"pywxrc",
+		"wxget",
 		]:
 	parse_tools_submodule(submodule)
-	
+
 if not pathlib.Path("./wx/py").exists():
 	pathlib.Path("./wx/py").mkdir()
 
@@ -225,166 +277,195 @@ with open("wx/py/__init__.py", "w") as fp:
 	parse(wx.lib, fp)
 
 for submodule in [
-		"buffer", "crust", "crustslices", "dispatcher", "document",
-		"editor", "editwindow", "filling", "frame", "images",
-		"interpreter", "introspect", "magic", "parse", "path", "pseudo",
-		"PyAlaCarte", "PyAlaMode", "PyAlaModeTest", "PyCrust", "PyFilling",
-		"PyShell", "PySlices", "PySlicesShell", "PyWrap", "shell",
-		"sliceshell", "version",
+		"buffer",
+		"crust",
+		"crustslices",
+		"dispatcher",
+		"document",
+		"editor",
+		"editwindow",
+		"filling",
+		"frame",
+		"images",
+		"interpreter",
+		"introspect",
+		"magic",
+		"parse",
+		"path",
+		"pseudo",
+		"PyAlaCarte",
+		"PyAlaMode",
+		"PyAlaModeTest",
+		"PyCrust",
+		"PyFilling",
+		"PyShell",
+		"PySlices",
+		"PySlicesShell",
+		"PyWrap",
+		"shell",
+		"sliceshell",
+		"version",
 		]:
 	parse_py_submodule(submodule)
 
-
 for module in [
-		"grid",	"dataview",	"richtext",	"ribbon", "aui",
-		"html", "html2", "stc", "media", "adv",
-		"propgrid", "xrc", "xml",
+		"grid",
+		"dataview",
+		"richtext",
+		"ribbon",
+		"aui",
+		"html",
+		"html2",
+		"stc",
+		"media",
+		"adv",
+		"propgrid",
+		"xrc",
+		"xml",
 		]:
 	parse_module(module)
 
-
 # TODO: The following in wx.lib:
-"""
-agw
-	aui
-		aui_constants
-		aui_switcherdialog
-		aui_utilities
-		auibar
-		auibook
-		dockart
-		framemanager
-		tabart
-		tabmdi
-	persist
-		persist_constants
-		persist_handler
-		persistencemanager
-	ribbon
-		art
-		art_aui
-		art_default
-		art_internal
-		art_msw
-		art_osx
-		bar
-		buttonbar
-		control
-		gallery
-		page
-		panel
-		toolbar
-		
-	advancedsplash
-	aquabutton
-	artmanager
-	balloontip
-	buttonpanel
-	cubecolourdialog
-	customtreectrl
-	flatmenu
-	flatnotebook
-	floatspin
-	fmcustomizedlg
-	fmresources
-	foldpanelbar
-	fourwaysplitter
-	genericmessagedialog
-	gradientbutton
-	hyperlink
-	hypertreelist
-	infobar
-	knobctrl
-	labelbook
-	multidirdialog
-	peakmeter
-	piectrl
-	pybusyinfo
-	pycollapsiblepane
-	pygauge
-	pyprogress
-	rulerctrl
-	shapedbutton
-	shortcuteditor
-	speedmeter
-	supertooltip
-	thumbnailctrl
-	toasterbox
-	ultimatelistctrl
-	xlsgrid
-	zoombar
-
-
-analogclock
-	lib_setup
-		buttontreectrlpanel
-		fontselect
-	analogclick
-	helpers
-	setup
-	styles
-art
-	flatart
-	img2pyartprov
-colourchooser
-	canvas
-	intl
-	pycolourbox
-	pycolourchooser
-	pycolourslider
-	pypalette
-editor
-	editor
-	images
-	selection
-floatcanvas
-	Utilities
-		BBox
-		Colors
-		GUI
-	FCEvents
-	FCObjects
-	FloatCanvas
-	GUIMode
-	NavCanvas
-	Resources
-	ScreenShot
-gizmos
-	dynamicsash
-	ledctrl
-	treelistctrl
-masked
-	combobox
-	ctrl
-	ipaddrctrl
-	maskededit
-	numctrl
-	textctrl
-	timectrl
-mixins
-	grid
-	gridlabelrenderer
-	imagelist
-	inspection
-	listctrl
-	rubberband
-	treemixin
-ogl
-	basic
-	bmpshape
-	canvas
-	composit
-	diagram
-	divided
-	drawn
-	lines
-	oglmisc
-plot
-	examples
-		demo
-		simple_example
-	__main__
-	plotcanvas
-	plotobjects
-	utils
-"""
+#
+# agw
+# 	aui
+# 		aui_constants
+# 		aui_switcherdialog
+# 		aui_utilities
+# 		auibar
+# 		auibook
+# 		dockart
+# 		framemanager
+# 		tabart
+# 		tabmdi
+# 	persist
+# 		persist_constants
+# 		persist_handler
+# 		persistencemanager
+# 	ribbon
+# 		art
+# 		art_aui
+# 		art_default
+# 		art_internal
+# 		art_msw
+# 		art_osx
+# 		bar
+# 		buttonbar
+# 		control
+# 		gallery
+# 		page
+# 		panel
+# 		toolbar
+#
+# 	advancedsplash
+# 	aquabutton
+# 	artmanager
+# 	balloontip
+# 	buttonpanel
+# 	cubecolourdialog
+# 	customtreectrl
+# 	flatmenu
+# 	flatnotebook
+# 	floatspin
+# 	fmcustomizedlg
+# 	fmresources
+# 	foldpanelbar
+# 	fourwaysplitter
+# 	genericmessagedialog
+# 	gradientbutton
+# 	hyperlink
+# 	hypertreelist
+# 	infobar
+# 	knobctrl
+# 	labelbook
+# 	multidirdialog
+# 	peakmeter
+# 	piectrl
+# 	pybusyinfo
+# 	pycollapsiblepane
+# 	pygauge
+# 	pyprogress
+# 	rulerctrl
+# 	shapedbutton
+# 	shortcuteditor
+# 	speedmeter
+# 	supertooltip
+# 	thumbnailctrl
+# 	toasterbox
+# 	ultimatelistctrl
+# 	xlsgrid
+# 	zoombar
+#
+#
+# analogclock
+# 	lib_setup
+# 		buttontreectrlpanel
+# 		fontselect
+# 	analogclick
+# 	helpers
+# 	setup
+# 	styles
+# art
+# 	flatart
+# 	img2pyartprov
+# colourchooser
+# 	canvas
+# 	intl
+# 	pycolourbox
+# 	pycolourchooser
+# 	pycolourslider
+# 	pypalette
+# editor
+# 	editor
+# 	images
+# 	selection
+# floatcanvas
+# 	Utilities
+# 		BBox
+# 		Colors
+# 		GUI
+# 	FCEvents
+# 	FCObjects
+# 	FloatCanvas
+# 	GUIMode
+# 	NavCanvas
+# 	Resources
+# 	ScreenShot
+# gizmos
+# 	dynamicsash
+# 	ledctrl
+# 	treelistctrl
+# masked
+# 	combobox
+# 	ctrl
+# 	ipaddrctrl
+# 	maskededit
+# 	numctrl
+# 	textctrl
+# 	timectrl
+# mixins
+# 	grid
+# 	gridlabelrenderer
+# 	imagelist
+# 	inspection
+# 	listctrl
+# 	rubberband
+# 	treemixin
+# ogl
+# 	basic
+# 	bmpshape
+# 	canvas
+# 	composit
+# 	diagram
+# 	divided
+# 	drawn
+# 	lines
+# 	oglmisc
+# plot
+# 	examples
+# 		demo
+# 		simple_example
+# 	__main__
+# 	plotcanvas
+# 	plotobjects
+# 	utils
