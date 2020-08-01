@@ -44,9 +44,9 @@ modname = "dummy_wx"
 pypi_name = "dummy_wx"
 import_name = "wx"
 __license__ = "GNU Lesser General Public License v3 or later (LGPLv3+)"
-short_desc = "This module does nothing."
-__author__ = author = "Dominic Davis-Foster"
-author_email = "dominic@davis-foster.co.uk"
+short_desc = 'This module does nothing.'
+__author__ = author = 'Dominic Davis-Foster'
+author_email = 'dominic@davis-foster.co.uk'
 github_username = "domdfcoding"
 web = github_url = "https://github.com/domdfcoding/dummy_wx"
 repo_root = pathlib.Path(__file__).parent
