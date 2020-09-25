@@ -15,7 +15,7 @@ the same "wx" package name to pretend to be wxPython.
 	:widths: 10 90
 
 	* - Tests
-	  - |travis| |actions_windows| |actions_macos| |coveralls| |codefactor|
+	  - |travis| |actions_windows| |actions_macos| |codefactor|
 	* - PyPI
 	  - |pypi-version| |supported-versions| |supported-implementations| |wheel|
 	* - Activity
@@ -40,10 +40,6 @@ the same "wx" package name to pretend to be wxPython.
 .. |requires| image:: https://requires.io/github/domdfcoding/dummy_wx/requirements.svg?branch=master
 	:target: https://requires.io/github/domdfcoding/dummy_wx/requirements/?branch=master
 	:alt: Requirements Status
-
-.. |coveralls| image:: https://img.shields.io/coveralls/github/domdfcoding/dummy_wx/master?logo=coveralls
-	:target: https://coveralls.io/github/domdfcoding/dummy_wx?branch=master
-	:alt: Coverage
 
 .. |codefactor| image:: https://img.shields.io/codefactor/grade/github/domdfcoding/dummy_wx?logo=codefactor
 	:target: https://www.codefactor.io/repository/github/domdfcoding/dummy_wx
