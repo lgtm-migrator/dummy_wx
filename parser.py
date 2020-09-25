@@ -2,59 +2,140 @@
 Script to generate wx/__init__.py
 """
 
+# stdlib
+import inspect
+import re
 import sys
+
 del sys.path[0]
 
+# stdlib
 import pathlib
 
+# this package
 import wx
-import wx.ribbon, wx.grid, wx.dataview, wx.richtext, wx.html
-import wx.html2, wx.stc, wx.media, wx.propgrid, wx.xrc, wx.xml
-import wx.adv, wx.aui
-
-import wx.tools
-import wx.tools.dbg, wx.tools.helpviewer, wx.tools.img2img, wx.tools.img2png
-import wx.tools.img2py, wx.tools.img2xpm, wx.tools.pywxrc, wx.tools.wxget
-
-import wx.py
-import wx.py.buffer, wx.py.crust, wx.py.crustslices, wx.py.dispatcher
-import wx.py.document, wx.py.editor, wx.py.editwindow, wx.py.filling
-import wx.py.frame, wx.py.images, wx.py.interpreter, wx.py.introspect
-import wx.py.magic, wx.py.parse, wx.py.path, wx.py.pseudo, wx.py.PyAlaCarte
-import wx.py.PyAlaMode, wx.py.PyAlaModeTest, wx.py.PyCrust, wx.py.PyFilling
-import wx.py.PyShell, wx.py.PySlices, wx.py.PySlicesShell, wx.py.PyWrap
-import wx.py.shell, wx.py.sliceshell, wx.py.version
-
+import wx.adv
+import wx.aui
+import wx.dataview
+import wx.grid
+import wx.html
+import wx.html2
 import wx.lib
-import wx.lib.anchors, wx.lib.busy, wx.lib.buttons, wx.lib.calendar
-import wx.lib.ClickableHtmlWindow, wx.lib.colourdb, wx.lib.colourselect
-import wx.lib.colourutils, wx.lib.combotreebox, wx.lib.delayedresult
-import wx.lib.dialogs, wx.lib.docview, wx.lib.dragscroller, wx.lib.splitter
-import wx.lib.eventStack, wx.lib.eventwatcher, wx.lib.evtmgr, wx.lib.CDate
-import wx.lib.fancytext, wx.lib.filebrowsebutton, wx.lib.foldmenu
-import wx.lib.gridmovers, wx.lib.imagebrowser, wx.lib.imageutils, wx.lib.nvdlg
-import wx.lib.inspection, wx.lib.intctrl, wx.lib.itemspicker, wx.lib.ticker_xrc
-import wx.lib.layoutf, wx.lib.msgpanel, wx.lib.multisash, wx.lib.newevent
-import wx.lib.pdfwin, wx.lib.platebtn, wx.lib.popupctl, wx.lib.printout
-import wx.lib.pydocview, wx.lib.rcsizer, wx.lib.resizewidget
-import wx.lib.sheet, wx.lib.sized_controls, wx.lib.softwareupdate
-import wx.lib.statbmp, wx.lib.stattext, wx.lib.throbber, wx.lib.ticker
-import wx.lib.utils, wx.lib.wordwrap, wx.lib.wxpTag, wx.lib.progressindicator
-import wx.lib.langlistctrl, wx.lib.embeddedimage, wx.lib.expando
-import wx.lib.gestures, wx.lib.infoframe, wx.lib.scrolledpanel, wx.lib.wxcairo
-
 import wx.lib.agw
 import wx.lib.analogclock
+import wx.lib.anchors
 import wx.lib.art
+import wx.lib.busy
+import wx.lib.buttons
+import wx.lib.calendar
+import wx.lib.CDate
+import wx.lib.ClickableHtmlWindow
 import wx.lib.colourchooser
+import wx.lib.colourdb
+import wx.lib.colourselect
+import wx.lib.colourutils
+import wx.lib.combotreebox
+import wx.lib.delayedresult
+import wx.lib.dialogs
+import wx.lib.docview
+import wx.lib.dragscroller
 import wx.lib.editor
+import wx.lib.embeddedimage
+import wx.lib.eventStack
+import wx.lib.eventwatcher
+import wx.lib.evtmgr
+import wx.lib.expando
+import wx.lib.fancytext
+import wx.lib.filebrowsebutton
 import wx.lib.floatcanvas
+import wx.lib.foldmenu
+import wx.lib.gestures
 import wx.lib.gizmos
+import wx.lib.gridmovers
+import wx.lib.imagebrowser
+import wx.lib.imageutils
+import wx.lib.infoframe
+import wx.lib.inspection
+import wx.lib.intctrl
+import wx.lib.itemspicker
+import wx.lib.langlistctrl
+import wx.lib.layoutf
 import wx.lib.masked
 import wx.lib.mixins
+import wx.lib.msgpanel
+import wx.lib.multisash
+import wx.lib.newevent
+import wx.lib.nvdlg
 import wx.lib.ogl
+import wx.lib.pdfwin
+import wx.lib.platebtn
 import wx.lib.plot
+import wx.lib.popupctl
+import wx.lib.printout
+import wx.lib.progressindicator
 import wx.lib.pubsub
+import wx.lib.pydocview
+import wx.lib.rcsizer
+import wx.lib.resizewidget
+import wx.lib.scrolledpanel
+import wx.lib.sheet
+import wx.lib.sized_controls
+import wx.lib.softwareupdate
+import wx.lib.splitter
+import wx.lib.statbmp
+import wx.lib.stattext
+import wx.lib.throbber
+import wx.lib.ticker
+import wx.lib.ticker_xrc
+import wx.lib.utils
+import wx.lib.wordwrap
+import wx.lib.wxcairo
+import wx.lib.wxpTag
+import wx.media
+import wx.propgrid
+import wx.py
+import wx.py.buffer
+import wx.py.crust
+import wx.py.crustslices
+import wx.py.dispatcher
+import wx.py.document
+import wx.py.editor
+import wx.py.editwindow
+import wx.py.filling
+import wx.py.frame
+import wx.py.images
+import wx.py.interpreter
+import wx.py.introspect
+import wx.py.magic
+import wx.py.parse
+import wx.py.path
+import wx.py.pseudo
+import wx.py.PyAlaCarte
+import wx.py.PyAlaMode
+import wx.py.PyAlaModeTest
+import wx.py.PyCrust
+import wx.py.PyFilling
+import wx.py.PyShell
+import wx.py.PySlices
+import wx.py.PySlicesShell
+import wx.py.PyWrap
+import wx.py.shell
+import wx.py.sliceshell
+import wx.py.version
+import wx.ribbon
+import wx.richtext
+import wx.stc
+import wx.tools
+import wx.tools.dbg
+import wx.tools.helpviewer
+import wx.tools.img2img
+import wx.tools.img2png
+import wx.tools.img2py
+import wx.tools.img2xpm
+import wx.tools.pywxrc
+import wx.tools.wxget
+import wx.xml
+import wx.xrc
 
 
 def parse(module, fp):
@@ -71,6 +152,9 @@ def dummy_function(*args, **kwargs):
 """
 			)
 
+	seen_objects = []
+	deferred_objects = []
+
 	for obj in dir(module):
 		name = obj
 
@@ -86,16 +170,22 @@ def dummy_function(*args, **kwargs):
 		# Special case for PyEventBinder; it needs to be a custom class as it might get called
 		elif name == "PyEventBinder":
 			continue
+		elif name == "wxWidgets_version":
+			val = f"'{the_object}'"
+
+		elif name.startswith("ID_") and the_object.__class__ is wx.WindowIDRef:
+			val = int(the_object)
+
 		elif name.startswith("IMAGE_OPTION_") and obj_type == "<class 'str'>":
 			val = f"'{(getattr(wx, obj))}'"
 		elif obj_type == "<class 'bytes'>":
-			val = "bytes()"
+			val = repr(the_object)
 		elif obj_type == "<class 'str'>":
-			val = "''"
+			val = repr(the_object)
 		elif obj_type == "<class 'int'>":
-			val = "0"
+			val = repr(the_object)
 		elif obj_type == "<class 'float'>":
-			val = "0.0"
+			val = repr(the_object)
 		elif obj_type == "<class 'list'>":
 			val = "[]"
 		elif obj_type == "<class 'tuple'>":
@@ -107,10 +197,10 @@ def dummy_function(*args, **kwargs):
 
 		elif obj_type in {"<class 'function'>", "<class 'builtin_function_or_method'>"}:
 			val = "dummy_function"
-		elif obj_type.startswith("<class 'sip"):
+		elif inspect.isclass(the_object):
 			val = "object"
 		elif obj_type.startswith("<class 'wx"):
-			if obj.__doc__ == """str(object='') -> str
+			if the_object.__doc__ == """str(object='') -> str
 str(bytes_or_buffer[, encoding[, errors]]) -> str
 
 Create a new string object from the given object. If encoding or
@@ -123,7 +213,7 @@ errors defaults to 'strict'.""":
 				val = "''"
 
 			else:
-				val = "object"
+				val = str(the_object)
 
 		elif obj_type == "<class 'type'>":
 			val = "object"
@@ -134,11 +224,30 @@ errors defaults to 'strict'.""":
 			print(name, obj_type)
 
 		if val:
-			fp.write(f"{name} = {val}\n")
+			if val == "INVALID DateTime":
+				val = "''"
+
+			group = "|".join(["core", module.__name__.split(".")[-1]])
+			repr_match = re.match(fr"<wx\._?({group})\.(.*) object at 0x.*>", val)
+			if val == "object":
+				fp.write(f"class {name}: ...\n")
+			elif repr_match:
+				if repr_match.group(1) in seen_objects:
+					fp.write(f"{name} = {repr_match.group(2)}()\n")
+				else:
+					deferred_objects.append((name, repr_match.group(2)))
+					continue
+			else:
+				fp.write(f"{name} = {val}\n")
+			seen_objects.append(name)
+
+	for name, repr_ in deferred_objects:
+		fp.write(f"{name} = {repr_}()\n")
 
 
 def parse_module(module_name):
 	with open(f"wx/{module_name}.py", "w") as fp:
+		fp.write("from wx import PyEventBinder\n\n")
 		parse(getattr(wx, module_name), fp)
 
 
@@ -160,13 +269,11 @@ def parse_py_submodule(submodule_name):
 pathlib.Path("wx").mkdir()
 
 with open("wx/__init__.py", "w") as fp:
-	parse(wx, fp)
-
 	fp.write(
 			"""
 
 class PyEventBinder(object):
-	def __init__(self, evtType, expectedIDs=0):
+	def __init__(self, evtType=None, expectedIDs=0):
 		pass
 
 	def Bind(self, target, id1, id2, function):
@@ -184,73 +291,78 @@ class PyEventBinder(object):
 """
 			)
 
+	parse(wx, fp)
+
+
+
 if not pathlib.Path("./wx/lib").exists():
 	pathlib.Path("./wx/lib").mkdir()
-
-with open("wx/lib/__init__.py", "w") as fp:
-	parse(wx.lib, fp)
-
-for submodule in [
-		"anchors",
-		"busy",
-		"buttons",
-		"calendar",
-		"CDate",
-		"ClickableHtmlWindow",
-		"colourdb",
-		"colourselect",
-		"colourutils",
-		"combotreebox",
-		"delayedresult",
-		"dialogs",
-		"docview",
-		"dragscroller",
-		"embeddedimage",
-		"eventStack",
-		"eventwatcher",
-		"evtmgr",
-		"expando",
-		"fancytext",
-		"filebrowsebutton",
-		"foldmenu",
-		"gestures",
-		"gridmovers",
-		"imagebrowser",
-		"imageutils",
-		"infoframe",
-		"inspection",
-		"intctrl",
-		"itemspicker",
-		"langlistctrl",
-		"layoutf",
-		"msgpanel",
-		"multisash",
-		"newevent",
-		"nvdlg",
-		"pdfwin",
-		"platebtn",
-		"popupctl",
-		"printout",
-		"progressindicator",
-		"pydocview",
-		"rcsizer",
-		"resizewidget",
-		"scrolledpanel",
-		"sheet",
-		"sized_controls",
-		"softwareupdate",
-		"splitter",
-		"statbmp",
-		"stattext",
-		"throbber",
-		"ticker",
-		"ticker_xrc",
-		"utils",
-		"wordwrap",
-		"wxpTag",
-		"wxcairo"
-		]:
-	parse_lib_submodule(submodule)
+#
+# with open("wx/lib/__init__.py", "w") as fp:
+# 	fp.write("from wx import PyEventBinder\n\n")
+# 	parse(wx.lib, fp)
+#
+# for submodule in [
+# 		"anchors",
+# 		"busy",
+# 		"buttons",
+# 		"calendar",
+# 		"CDate",
+# 		"ClickableHtmlWindow",
+# 		"colourdb",
+# 		"colourselect",
+# 		"colourutils",
+# 		"combotreebox",
+# 		"delayedresult",
+# 		"dialogs",
+# 		"docview",
+# 		"dragscroller",
+# 		"embeddedimage",
+# 		"eventStack",
+# 		"eventwatcher",
+# 		"evtmgr",
+# 		"expando",
+# 		"fancytext",
+# 		"filebrowsebutton",
+# 		"foldmenu",
+# 		"gestures",
+# 		"gridmovers",
+# 		"imagebrowser",
+# 		"imageutils",
+# 		"infoframe",
+# 		"inspection",
+# 		"intctrl",
+# 		"itemspicker",
+# 		"langlistctrl",
+# 		"layoutf",
+# 		"msgpanel",
+# 		"multisash",
+# 		"newevent",
+# 		"nvdlg",
+# 		"pdfwin",
+# 		"platebtn",
+# 		"popupctl",
+# 		"printout",
+# 		"progressindicator",
+# 		"pydocview",
+# 		"rcsizer",
+# 		"resizewidget",
+# 		"scrolledpanel",
+# 		"sheet",
+# 		"sized_controls",
+# 		"softwareupdate",
+# 		"splitter",
+# 		"statbmp",
+# 		"stattext",
+# 		"throbber",
+# 		"ticker",
+# 		"ticker_xrc",
+# 		"utils",
+# 		"wordwrap",
+# 		"wxpTag",
+# 		"wxcairo"
+# 		]:
+# 	parse_lib_submodule(submodule)
 
 if not pathlib.Path("./wx/tools").exists():
 	pathlib.Path("./wx/tools").mkdir()
