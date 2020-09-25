@@ -1,7 +1,18 @@
-# Based on wxPython
-# Copyright: (c) 2018 by Total Control Software
-# License:   wxWindows License
+"""
+Some useful tools and utilities for wxPython.
+"""
 
 
-def dummy_function(*args, **kwargs):
-	return 0
+# XRCed is purposfully left out so epydoc won't document it
+__all__ = [
+    'dbg',
+    'genaxmodule',
+    'helpviewer',
+    'img2img',
+    'img2png',
+    'img2py',
+    'img2xpm',
+    ]
+
+
+

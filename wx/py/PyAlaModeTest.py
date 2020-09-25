@@ -1,11 +1,33 @@
-# Based on wxPython
-# Copyright: (c) 2018 by Total Control Software
-# License:   wxWindows License
+#!/usr/bin/env python
+"""PyAlaModeTest is a programmer's editor."""
 
+__author__ = "Patrick K. O'Brien <pobrien@orbtech.com>"
 
-def dummy_function(*args, **kwargs):
-	return 0
+import wx
+from wx import py
 
+import os
+import sys
 
-App = object
-main = dummy_function
+class App(wx.App):
+    """PyAlaModeTest standalone application."""
+
+    def __init__(self, filename=None):
+        self.filename = filename
+        wx.App.__init__(self, redirect=False)
+
+    def OnInit(self):
+        self.frame = py.editor.EditorShellNotebookFrame(filename=self.filename)
+        self.frame.Show()
+        self.SetTopWindow(self.frame)
+        return True
+
+def main(filename=None):
+    app = App(filename)
+    app.MainLoop()
+
+if __name__ == '__main__':
+    filename = None
+    if len(sys.argv) > 1:
+        filename = os.path.realpath(sys.argv[1])
+    main(filename)

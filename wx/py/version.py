@@ -1,10 +1,7 @@
-# Based on wxPython
-# Copyright: (c) 2018 by Total Control Software
-# License:   wxWindows License
+"""Provides an object representing the current 'version' or 'release'
+of Py as a whole.  Individual classes, such as the shell, filling and
+interpreter, each have a revision property based on the CVS Revision."""
 
+__author__ = "Patrick K. O'Brien <pobrien@orbtech.com>"
 
-def dummy_function(*args, **kwargs):
-	return 0
-
-
-VERSION = ''
+VERSION = '0.9.8'
