@@ -918,7 +918,7 @@ class ShellFrameMixin:
             import io
             # Use newline=None to translate \n \r \r\n to \n on read.  The
             # old-style mode='U' is deprecated.
-            with open(self.startupScript, 'r', newline=None, encoding='utf-8') as fid:
+            with open(self.startupScript, newline=None, encoding='utf-8') as fid:
                 text = fid.read()
         else:
             text = ''
