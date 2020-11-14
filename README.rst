@@ -68,7 +68,7 @@ the same "wx" package name to pretend to be wxPython.
 .. |language| image:: https://img.shields.io/github/languages/top/domdfcoding/dummy_wx
 	:alt: GitHub top language
 
-.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/dummy_wx/v0.2.5
+.. |commits-since| image:: https://img.shields.io/github/commits-since/domdfcoding/dummy_wx/v0.3.0
 	:target: https://github.com/domdfcoding/dummy_wx/pulse
 	:alt: GitHub commits since tagged version
 
