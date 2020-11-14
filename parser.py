@@ -227,7 +227,7 @@ errors defaults to 'strict'.""":
 			if val == "INVALID DateTime":
 				val = "''"
 
-			group = "|".join(["core", module.__name__.split(".")[-1]])
+			group = '|'.join(["core", module.__name__.split('.')[-1]])
 			repr_match = re.match(fr"<wx\._?({group})\.(.*) object at 0x.*>", val)
 			if val == "object":
 				fp.write(f"class {name}: ...\n")
@@ -246,29 +246,29 @@ errors defaults to 'strict'.""":
 
 
 def parse_module(module_name):
-	with open(f"wx/{module_name}.py", "w") as fp:
+	with open(f"wx/{module_name}.py", 'w') as fp:
 		fp.write("from wx import PyEventBinder\n\n")
 		parse(getattr(wx, module_name), fp)
 
 
 def parse_lib_submodule(submodule_name):
-	with open(f"wx/lib/{submodule_name}.py", "w") as fp:
+	with open(f"wx/lib/{submodule_name}.py", 'w') as fp:
 		parse(getattr(wx.lib, submodule_name), fp)
 
 
 def parse_tools_submodule(submodule_name):
-	with open(f"wx/tools/{submodule_name}.py", "w") as fp:
+	with open(f"wx/tools/{submodule_name}.py", 'w') as fp:
 		parse(getattr(wx.tools, submodule_name), fp)
 
 
 def parse_py_submodule(submodule_name):
-	with open(f"wx/py/{submodule_name}.py", "w") as fp:
+	with open(f"wx/py/{submodule_name}.py", 'w') as fp:
 		parse(getattr(wx.py, submodule_name), fp)
 
 
 pathlib.Path("wx").mkdir()
 
-with open("wx/__init__.py", "w") as fp:
+with open("wx/__init__.py", 'w') as fp:
 	fp.write(
 			"""
 
@@ -292,8 +292,6 @@ class PyEventBinder(object):
 			)
 
 	parse(wx, fp)
-
-
 
 if not pathlib.Path("./wx/lib").exists():
 	pathlib.Path("./wx/lib").mkdir()
@@ -367,7 +365,7 @@ if not pathlib.Path("./wx/lib").exists():
 if not pathlib.Path("./wx/tools").exists():
 	pathlib.Path("./wx/tools").mkdir()
 
-with open("wx/tools/__init__.py", "w") as fp:
+with open("wx/tools/__init__.py", 'w') as fp:
 	parse(wx.lib, fp)
 
 for submodule in [
@@ -385,7 +383,7 @@ for submodule in [
 if not pathlib.Path("./wx/py").exists():
 	pathlib.Path("./wx/py").mkdir()
 
-with open("wx/py/__init__.py", "w") as fp:
+with open("wx/py/__init__.py", 'w') as fp:
 	parse(wx.lib, fp)
 
 for submodule in [
