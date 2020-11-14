@@ -19,7 +19,7 @@ row and col labels, similar to how the cell renderers work.
 import wx
 
 
-class GridWithLabelRenderersMixin(object):
+class GridWithLabelRenderersMixin:
     """
     This class can be mixed with wx.grid.Grid to add the ability to plugin
     label renderer objects for the row, column and corner labels, similar to
@@ -175,7 +175,7 @@ class GridWithLabelRenderersMixin(object):
 
 
 
-class GridLabelRenderer(object):
+class GridLabelRenderer:
     """
     Base class for row, col or corner label renderers.
     """

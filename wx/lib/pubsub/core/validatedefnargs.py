@@ -1,5 +1,5 @@
 """
-Some topic definition validation functions. 
+Some topic definition validation functions.
 
 :copyright: Copyright since 2006 by Oliver Schoenborn, all rights reserved.
 :license: BSD, see LICENSE_BSD_Simple.txt for details.
@@ -23,7 +23,5 @@ def verifySubset(all, sub, topicName, extraMsg=''):
     notInAll = set(sub).difference(all)
     if notInAll:
         args = ','.join(all)
-        msg = 'Params [%s] missing inherited [%%s] for topic "%s"%s' % (args, topicName, extraMsg)
+        msg = f'Params [{args}] missing inherited [%s] for topic "{topicName}"{extraMsg}'
         raise MessageDataSpecError(msg, tuple(notInAll) )
-
-

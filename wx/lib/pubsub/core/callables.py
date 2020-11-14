@@ -38,7 +38,7 @@ def getID(callable_):
     sc = callable_
     if ismethod(sc):
         module = getModule(sc.__self__)
-        id = '%s.%s' % (sc.__self__.__class__.__name__, sc.__func__.__name__)
+        id = f'{sc.__self__.__class__.__name__}.{sc.__func__.__name__}'
     elif isfunction(sc):
         module = getModule(sc)
         id = sc.__name__
@@ -87,7 +87,7 @@ class ListenerMismatchError(ValueError):
 
     def __init__(self, msg, listener, *args):
         idStr, module = getID(listener)
-        msg = 'Listener "%s" (from module "%s") inadequate: %s' % (idStr, module, msg)
+        msg = f'Listener "{idStr}" (from module "{module}") inadequate: {msg}'
         ValueError.__init__(self, msg)
         self.msg    = msg
         self.args   = args
@@ -187,5 +187,3 @@ def getArgs(callable_):
         raise ListenerMismatchError(str(exc), callable_)
 
     return CallArgsInfo(func, firstArgIdx)
-
-

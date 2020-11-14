@@ -241,8 +241,8 @@ if __name__ == '__main__':
                  0, wx.ALL, 10)
     ip = ItemsPicker(d, -1, ['pop', 'cool', 'lame'],
                       'Stuff:', 'Selected stuff:',IP_SORT_SELECTED|IP_SORT_CHOICES|IP_REMOVE_FROM_CHOICES)
-    ip.add_button_label = u'left -> right'
-    ip.remove_button_label = u'right -> left'
+    ip.add_button_label = 'left -> right'
+    ip.remove_button_label = 'right -> left'
     d.sizer.Add(ip, 1, wx.EXPAND, 1)
     d.SetSizer(d.sizer)
     test.SetTopWindow(frame)
@@ -252,5 +252,3 @@ if __name__ == '__main__':
     d.ShowModal()
     d.Destroy()
     frame.Close()
-
-

@@ -2211,7 +2211,7 @@ class _DocFrameFileDropTarget(wx.FileDropTarget):
             msgTitle = wx.GetApp().GetAppName()
             if not msgTitle:
                 msgTitle = _("File Error")
-            wx.MessageBox("Could not open '%s'.  '%s'" % (wx.lib.docview.FileNameFromPath(file), sys.exc_value),
+            wx.MessageBox("Could not open '{}'.  '{}'".format(wx.lib.docview.FileNameFromPath(file), sys.exc_value),
                           msgTitle,
                           wx.OK | wx.ICON_EXCLAMATION,
                           self._docManager.FindSuitableParent())
@@ -3063,7 +3063,7 @@ class WindowMenuService(DocService):
                 if i == 0 and not self._sep:
                     self._sep = windowMenu.AppendSeparator()
                 if i < 9:
-                    menuLabel = "%s\tCtrl+%s" % (notebook.GetPageText(i), i+1)
+                    menuLabel = "{}\tCtrl+{}".format(notebook.GetPageText(i), i+1)
                 else:
                     menuLabel = notebook.GetPageText(i)
                 windowMenu.Append(self._selectWinIds[i], menuLabel)
@@ -3297,4 +3297,3 @@ Blank = PyEmbeddedImage(
     "REFUOI3tkzEOwDAIA22S//84cYe2QxGJqFg61BMDOhsBpDVU1O9Cc2jXSGvcAgBAihkkoTkU"
     "QSyV84JHKdMA8jT3kB52B+4e9DrBSj/gC4DHHfgdZ8TqN5ZHOACokRkohSNQfwAAAABJRU5E"
     "rkJggg==")
-

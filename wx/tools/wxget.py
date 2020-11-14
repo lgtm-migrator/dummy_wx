@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------
 # Name:        wx.tools.wxget
 # Purpose:     wx Based alternative to wget
@@ -26,7 +25,6 @@ Where URL is a file URL and the optional DEST_DIR is a destination directory to
 download to, (default is to prompt the user).
 The --trusted option can be used to surpress certificate checks.
 """
-from __future__ import (division, absolute_import, print_function, unicode_literals)
 
 import sys
 import os
@@ -35,14 +33,9 @@ import subprocess
 import ssl
 import pip
 
-if sys.version_info >= (3,):
-    from urllib.error import (HTTPError, URLError)
-    import urllib.request as urllib2
-    import urllib.parse as urlparse
-else:
-    import urllib2
-    from urllib2 import (HTTPError, URLError)
-    import urlparse
+from urllib.error import (HTTPError, URLError)
+import urllib.request as urllib2
+import urllib.parse as urlparse
 
 def get_docs_demo_url(demo=False):
     """ Get the URL for the docs or demo."""
@@ -123,7 +116,7 @@ def download_urllib(url, filename):
         file_size = None
         if meta_length:
             file_size = int(meta_length[0])
-        message = "Downloading: {0}\nBytes: {1}\n".format(url, file_size)
+        message = f"Downloading: {url}\nBytes: {file_size}\n"
         dstyle = wx.PD_APP_MODAL | wx.PD_CAN_ABORT | wx.PD_AUTO_HIDE
         if file_size:
             progress = wx.ProgressDialog('Downloading', message,
@@ -142,9 +135,9 @@ def download_urllib(url, filename):
             file_size_dl += len(read_buffer)
             outfile.write(read_buffer)
 
-            status = "{0:16}".format(file_size_dl)
+            status = f"{file_size_dl:16}"
             if file_size:
-                status += "   [{0:6.2f}%]".format(file_size_dl * 100 / file_size)
+                status += "   [{:6.2f}%]".format(file_size_dl * 100 / file_size)
             (keep_going, dummy_skip) = progress.Update(file_size_dl / block_sz,
                                                        message+status)
             wx.Sleep(0.08)  # Give the GUI some update time
@@ -204,7 +197,7 @@ def download_file(url, dest=None, force=False, trusted=False):
                 "\n\nERROR in Web Access! - You may be behind a firewall!",
                 "-" * 52,
                 "You should be able to bybass this by using a browser to download:",
-                "\t%s\nfrom:\t%s\nthen copying the download file to:\n\t%s" % (
+                "\t{}\nfrom:\t{}\nthen copying the download file to:\n\t{}".format(
                     split_url[-1], '/'.join(split_url[:-1]), filename),
                 ])
             print(msg, '\n')

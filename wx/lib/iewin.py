@@ -245,5 +245,3 @@ if __name__ == '__main__':
     import wx.lib.inspection
     wx.lib.inspection.InspectionTool().Show()
     app.MainLoop()
-
-

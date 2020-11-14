@@ -73,5 +73,3 @@ class ArgSpecGiven:
     def __str__(self):
         return "%s, %s, %s" % \
             (self.argsDocs, self.reqdArgs, self.argsSpecType)
-
-

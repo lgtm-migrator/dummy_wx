@@ -80,7 +80,7 @@ class WeakMethod:
         dead = ''
         if self.objRef() is None:
             dead = '; DEAD'
-        obj = '<%s at %s%s>' % (self.__class__, id(self), dead)
+        obj = '<{} at {}{}>'.format(self.__class__, id(self), dead)
         return obj
 
     def refs(self, weakRef):
@@ -99,4 +99,3 @@ def getWeakRef(obj, notifyDead=None):
         createRef = WeakRef
 
     return createRef(obj, notifyDead)
-

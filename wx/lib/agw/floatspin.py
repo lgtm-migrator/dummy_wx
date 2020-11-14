@@ -179,8 +179,7 @@ from math import ceil, floor
 
 # Python 2/3 compatibility helper
 import six
-if six.PY3:
-    long = int
+long = int
 
 # Set The Styles For The Underline wx.TextCtrl
 FS_READONLY = 1
@@ -1237,7 +1236,7 @@ __version__ = 0, 0, 4
 DEFAULT_PRECISION = 2
 """ The default value for the number of decimal digits carried after the decimal point.  This only has effect at compile-time. """
 
-class FixedPoint(object):
+class FixedPoint:
     """
     FixedPoint objects support decimal arithmetic with a fixed number of
     digits (called the object's precision) after the decimal point.  The
@@ -1337,7 +1336,7 @@ class FixedPoint(object):
             self.n = n
             return
 
-        if isinstance(value, six.integer_types):
+        if isinstance(value, int):
             self.n = int(value) * _tento(p)
             return
 
@@ -1774,4 +1773,3 @@ if __name__ == '__main__':
     frame.Show()
 
     app.MainLoop()
-

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # --------------------------------------------------------------------------- #
 # AUI Library wxPython IMPLEMENTATION
 #
@@ -176,7 +175,7 @@ EVT_AUI_PERSPECTIVE_CHANGED = wx.PyEventBinder(wxEVT_AUI_PERSPECTIVE_CHANGED, 0)
 
 # ---------------------------------------------------------------------------- #
 
-class AuiDockInfo(object):
+class AuiDockInfo:
     """ A class to store all properties of a dock. """
 
     def __init__(self):
@@ -223,7 +222,7 @@ class AuiDockInfo(object):
 
 # ---------------------------------------------------------------------------- #
 
-class AuiDockingGuideInfo(object):
+class AuiDockingGuideInfo:
     """ A class which holds information about VS2005 docking guide windows. """
 
     def __init__(self, other=None):
@@ -309,7 +308,7 @@ class AuiDockingGuideInfo(object):
 
 # ---------------------------------------------------------------------------- #
 
-class AuiDockUIPart(object):
+class AuiDockUIPart:
     """ A class which holds attributes for a UI part in the interface. """
 
     typeCaption = 0
@@ -335,7 +334,7 @@ class AuiDockUIPart(object):
 
 # ---------------------------------------------------------------------------- #
 
-class AuiPaneButton(object):
+class AuiPaneButton:
     """ A simple class which describes the caption pane button attributes. """
 
     def __init__(self, button_id):
@@ -476,7 +475,7 @@ class AuiManagerEvent(wx.PyCommandEvent):
 
 # ---------------------------------------------------------------------------- #
 
-class AuiPaneInfo(object):
+class AuiPaneInfo:
     """
     AuiPaneInfo specifies all the parameters for a pane. These parameters specify where
     the pane is on the screen, whether it is docked or floating, or hidden. In addition,
@@ -1055,7 +1054,7 @@ class AuiPaneInfo(object):
             ret = self.MinSize1(arg1)
         elif isinstance(arg1, tuple):
             ret = self.MinSize1(wx.Size(*arg1))
-        elif isinstance(arg1, six.integer_types) and arg2 is not None:
+        elif isinstance(arg1, int) and arg2 is not None:
             ret = self.MinSize2(arg1, arg2)
         else:
             raise Exception("Invalid argument passed to `MinSize`: arg1=%s, arg2=%s"%(repr(arg1), repr(arg2)))
@@ -1099,7 +1098,7 @@ class AuiPaneInfo(object):
             ret = self.MaxSize1(arg1)
         elif isinstance(arg1, tuple):
             ret = self.MaxSize1(wx.Size(*arg1))
-        elif isinstance(arg1, six.integer_types) and arg2 is not None:
+        elif isinstance(arg1, int) and arg2 is not None:
             ret = self.MaxSize2(arg1, arg2)
         else:
             raise Exception("Invalid argument passed to `MaxSize`: arg1=%s, arg2=%s"%(repr(arg1), repr(arg2)))
@@ -1145,7 +1144,7 @@ class AuiPaneInfo(object):
             ret = self.BestSize1(arg1)
         elif isinstance(arg1, tuple):
             ret = self.BestSize1(wx.Size(*arg1))
-        elif isinstance(arg1, six.integer_types) and arg2 is not None:
+        elif isinstance(arg1, int) and arg2 is not None:
             ret = self.BestSize2(arg1, arg2)
         else:
             raise Exception("Invalid argument passed to `BestSize`: arg1=%s, arg2=%s"%(repr(arg1), repr(arg2)))
@@ -2341,7 +2340,7 @@ class AuiSingleDockingGuide(AuiDockingGuide):
             # HACK so we don't crash when SetShape is called
             return
         else:
-            super(AuiSingleDockingGuide, self).SetShape(region)
+            super().SetShape(region)
 
 
     def SetValid(self, valid):
@@ -2800,7 +2799,7 @@ class AuiDockingHintWindow(wx.Frame):
             # HACK so we don't crash when SetShape is called
             return
         else:
-            super(AuiDockingHintWindow, self).SetShape(region)
+            super().SetShape(region)
 
 
     def Show(self, show=True):
@@ -2817,7 +2816,7 @@ class AuiDockingHintWindow(wx.Frame):
         else:
             self.SetBackgroundColour(background)
 
-        super(AuiDockingHintWindow, self).Show(show)
+        super().Show(show)
         self.Refresh()
 
         if wx.Platform == '__WXMAC__':
@@ -3932,7 +3931,7 @@ def GetNotebookRoot(panes, notebook_id):
 
 
 def EscapeDelimiters(s):
-    """
+    r"""
     Changes ``;`` into ``\`` and ``|`` into ``\|`` in the input string.
 
     :param string `s`: the string to be analyzed.
@@ -4299,7 +4298,7 @@ class AuiManager(wx.EvtHandler):
         :param `item`: either a pane name or a :class:`wx.Window`.
         """
 
-        if isinstance(item, six.string_types):
+        if isinstance(item, str):
             return self.GetPaneByName(item)
         else:
             return self.GetPaneByWidget(item)
@@ -6647,7 +6646,7 @@ class AuiManager(wx.EvtHandler):
             elif paneInfo.IsNotebookControl() and not paneInfo.window:
                 paneInfo.window = self._notebooks[paneInfo.notebook_id]
 
-        for notebook_id, pnp in six.iteritems(pages_and_panes):
+        for notebook_id, pnp in pages_and_panes.items():
             # sort the panes with dock_pos
             sorted_pnp = sorted(pnp, key=lambda pane: pane.dock_pos)
             notebook = self._notebooks[notebook_id]
@@ -10187,7 +10186,7 @@ class AuiManager(wx.EvtHandler):
                 target = paneInfo.name
 
             minimize_toolbar.AddSimpleTool(ID_RESTORE_FRAME, paneInfo.caption, restore_bitmap,
-                                           _(six.u("Restore %s"))%paneInfo.caption, target=target)
+                                           _("Restore %s")%paneInfo.caption, target=target)
             minimize_toolbar.SetAuiManager(self)
             minimize_toolbar.Realize()
             toolpanelname = paneInfo.name + "_min"
@@ -10439,8 +10438,8 @@ class AuiManager(wx.EvtHandler):
 
         wstep = int((win_rect.width - hint_rect.width)/step)
         hstep = int((win_rect.height - hint_rect.height)/step)
-        xstep = int((win_rect.x - hint_rect.x))/step
-        ystep = int((win_rect.y - hint_rect.y))/step
+        xstep = int(win_rect.x - hint_rect.x)/step
+        ystep = int(win_rect.y - hint_rect.y)/step
 
         for i in range(int(step)):
             width, height = win_rect.width - i*wstep, win_rect.height - i*hstep
@@ -10751,5 +10750,3 @@ class AuiManager_DCP(AuiManager):
             # if we get here, there's no center pane, create our dummy
             if not self.hasDummyPane:
                 self._createDummyPane()
-
-

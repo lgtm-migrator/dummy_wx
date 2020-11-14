@@ -465,10 +465,10 @@ class Document(wx.EvtHandler):
                     return False
 
                 i = 1
-                backupFilename = "%s.bak%s" % (filename, i)
+                backupFilename = f"{filename}.bak{i}"
                 while os.path.exists(backupFilename):
                     i += 1
-                    backupFilename = "%s.bak%s" % (filename, i)
+                    backupFilename = f"{filename}.bak{i}"
                 shutil.copy(filename, backupFilename)
                 copied = True
 
@@ -491,7 +491,7 @@ class Document(wx.EvtHandler):
             if backupFilename and copied:
                 os.remove(backupFilename)
 
-            wx.MessageBox("Could not save '%s'.  %s" % (FileNameFromPath(filename), sys.exc_value),
+            wx.MessageBox("Could not save '{}'.  {}".format(FileNameFromPath(filename), sys.exc_value),
                           msgTitle,
                           wx.OK | wx.ICON_EXCLAMATION,
                           self.GetDocumentWindow())
@@ -535,7 +535,7 @@ class Document(wx.EvtHandler):
             if fileObject:
                 fileObject.close()  # file is still open, close it
 
-            wx.MessageBox("Could not open '%s'.  %s" % (FileNameFromPath(filename), sys.exc_value),
+            wx.MessageBox("Could not open '{}'.  {}".format(FileNameFromPath(filename), sys.exc_value),
                           msgTitle,
                           wx.OK | wx.ICON_EXCLAMATION,
                           self.GetDocumentWindow())
@@ -1023,7 +1023,7 @@ class DocTemplate(wx.Object):
 
 
     def __init__(self, manager, description, filter, dir, ext, docTypeName, viewTypeName, docType, viewType, flags=DEFAULT_TEMPLATE_FLAGS, icon=None):
-        """
+        r"""
         Constructor. Create instances dynamically near the start of your
         application after creating a wxDocManager instance, and before doing
         any document or view operations.
@@ -3206,5 +3206,3 @@ class CommandProcessor(wx.Object):
         if done:
             self._redoCommands.append(self._commands.pop())
         return done
-
-

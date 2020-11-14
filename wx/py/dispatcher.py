@@ -86,11 +86,11 @@ def disconnect(receiver, signal=Any, sender=Any, weak=True):
     try:
         receivers = connections[senderkey][signal]
     except KeyError:
-        raise DispatcherError('No receivers for signal %r from sender %s' % (signal, sender))
+        raise DispatcherError(f'No receivers for signal {signal!r} from sender {sender}')
     try:
         receivers.remove(receiver)
     except ValueError:
-        raise DispatcherError('No connection to receiver %s for signal %r from sender %s' % (receiver, signal, sender))
+        raise DispatcherError(f'No connection to receiver {receiver} for signal {signal!r} from sender {sender}')
     _cleanupConnections(senderkey, signal)
 
 def send(signal, sender=Anonymous, **kwds):
@@ -165,7 +165,7 @@ def _call(receiver, **kwds):
         fc = receiver.__code__
         acceptable = fc.co_varnames[0:fc.co_argcount]
     else:
-        raise DispatcherError('Unknown receiver %s of type %s' % (receiver, type(receiver)))
+        raise DispatcherError('Unknown receiver {} of type {}'.format(receiver, type(receiver)))
     if not (fc.co_flags & 8):
         # fc does not have a **kwds type parameter, therefore
         # remove unacceptable arguments.
@@ -208,7 +208,7 @@ class BoundMethodWeakref:
 
     def __repr__(self):
         """Return the closest representation."""
-        return '<bound method weakref for %s.%s>' % (self.weakSelf, self.weakFunc)
+        return f'<bound method weakref for {self.weakSelf}.{self.weakFunc}>'
 
     def __call__(self):
         """Return a strong reference to the bound method."""

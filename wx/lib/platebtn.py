@@ -129,7 +129,7 @@ class PlateButton(wx.Control):
         :keyword `style`: Button style
 
         """
-        super(PlateButton, self).__init__(parent, id, pos, size,
+        super().__init__(parent, id, pos, size,
                                           wx.BORDER_NONE|wx.TRANSPARENT_WINDOW,
                                           name=name)
 
@@ -408,7 +408,7 @@ class PlateButton(wx.Control):
 
     def Disable(self):
         """Disable the control"""
-        super(PlateButton, self).Disable()
+        super().Disable()
         self.Refresh()
 
 
@@ -448,7 +448,7 @@ class PlateButton(wx.Control):
 
     def Enable(self, enable=True):
         """Enable/Disable the control"""
-        super(PlateButton, self).Enable(enable)
+        super().Enable(enable)
         self.Refresh()
 
 
@@ -670,12 +670,12 @@ class PlateButton(wx.Control):
         """Set this control to have the focus"""
         if self._state['cur'] != PLATE_PRESSED:
             self._SetState(PLATE_HIGHLIGHT)
-        super(PlateButton, self).SetFocus()
+        super().SetFocus()
 
 
     def SetFont(self, font):
         """Adjust size of control when font changes"""
-        super(PlateButton, self).SetFont(font)
+        super().SetFont(font)
         self.InvalidateBestSize()
 
 
@@ -685,7 +685,7 @@ class PlateButton(wx.Control):
         :param string `label`: label string
 
         """
-        super(PlateButton, self).SetLabel(label)
+        super().SetLabel(label)
         self.InvalidateBestSize()
 
 
@@ -769,7 +769,7 @@ class PlateButton(wx.Control):
 
     def SetWindowVariant(self, variant):
         """Set the variant/font size of this control"""
-        super(PlateButton, self).SetWindowVariant(variant)
+        super().SetWindowVariant(variant)
         self.InvalidateBestSize()
 
 

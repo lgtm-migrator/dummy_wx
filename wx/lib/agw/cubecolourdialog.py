@@ -1323,7 +1323,7 @@ def PointOnLine(pt1, pt2, length, maxLen):
 
     if pt2.x != pt1.x:
 
-        m = float((pt2.y - pt1.y))/(pt2.x - pt1.x)
+        m = float(pt2.y - pt1.y)/(pt2.x - pt1.x)
         m2 = m*m
         a2 = a*a
         c = pt1.y - m*pt1.x
@@ -1598,7 +1598,7 @@ class Colour(wx.Colour):
 
 
 
-class LineDescription(object):
+class LineDescription:
     """ Simple class to store description and constants for a line in 2D space. """
 
     def __init__(self, x=0, y=0, slope=None, c=None):
@@ -3517,8 +3517,8 @@ if __name__ == '__main__':
         # returned as a three-tuple (r, g, b) in this particular case.
         colour = colourData.GetColour()
         r, g, b, alpha = colour.Red(), colour.Green(), colour.Blue(), colour.Alpha()
-        print(("You selected (RGBA): %d, %d, %d, %d"%(r, g, b, alpha)))
-        print(("You selected (HSVA): %d, %d, %d, %d"%(h, s, v, a)))
+        print("You selected (RGBA): %d, %d, %d, %d"%(r, g, b, alpha))
+        print("You selected (HSVA): %d, %d, %d, %d"%(h, s, v, a))
 
     # Once the dialog is destroyed, Mr. wx.ColourData is no longer your
     # friend. Don't use it again!

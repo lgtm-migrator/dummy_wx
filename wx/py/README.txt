@@ -73,5 +73,3 @@ Does PyCrust have a mailing list full of wonderful people?
 
 As a matter of fact, we do. Join the PyCrust mailing lists at:
 http://sourceforge.net/mail/?group_id=31263
-
-

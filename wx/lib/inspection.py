@@ -559,7 +559,7 @@ class InspectionTree(TreeBaseClass):
         Returns the string to be used in the tree for a widget
         """
         if hasattr(widget, 'GetName'):
-            return "%s (\"%s\")" % (widget.__class__.__name__, widget.GetName())
+            return f"{widget.__class__.__name__} (\"{widget.GetName()}\")"
         return widget.__class__.__name__
 
 
@@ -635,10 +635,10 @@ class InspectionInfoPanel(wx.stc.StyledTextCtrl):
 
 
     def Fmt(self, name, value):
-        if isinstance(value, six.string_types):
-            return "    %s = '%s'" % (name, value)
+        if isinstance(value, str):
+            return f"    {name} = '{value}'"
         else:
-            return "    %s = %s" % (name, value)
+            return f"    {name} = {value}"
 
 
     def FmtWidget(self, obj):
@@ -755,7 +755,7 @@ class InspectionInfoPanel(wx.stc.StyledTextCtrl):
         return st
 
 
-class FlagsFormatter(object):
+class FlagsFormatter:
     def __init__(self, d, val):
         self.d = d
         self.val = val
@@ -807,7 +807,7 @@ flexmodeFlags = {
 
 #---------------------------------------------------------------------------
 
-class _InspectionHighlighter(object):
+class _InspectionHighlighter:
     """
     All the highlighting code.  A separate class to help reduce the
     clutter in InspectionFrame.

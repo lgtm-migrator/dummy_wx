@@ -548,7 +548,7 @@ IL_FIXED_SIZE = 0
 IL_VARIABLE_SIZE = 1
 
 # Python integers, to make long types to work with CreateListItem
-INTEGER_TYPES = six.integer_types
+INTEGER_TYPES = (int,)
 
 
 # ----------------------------------------------------------------------------
@@ -658,7 +658,7 @@ def GetdragcursorImage():
 #  PyImageList
 #-----------------------------------------------------------------------------
 
-class PyImageList(object):
+class PyImageList:
     """
     A :class:`PyImageList` contains a list of images. Images can have masks for
     transparent drawing, and can be made from a variety of sources including
@@ -917,7 +917,7 @@ class PyImageList(object):
         return True
 
 
-class SelectionStore(object):
+class SelectionStore:
     """
     SelectionStore is used to store the selected items in the virtual
     controls, i.e. it is well suited for storing even when the control contains
@@ -1142,7 +1142,7 @@ class SelectionStore(object):
 # UltimateListItemAttr: a structure containing the visual attributes of an item
 # ----------------------------------------------------------------------------
 
-class UltimateListItemAttr(object):
+class UltimateListItemAttr:
     """
     Represents the attributes (colour, font, ...) of a :class:`UltimateListCtrl`
     :class:`UltimateListItem`.
@@ -2503,7 +2503,7 @@ class UltimateListEvent(CommandListEvent):
 #  ColWidthInfo (internal)
 #-----------------------------------------------------------------------------
 
-class ColWidthInfo(object):
+class ColWidthInfo:
     """ A simple class which holds information about :class:`UltimateListCtrl` columns. """
 
     def __init__(self, w=0, needsUpdate=True):
@@ -2523,7 +2523,7 @@ class ColWidthInfo(object):
 #  UltimateListItemData (internal)
 #-----------------------------------------------------------------------------
 
-class UltimateListItemData(object):
+class UltimateListItemData:
     """
     A simple class which holds information about :class:`UltimateListItem` visual
     attributes (client rectangles, positions, etc...).
@@ -3193,7 +3193,7 @@ class UltimateListItemData(object):
 #  UltimateListHeaderData (internal)
 #-----------------------------------------------------------------------------
 
-class UltimateListHeaderData(object):
+class UltimateListHeaderData:
     """
     A simple class which holds information about :class:`UltimateListItem` visual
     attributes for the header/footer items (client rectangles, positions, etc...).
@@ -3671,7 +3671,7 @@ class UltimateListHeaderData(object):
 #  this is not used in report view
 #-----------------------------------------------------------------------------
 
-class GeometryInfo(object):
+class GeometryInfo:
     """
     A simple class which holds items geometries for :class:`UltimateListCtrl` not in
     report mode.
@@ -3716,7 +3716,7 @@ class GeometryInfo(object):
 #  UltimateListLineData (internal)
 #-----------------------------------------------------------------------------
 
-class UltimateListLineData(object):
+class UltimateListLineData:
     """ A simple class which holds line geometries for :class:`UltimateListCtrl`. """
 
     def __init__(self, owner):
@@ -4770,9 +4770,9 @@ class UltimateListLineData(object):
 
         flrect = float(rect.height)
 
-        rstep = float((r2 - r1)) / flrect
-        gstep = float((g2 - g1)) / flrect
-        bstep = float((b2 - b1)) / flrect
+        rstep = float(r2 - r1) / flrect
+        gstep = float(g2 - g1) / flrect
+        bstep = float(b2 - b1) / flrect
 
         rf, gf, bf = 0, 0, 0
 
@@ -4818,9 +4818,9 @@ class UltimateListLineData(object):
 
         flrect = float(rect.width)
 
-        rstep = float((r2 - r1)) / flrect
-        gstep = float((g2 - g1)) / flrect
-        bstep = float((b2 - b1)) / flrect
+        rstep = float(r2 - r1) / flrect
+        gstep = float(g2 - g1) / flrect
+        bstep = float(b2 - b1) / flrect
 
         rf, gf, bf = 0, 0, 0
 
@@ -4876,9 +4876,9 @@ class UltimateListLineData(object):
         if flrect < 1:
             flrect = self._owner._lineHeight
 
-        rstep = float((r2 - r1)) / flrect
-        gstep = float((g2 - g1)) / flrect
-        bstep = float((b2 - b1)) / flrect
+        rstep = float(r2 - r1) / flrect
+        gstep = float(g2 - g1) / flrect
+        bstep = float(b2 - b1) / flrect
 
         rf, gf, bf = 0, 0, 0
         dc.SetPen(wx.TRANSPARENT_PEN)
@@ -13071,9 +13071,9 @@ class UltimateListCtrl(wx.Control):
 
         if entry:
             pos = self.GetItemCount()
-            self.InsertStringItem(pos, six.u(entry[0]))
+            self.InsertStringItem(pos, entry[0])
             for i in range(1, len(entry)):
-                self.SetStringItem(pos, i, six.u(entry[i]))
+                self.SetStringItem(pos, i, entry[i])
 
             return pos
 

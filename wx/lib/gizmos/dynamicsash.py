@@ -55,7 +55,7 @@ class DynamicSashSplitEvent(wx.PyCommandEvent):
     the proper place in its window hierarchy.
     """
     def __init__(self, arg=None):
-        super(DynamicSashSplitEvent, self).__init__()
+        super().__init__()
         if isinstance(arg, DynamicSashSplitEvent):
             obj = arg.GetEventObject()
         else:
@@ -76,7 +76,7 @@ class DynamicSashUnifyEvent(wx.PyCommandEvent):
     connected to your view's event handler class.
     """
     def __init__(self, arg=None):
-        super(DynamicSashUnifyEvent, self).__init__()
+        super().__init__()
         if isinstance(arg, DynamicSashUnifyEvent):
             obj = arg.GetEventObject()
         else:
@@ -145,13 +145,13 @@ class DynamicSashWindow(wx.Window):
 
 
     def _init_default(self):
-        super(DynamicSashWindow, self).__init__()
+        super().__init__()
         self._init()
 
     def _init_full(self, parent, id=wx.ID_ANY,
                    pos=wx.DefaultPosition, size=wx.DefaultSize,
                    style=DS_DEFAULT, name='dynamicSashWindow'):
-        super(DynamicSashWindow, self).__init__(parent, id, pos, size, style, name=name)
+        super().__init__(parent, id, pos, size, style, name=name)
         self._init()
         self._post_create()
 
@@ -159,7 +159,7 @@ class DynamicSashWindow(wx.Window):
     def Create(self, parent, id=wx.ID_ANY,
                pos=wx.DefaultPosition, size=wx.DefaultSize,
                style=DS_DEFAULT, name='dynamicSashWindow'):
-        super(DynamicSashWindow, self).Create(parent, id, pos, size, style, name=name)
+        super().Create(parent, id, pos, size, style, name=name)
         self._post_create()
 
 
@@ -193,7 +193,7 @@ class DynamicSashWindow(wx.Window):
 
 
     def AddChild(self, child):
-        super(DynamicSashWindow, self).AddChild(child)
+        super().AddChild(child)
         self.m_impl.AddChild(child)
 
 
@@ -253,7 +253,7 @@ _EVT_DYNAMIC_SASH_REPARENT = wx.PyEventBinder(_wxEVT_DYNAMIC_SASH_REPARENT, 1)
 
 class _DynamicSashReparentEvent(wx.PyEvent):
     def __init__(self, arg=None):
-        super(_DynamicSashReparentEvent, self).__init__()
+        super().__init__()
         if isinstance(arg, _DynamicSashReparentEvent):
             obj = arg.GetEventObject()
         else:
@@ -278,7 +278,7 @@ _isMac = 'wxMac' in wx.PlatformInfo
 
 class _DynamicSashWindowImpl(wx.EvtHandler):
     def __init__(self, window):
-        super(_DynamicSashWindowImpl, self).__init__()
+        super().__init__()
         self.m_window = window
         self.m_add_child_target = self
         self.m_container = None
@@ -843,7 +843,7 @@ class _DynamicSashWindowImpl(wx.EvtHandler):
 
 class _DynamicSashWindowLeaf(wx.EvtHandler):
     def __init__(self, impl):
-        super(_DynamicSashWindowLeaf, self).__init__()
+        super().__init__()
         self.m_impl = impl
         self.m_hscroll = None
         self.m_vscroll = None
@@ -1196,7 +1196,3 @@ class _DynamicSashWindowLeaf(wx.EvtHandler):
 
     def OnRelease(self, event):
         pass
-
-
-
-

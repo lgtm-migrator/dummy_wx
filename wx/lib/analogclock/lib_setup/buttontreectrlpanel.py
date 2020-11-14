@@ -294,4 +294,3 @@ ButtonTreeCtrlPanel.checkbox_tri = PyEmbeddedImage(
     "REFUOI2tk0EOgDAIBJfqq9Sj+mj1aP1We2piCCCKnJnN0GyJUofIpBANoAeAaRzKW/DMF/1n"
     "wFOt4bZug2PfxDNdARosBvBlC1YNGnSH52UV30c9wQOLAXzZglWDBj3BaoAXBliRvlQ6XGWK"
     "fucKTYUl4c5UOHYAAAAASUVORK5CYII=")
-

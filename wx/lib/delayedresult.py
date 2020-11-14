@@ -417,4 +417,3 @@ class PreProcessChain:
         chainTrav = self.Traverser(delayedResult, self.__chain[1:])
         handler = self.__chain[0]
         handler( chainTrav )
-

@@ -53,4 +53,3 @@ class Img2PyArtProvider(wx.ArtProvider):
                 return self.catalog[name].GetBitmap()
 
         return _NULL_BMP
-

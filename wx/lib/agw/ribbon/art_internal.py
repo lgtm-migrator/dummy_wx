@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         art_internal.py
 # Purpose:
@@ -83,7 +82,7 @@ def RibbonLoadPixmap(bits, fore):
     return wx.Bitmap(xpm)
 
 
-class RibbonHSLColour(object):
+class RibbonHSLColour:
 
     def __init__(self, h=0.0, s=0.0, l=0.0):
 
@@ -226,7 +225,7 @@ class RibbonHSLColour(object):
         return RibbonHSLColour(self.hue + delta, self.saturation, self.luminance)
 
 
-class RibbonPageTabInfo(object):
+class RibbonPageTabInfo:
 
     def __init__(self):
 
@@ -238,6 +237,3 @@ class RibbonPageTabInfo(object):
         self.small_begin_need_separator_width = 0
         self.small_must_have_separator_width = 0
         self.minimum_width = 0
-
-
-

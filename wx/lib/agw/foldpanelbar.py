@@ -294,7 +294,7 @@ FPB_DEFAULT_RIGHTLINESPACING = 2
 # class CaptionBarStyle
 # ------------------------------------------------------------------------------ #
 
-class CaptionBarStyle(object):
+class CaptionBarStyle:
     """
     This class encapsulates the styles you wish to set for the
     :class:`CaptionBar` (this is the part of the `FoldPanel` where the caption
@@ -1007,9 +1007,9 @@ class CaptionBar(wx.Window):
 
         flrect = float(rect.height)
 
-        rstep = float((r2 - r1)) / flrect
-        gstep = float((g2 - g1)) / flrect
-        bstep = float((b2 - b1)) / flrect
+        rstep = float(r2 - r1) / flrect
+        gstep = float(g2 - g1) / flrect
+        bstep = float(b2 - b1) / flrect
 
         rf, gf, bf = 0, 0, 0
 
@@ -1045,9 +1045,9 @@ class CaptionBar(wx.Window):
 
         flrect = float(rect.width)
 
-        rstep = float((r2 - r1)) / flrect
-        gstep = float((g2 - g1)) / flrect
-        bstep = float((b2 - b1)) / flrect
+        rstep = float(r2 - r1) / flrect
+        gstep = float(g2 - g1) / flrect
+        bstep = float(b2 - b1) / flrect
 
         rf, gf, bf = 0, 0, 0
 
@@ -2063,7 +2063,7 @@ class FoldPanelItem(wx.Panel):
 # class FoldWindowItem
 # ----------------------------------------------------------------------------------- #
 
-class FoldWindowItem(object):
+class FoldWindowItem:
     """
     This class is a child sibling of the :class:`FoldPanelItem` class. It
     will contain :class:`wx.Window` that can be either a separator (a coloured

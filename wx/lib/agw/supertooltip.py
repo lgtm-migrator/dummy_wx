@@ -235,7 +235,7 @@ def ExtractLink(line):
     return line, hl
 
 
-class ToolTipWindowBase(object):
+class ToolTipWindowBase:
     """ Base class for the different Windows and Mac implementation. """
 
     def __init__(self, parent, classParent):
@@ -735,7 +735,7 @@ else:
             ToolTipWindowBase.__init__(self, parent, classParent)
 
 
-class SuperToolTip(object):
+class SuperToolTip:
     """
     The main class for :class:`SuperToolTip`, which holds all the methods
     and setters/getters available to the user.

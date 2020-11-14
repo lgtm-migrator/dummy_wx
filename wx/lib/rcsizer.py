@@ -34,8 +34,7 @@ import  operator
 import  wx
 
 import six
-if six.PY3:
-    from functools import reduce as reduce
+from functools import reduce as reduce
 
 # After the lib and demo no longer uses this sizer enable this warning...
 
@@ -224,6 +223,3 @@ class RowColSizer(wx.Sizer):
 
 #----------------------------------------------------------------------
 #----------------------------------------------------------------------
-
-
-

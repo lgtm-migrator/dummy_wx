@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         aui_switcherdialog.py
 # Purpose:
@@ -169,7 +168,7 @@ from .aui_constants import SWITCHER_TEXT_MARGIN_X, SWITCHER_TEXT_MARGIN_Y
 _ = wx.GetTranslation
 
 
-class SwitcherItem(object):
+class SwitcherItem:
     """ An object containing information about one item. """
 
     def __init__(self, item=None):
@@ -356,7 +355,7 @@ class SwitcherItem(object):
         return self._window
 
 
-class SwitcherItems(object):
+class SwitcherItems:
     """ An object containing switcher items. """
 
     def __init__(self, items=None):
@@ -1224,4 +1223,3 @@ class SwitcherDialog(wx.Dialog):
     def SetBorderColour(self, colour):
 
         self._borderColour = colour
-

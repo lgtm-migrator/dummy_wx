@@ -281,7 +281,3 @@ def exportTopicTreeSpecXml(moduleName=None, rootTopic=None, bak='bak', moduleDoc
         fulltree.write(filename, "utf-8", True)
 
     return ET.tostring(tree)
-
-
-
-

@@ -195,4 +195,3 @@ from .gallery import *
 from .page import *
 from .panel import *
 from .toolbar import *
-

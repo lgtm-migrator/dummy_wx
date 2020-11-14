@@ -45,4 +45,3 @@ class wxTickerXmlHandler(xrc.XmlResourceHandler):
 
         self.SetupWindow(t)     # handles font, bg/fg color
         return t
-

@@ -276,4 +276,3 @@ class pdfButtonPanel(bp.ButtonPanel):
         Update viewer with new page number.
         """
         self.viewer.GoPage(self.pageno - 1)
-

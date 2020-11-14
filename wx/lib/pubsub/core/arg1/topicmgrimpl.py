@@ -16,4 +16,3 @@ def getRootTopicSpec():
     argsDocs = {argName : 'data for message sent'}
     reqdArgs = (argName,)
     return argsDocs, reqdArgs
-

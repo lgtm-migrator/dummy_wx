@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         panel.py
 # Purpose:
@@ -1167,4 +1166,3 @@ class RibbonPanel(RibbonControl):
         """ Returns the AGW-specific window style for :class:`RibbonPanel`. """
 
         return self._flags
-

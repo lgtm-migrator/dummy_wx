@@ -171,10 +171,7 @@ from math import pi
 
 from wx.lib.embeddedimage import PyEmbeddedImage
 
-if six.PY3:
-    import _thread as thread
-else:
-    import thread
+import _thread as thread
 
 #----------------------------------------------------------------------
 # Get Default Icon/Data
@@ -439,7 +436,7 @@ def SortFiles(items, sorteditems, filenames):
 # Class PILImageHandler, handles loading and highlighting images with PIL
 # ---------------------------------------------------------------------------- #
 
-class PILImageHandler(object):
+class PILImageHandler:
     """
     This image handler loads and manipulates the thumbnails with the help
     of PIL (the Python Imaging Library).
@@ -517,7 +514,7 @@ class PILImageHandler(object):
 # Class NativeImageHandler, handles loading and highlighting images with wx
 # ---------------------------------------------------------------------------- #
 
-class NativeImageHandler(object):
+class NativeImageHandler:
     """
     This image handler loads and manipulates the thumbnails with the help of
     wxPython's own image related functions.
@@ -585,7 +582,7 @@ class ThumbnailEvent(wx.PyCommandEvent):
 # Used Internally.
 # ---------------------------------------------------------------------------- #
 
-class Thumb(object):
+class Thumb:
     """
     This is an auxiliary class, to handle single thumbnail information for every thumb.
 
@@ -758,7 +755,7 @@ class Thumb(object):
     def GetOriginalImage(self):
         """ Returns the bitmap associated to a thumbnail, as a file name. """
 
-        original = opj((self._dir + "/" + self._filename))
+        original = opj(self._dir + "/" + self._filename)
 
         return original
 
@@ -2132,7 +2129,7 @@ class ScrolledThumbnail(wx.ScrolledWindow):
             if col == 0:
                 row = row + 1
 
-            xwhite = ((w - self._cols*(self._tWidth + self._tBorder)))/(self._cols+1)
+            xwhite = (w - self._cols*(self._tWidth + self._tBorder))/(self._cols+1)
             tx = xwhite + col*(self._tWidth + self._tBorder)
 
             ty = self._tBorder/2 + row*(self._tHeight + self._tBorder) + \
@@ -2585,5 +2582,3 @@ class ScrolledThumbnail(wx.ScrolledWindow):
         self._checktext = True
 
         self.Refresh()
-
-

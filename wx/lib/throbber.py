@@ -90,7 +90,7 @@ class Throbber(wx.Panel):
 
         """
 
-        super(Throbber, self).__init__(parent, id, pos, size, style, name)
+        super().__init__(parent, id, pos, size, style, name)
         self.name = name
         self.label = label
         self.running = (1 != 1)
@@ -421,4 +421,3 @@ class Throbber(wx.Panel):
 
 
 # ------------------------------------------------------------------------------
-

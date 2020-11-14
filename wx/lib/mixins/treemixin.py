@@ -52,14 +52,14 @@ Andrea Gavana provided help with the CustomTreeCtrl integration.
 import wx
 
 
-class TreeAPIHarmonizer(object):
+class TreeAPIHarmonizer:
     """ This class attempts to hide the differences in API between the
     different tree controls that are part of wxPython. """
 
     def __callSuper(self, methodName, default, *args, **kwargs):
         # If our super class has a method called methodName, call it,
         # otherwise return the default value.
-        superClass = super(TreeAPIHarmonizer, self)
+        superClass = super()
         if hasattr(superClass, methodName):
             return getattr(superClass, methodName)(*args, **kwargs)
         else:
@@ -113,7 +113,7 @@ class TreeAPIHarmonizer(object):
             args = (item, column, which)
         else:
             args = (item, which)
-        return super(TreeAPIHarmonizer, self).GetItemImage(*args)
+        return super().GetItemImage(*args)
 
     def SetItemImage(self, item, imageIndex, which=wx.TreeItemIcon_Normal,
                      column=-1):
@@ -123,23 +123,23 @@ class TreeAPIHarmonizer(object):
             args = (item, imageIndex, column, which)
         else:
             args = (item, imageIndex, which)
-        super(TreeAPIHarmonizer, self).SetItemImage(*args)
+        super().SetItemImage(*args)
 
     def UnselectAll(self):
         # Unselect all items, regardless of whether we are in multiple
         # selection mode or not.
         if self.HasFlag(wx.TR_MULTIPLE) or (hasattr(self, 'HasAGWFlag') and self.HasAGWFlag(wx.TR_MULTIPLE)):
-            super(TreeAPIHarmonizer, self).UnselectAll()
+            super().UnselectAll()
         else:
             # CustomTreeCtrl Unselect() doesn't seem to work in all cases,
             # also invoke UnselectAll just to be sure.
             self.Unselect()
-            super(TreeAPIHarmonizer, self).UnselectAll()
+            super().UnselectAll()
 
     def GetCount(self):
         # TreeListCtrl correctly ignores the root item when it is hidden,
         # but doesn't count the root item when it is visible
-        itemCount = super(TreeAPIHarmonizer, self).GetCount()
+        itemCount = super().GetCount()
         has_flag =  self.HasFlag(wx.TR_HIDE_ROOT) or (hasattr(self, 'HasAGWFlag') and self.HasAGWFlag(wx.TR_HIDE_ROOT))
         if self.GetColumnCount() and not has_flag:
             itemCount += 1
@@ -149,7 +149,7 @@ class TreeAPIHarmonizer(object):
         # Always return a list of selected items, regardless of whether
         # we are in multiple selection mode or not.
         if self.HasFlag(wx.TR_MULTIPLE) or (hasattr(self, 'HasAGWFlag') and self.HasAGWFlag(wx.TR_MULTIPLE)):
-            selections = super(TreeAPIHarmonizer, self).GetSelections()
+            selections = super().GetSelections()
         else:
             selection = self.GetSelection()
             if selection:
@@ -168,7 +168,7 @@ class TreeAPIHarmonizer(object):
         # TreeListCtrl raises an exception or even crashes when invoking
         # GetFirstVisibleItem on an empty tree.
         if self.GetRootItem():
-            return super(TreeAPIHarmonizer, self).GetFirstVisibleItem()
+            return super().GetFirstVisibleItem()
         else:
             return wx.TreeItemId()
 
@@ -179,7 +179,7 @@ class TreeAPIHarmonizer(object):
         if has_flag and item == self.GetRootItem():
             return
         else:
-            return super(TreeAPIHarmonizer, self).SelectItem(item, *args,
+            return super().SelectItem(item, *args,
                                                              **kwargs)
 
     def HitTest(self, *args, **kwargs):
@@ -190,7 +190,7 @@ class TreeAPIHarmonizer(object):
         in with by specifying the optional argument 'alwaysReturnColumn'
         to be True. """
         alwaysReturnColumn = kwargs.pop('alwaysReturnColumn', False)
-        hitTestResult = super(TreeAPIHarmonizer, self).HitTest(*args, **kwargs)
+        hitTestResult = super().HitTest(*args, **kwargs)
         if len(hitTestResult) == 2 and alwaysReturnColumn:
             hitTestResult += (0,)
         return hitTestResult
@@ -208,16 +208,16 @@ class TreeAPIHarmonizer(object):
                     child, cookie = self.GetNextChild(rootItem, cookie)
         else:
             try:
-                super(TreeAPIHarmonizer, self).ExpandAll()
+                super().ExpandAll()
             except TypeError:
                 if item is None:
                     item = self.GetRootItem()
-                super(TreeAPIHarmonizer, self).ExpandAll(item)
+                super().ExpandAll(item)
 
     def ExpandAllChildren(self, item):
         # TreeListCtrl and CustomTreeCtrl don't have ExpandallChildren
         try:
-            super(TreeAPIHarmonizer, self).ExpandAllChildren(item)
+            super().ExpandAllChildren(item)
         except AttributeError:
             self.Expand(item)
             child, cookie = self.GetFirstChild(item)
@@ -226,7 +226,7 @@ class TreeAPIHarmonizer(object):
                 child, cookie = self.GetNextChild(item, cookie)
 
 
-class TreeHelper(object):
+class TreeHelper:
     """ This class provides methods that are not part of the API of any
     tree control, but are convenient to have available. """
 
@@ -304,7 +304,7 @@ class VirtualTree(TreeAPIHarmonizer, TreeHelper):
     def __init__(self, *args, **kwargs):
         kwargs['style'] = kwargs.get('style', wx.TR_DEFAULT_STYLE) | \
                           wx.TR_HIDE_ROOT
-        super(VirtualTree, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.Bind(wx.EVT_TREE_ITEM_EXPANDING, self.OnItemExpanding)
         self.Bind(wx.EVT_TREE_ITEM_COLLAPSED, self.OnItemCollapsed)
 
@@ -507,7 +507,7 @@ class DragAndDrop(TreeAPIHarmonizer, TreeHelper):
     def __init__(self, *args, **kwargs):
         kwargs['style'] = kwargs.get('style', wx.TR_DEFAULT_STYLE) | \
                           wx.TR_HIDE_ROOT
-        super(DragAndDrop, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.Bind(wx.EVT_TREE_BEGIN_DRAG, self.OnBeginDrag)
 
     def OnDrop(self, dropItem, dragItem):

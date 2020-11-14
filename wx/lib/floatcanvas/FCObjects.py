@@ -228,14 +228,8 @@ class DrawObject:
             if not self._Canvas.HitColorGenerator:
                  # first call to prevent the background color from being used.
                 self._Canvas.HitColorGenerator = _colorGenerator()
-                if six.PY3:
-                    next(self._Canvas.HitColorGenerator)
-                else:
-                    self._Canvas.HitColorGenerator.next()
-            if six.PY3:
-                self.HitColor = next(self._Canvas.HitColorGenerator)
-            else:
-                self.HitColor = self._Canvas.HitColorGenerator.next()
+                next(self._Canvas.HitColorGenerator)
+            self.HitColor = next(self._Canvas.HitColorGenerator)
             self.SetHitPen(self.HitColor,self.HitLineWidth)
             self.SetHitBrush(self.HitColor)
         # put the object in the hit dict, indexed by it's color
@@ -1689,7 +1683,7 @@ class ScaledText(TextObjectMixin, DrawObject):
         self.BoundingBox = BBox.asBBox(((x, y-h ),(x + w, y)))
 
     def _Draw(self, dc , WorldToPixel, ScaleWorldToPixel, HTdc=None):
-        (X,Y) = WorldToPixel( (self.XY) )
+        (X,Y) = WorldToPixel( self.XY )
 
         # compute the font size:
         Size = abs( ScaleWorldToPixel( (self.Size, self.Size) )[1] ) # only need a y coordinate length
@@ -2890,15 +2884,9 @@ class Group(DrawObject):
             if not self._Canvas.HitColorGenerator:
                 self._Canvas.HitColorGenerator = _colorGenerator()
                 # first call to prevent the background color from being used.
-                if six.PY2:
-                    self._Canvas.HitColorGenerator.next()
-                else:
-                    next(self._Canvas.HitColorGenerator)
+                next(self._Canvas.HitColorGenerator)
             # Set all contained objects to the same Hit color:
-            if six.PY2:
-                self.HitColor = self._Canvas.HitColorGenerator.next()
-            else:
-                self.HitColor = next(self._Canvas.HitColorGenerator)
+            self.HitColor = next(self._Canvas.HitColorGenerator)
         self._ChangeChildrenHitColor(self.ObjectList)
         # put the object in the hit dict, indexed by it's color
         if not self._Canvas.HitDict:

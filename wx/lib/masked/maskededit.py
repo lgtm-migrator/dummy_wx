@@ -906,7 +906,7 @@ charmonths_dict = {'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'may': 5, 'jun': 6,
                    'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12}
 
 days   = '(01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31)'
-hours  = '(0\d| \d|1[012])'
+hours  = r'(0\d| \d|1[012])'
 milhours = '(00|01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23)'
 minutes = """(00|01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|\
 16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|\
@@ -943,25 +943,25 @@ masktags = {
        "USPHONEFULLEXT": {
            'mask': "(###) ###-#### x:###",
            'formatcodes': 'F^->',
-           'validRegex': "^\(\d{3}\) \d{3}-\d{4}",
+           'validRegex': r"^\(\d{3}\) \d{3}-\d{4}",
            'description': "Phone Number w/opt. ext"
            },
        "USPHONETIGHTEXT": {
            'mask': "###-###-#### x:###",
            'formatcodes': 'F^->',
-           'validRegex': "^\d{3}-\d{3}-\d{4}",
+           'validRegex': r"^\d{3}-\d{3}-\d{4}",
            'description': "Phone Number\n (w/hyphens and opt. ext)"
            },
        "USPHONEFULL": {
            'mask': "(###) ###-####",
            'formatcodes': 'F^->',
-           'validRegex': "^\(\d{3}\) \d{3}-\d{4}",
+           'validRegex': r"^\(\d{3}\) \d{3}-\d{4}",
            'description': "Phone Number only"
            },
        "USPHONETIGHT": {
            'mask': "###-###-####",
            'formatcodes': 'F^->',
-           'validRegex': "^\d{3}-\d{3}-\d{4}",
+           'validRegex': r"^\d{3}-\d{3}-\d{4}",
            'description': "Phone Number\n(w/hyphens)"
            },
        "USSTATE": {
@@ -985,107 +985,107 @@ masktags = {
            'mask': "##/##/#### ##:##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + months + '/' + days + '/' + '\d{4} ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
+           'validRegex': '^' + months + '/' + days + '/' + r'\d{4} ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
            'description': "US Date + Time"
            },
        "USDATETIMEMMDDYYYY-HHMMSS": {
            'mask': "##-##-#### ##:##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + months + '-' + days + '-' + '\d{4} ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
+           'validRegex': '^' + months + '-' + days + '-' + r'\d{4} ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
            'description': "US Date + Time\n(w/hypens)"
            },
        "USDATE24HRTIMEMMDDYYYY/HHMMSS": {
            'mask': "##/##/#### ##:##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + months + '/' + days + '/' + '\d{4} ' + milhours + ':' + minutes + ':' + seconds,
+           'validRegex': '^' + months + '/' + days + '/' + r'\d{4} ' + milhours + ':' + minutes + ':' + seconds,
            'description': "US Date + 24Hr (Military) Time"
            },
        "USDATE24HRTIMEMMDDYYYY-HHMMSS": {
            'mask': "##-##-#### ##:##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + months + '-' + days + '-' + '\d{4} ' + milhours + ':' + minutes + ':' + seconds,
+           'validRegex': '^' + months + '-' + days + '-' + r'\d{4} ' + milhours + ':' + minutes + ':' + seconds,
            'description': "US Date + 24Hr Time\n(w/hypens)"
            },
        "USDATETIMEMMDDYYYY/HHMM": {
            'mask': "##/##/#### ##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + months + '/' + days + '/' + '\d{4} ' + hours + ':' + minutes + ' (A|P)M',
+           'validRegex': '^' + months + '/' + days + '/' + r'\d{4} ' + hours + ':' + minutes + ' (A|P)M',
            'description': "US Date + Time\n(without seconds)"
            },
        "USDATE24HRTIMEMMDDYYYY/HHMM": {
            'mask': "##/##/#### ##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + months + '/' + days + '/' + '\d{4} ' + milhours + ':' + minutes,
+           'validRegex': '^' + months + '/' + days + '/' + r'\d{4} ' + milhours + ':' + minutes,
            'description': "US Date + 24Hr Time\n(without seconds)"
            },
        "USDATETIMEMMDDYYYY-HHMM": {
            'mask': "##-##-#### ##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + months + '-' + days + '-' + '\d{4} ' + hours + ':' + minutes + ' (A|P)M',
+           'validRegex': '^' + months + '-' + days + '-' + r'\d{4} ' + hours + ':' + minutes + ' (A|P)M',
            'description': "US Date + Time\n(w/hypens and w/o secs)"
            },
        "USDATE24HRTIMEMMDDYYYY-HHMM": {
            'mask': "##-##-#### ##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + months + '-' + days + '-' + '\d{4} ' + milhours + ':' + minutes,
+           'validRegex': '^' + months + '-' + days + '-' + r'\d{4} ' + milhours + ':' + minutes,
            'description': "US Date + 24Hr Time\n(w/hyphens and w/o seconds)"
            },
        "USDATEMMDDYYYY/": {
            'mask': "##/##/####",
            'formatcodes': 'DF',
-           'validRegex': '^' + months + '/' + days + '/' + '\d{4}',
+           'validRegex': '^' + months + '/' + days + '/' + r'\d{4}',
            'description': "US Date\n(MMDDYYYY)"
            },
        "USDATEMMDDYY/": {
            'mask': "##/##/##",
            'formatcodes': 'DF',
-           'validRegex': '^' + months + '/' + days + '/\d\d',
+           'validRegex': '^' + months + '/' + days + r'/\d\d',
            'description': "US Date\n(MMDDYY)"
            },
        "USDATEMMDDYYYY-": {
            'mask': "##-##-####",
            'formatcodes': 'DF',
-           'validRegex': '^' + months + '-' + days + '-' +'\d{4}',
+           'validRegex': '^' + months + '-' + days + '-' +r'\d{4}',
            'description': "MM-DD-YYYY"
            },
 
        "EUDATEYYYYMMDD/": {
            'mask': "####/##/##",
            'formatcodes': 'DF',
-           'validRegex': '^' + '\d{4}'+ '/' + months + '/' + days,
+           'validRegex': '^' + r'\d{4}'+ '/' + months + '/' + days,
            'description': "YYYY/MM/DD"
            },
        "EUDATEYYYYMMDD.": {
            'mask': "####.##.##",
            'formatcodes': 'DF',
-           'validRegex': '^' + '\d{4}'+ '.' + months + '.' + days,
+           'validRegex': '^' + r'\d{4}'+ '.' + months + '.' + days,
            'description': "YYYY.MM.DD"
            },
        "EUDATEDDMMYYYY/": {
            'mask': "##/##/####",
            'formatcodes': 'DF',
-           'validRegex': '^' + days + '/' + months + '/' + '\d{4}',
+           'validRegex': '^' + days + '/' + months + '/' + r'\d{4}',
            'description': "DD/MM/YYYY"
            },
        "EUDATEDDMMYYYY.": {
            'mask': "##.##.####",
            'formatcodes': 'DF',
-           'validRegex': '^' + days + '.' + months + '.' + '\d{4}',
+           'validRegex': '^' + days + '.' + months + '.' + r'\d{4}',
            'description': "DD.MM.YYYY"
            },
        "EUDATEDDMMMYYYY.": {
            'mask': "##.CCC.####",
            'formatcodes': 'DF',
-           'validRegex': '^' + days + '.' + charmonths + '.' + '\d{4}',
+           'validRegex': '^' + days + '.' + charmonths + '.' + r'\d{4}',
            'description': "DD.Month.YYYY"
            },
        "EUDATEDDMMMYYYY/": {
            'mask': "##/CCC/####",
            'formatcodes': 'DF',
-           'validRegex': '^' + days + '/' + charmonths + '/' + '\d{4}',
+           'validRegex': '^' + days + '/' + charmonths + '/' + r'\d{4}',
            'description': "DD/Month/YYYY"
            },
 
@@ -1093,28 +1093,28 @@ masktags = {
            'mask': "####/##/## ##:##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + '\d{4}'+ '/' + months + '/' + days + ' ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
+           'validRegex': '^' + r'\d{4}'+ '/' + months + '/' + days + ' ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
            'description': "YYYY/MM/DD HH:MM:SS"
            },
        "EUDATETIMEYYYYMMDD.HHMMSS": {
            'mask': "####.##.## ##:##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + '\d{4}'+ '.' + months + '.' + days + ' ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
+           'validRegex': '^' + r'\d{4}'+ '.' + months + '.' + days + ' ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
            'description': "YYYY.MM.DD HH:MM:SS"
            },
        "EUDATETIMEDDMMYYYY/HHMMSS": {
            'mask': "##/##/#### ##:##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + days + '/' + months + '/' + '\d{4} ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
+           'validRegex': '^' + days + '/' + months + '/' + r'\d{4} ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
            'description': "DD/MM/YYYY HH:MM:SS"
            },
        "EUDATETIMEDDMMYYYY.HHMMSS": {
            'mask': "##.##.#### ##:##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + days + '.' + months + '.' + '\d{4} ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
+           'validRegex': '^' + days + '.' + months + '.' + r'\d{4} ' + hours + ':' + minutes + ':' + seconds + ' (A|P)M',
            'description': "DD.MM.YYYY HH:MM:SS"
            },
 
@@ -1122,76 +1122,76 @@ masktags = {
            'mask': "####/##/## ##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + '\d{4}'+ '/' + months + '/' + days + ' ' + hours + ':' + minutes + ' (A|P)M',
+           'validRegex': '^' + r'\d{4}'+ '/' + months + '/' + days + ' ' + hours + ':' + minutes + ' (A|P)M',
            'description': "YYYY/MM/DD HH:MM"
            },
        "EUDATETIMEYYYYMMDD.HHMM": {
            'mask': "####.##.## ##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + '\d{4}'+ '.' + months + '.' + days + ' ' + hours + ':' + minutes + ' (A|P)M',
+           'validRegex': '^' + r'\d{4}'+ '.' + months + '.' + days + ' ' + hours + ':' + minutes + ' (A|P)M',
            'description': "YYYY.MM.DD HH:MM"
            },
        "EUDATETIMEDDMMYYYY/HHMM": {
            'mask': "##/##/#### ##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + days + '/' + months + '/' + '\d{4} ' + hours + ':' + minutes + ' (A|P)M',
+           'validRegex': '^' + days + '/' + months + '/' + r'\d{4} ' + hours + ':' + minutes + ' (A|P)M',
            'description': "DD/MM/YYYY HH:MM"
            },
        "EUDATETIMEDDMMYYYY.HHMM": {
            'mask': "##.##.#### ##:## AM",
            'excludeChars': am_pm_exclude,
            'formatcodes': 'DF!',
-           'validRegex': '^' + days + '.' + months + '.' + '\d{4} ' + hours + ':' + minutes + ' (A|P)M',
+           'validRegex': '^' + days + '.' + months + '.' + r'\d{4} ' + hours + ':' + minutes + ' (A|P)M',
            'description': "DD.MM.YYYY HH:MM"
            },
 
        "EUDATE24HRTIMEYYYYMMDD/HHMMSS": {
            'mask': "####/##/## ##:##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + '\d{4}'+ '/' + months + '/' + days + ' ' + milhours + ':' + minutes + ':' + seconds,
+           'validRegex': '^' + r'\d{4}'+ '/' + months + '/' + days + ' ' + milhours + ':' + minutes + ':' + seconds,
            'description': "YYYY/MM/DD 24Hr Time"
            },
        "EUDATE24HRTIMEYYYYMMDD.HHMMSS": {
            'mask': "####.##.## ##:##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + '\d{4}'+ '.' + months + '.' + days + ' ' + milhours + ':' + minutes + ':' + seconds,
+           'validRegex': '^' + r'\d{4}'+ '.' + months + '.' + days + ' ' + milhours + ':' + minutes + ':' + seconds,
            'description': "YYYY.MM.DD 24Hr Time"
            },
        "EUDATE24HRTIMEDDMMYYYY/HHMMSS": {
            'mask': "##/##/#### ##:##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + days + '/' + months + '/' + '\d{4} ' + milhours + ':' + minutes + ':' + seconds,
+           'validRegex': '^' + days + '/' + months + '/' + r'\d{4} ' + milhours + ':' + minutes + ':' + seconds,
            'description': "DD/MM/YYYY 24Hr Time"
            },
        "EUDATE24HRTIMEDDMMYYYY.HHMMSS": {
            'mask': "##.##.#### ##:##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + days + '.' + months + '.' + '\d{4} ' + milhours + ':' + minutes + ':' + seconds,
+           'validRegex': '^' + days + '.' + months + '.' + r'\d{4} ' + milhours + ':' + minutes + ':' + seconds,
            'description': "DD.MM.YYYY 24Hr Time"
            },
        "EUDATE24HRTIMEYYYYMMDD/HHMM": {
            'mask': "####/##/## ##:##",
-           'formatcodes': 'DF','validRegex': '^' + '\d{4}'+ '/' + months + '/' + days + ' ' + milhours + ':' + minutes,
+           'formatcodes': 'DF','validRegex': '^' + r'\d{4}'+ '/' + months + '/' + days + ' ' + milhours + ':' + minutes,
            'description': "YYYY/MM/DD 24Hr Time\n(w/o seconds)"
            },
        "EUDATE24HRTIMEYYYYMMDD.HHMM": {
            'mask': "####.##.## ##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + '\d{4}'+ '.' + months + '.' + days + ' ' + milhours + ':' + minutes,
+           'validRegex': '^' + r'\d{4}'+ '.' + months + '.' + days + ' ' + milhours + ':' + minutes,
            'description': "YYYY.MM.DD 24Hr Time\n(w/o seconds)"
            },
        "EUDATE24HRTIMEDDMMYYYY/HHMM": {
            'mask': "##/##/#### ##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + days + '/' + months + '/' + '\d{4} ' + milhours + ':' + minutes,
+           'validRegex': '^' + days + '/' + months + '/' + r'\d{4} ' + milhours + ':' + minutes,
            'description': "DD/MM/YYYY 24Hr Time\n(w/o seconds)"
            },
        "EUDATE24HRTIMEDDMMYYYY.HHMM": {
            'mask': "##.##.#### ##:##",
            'formatcodes': 'DF',
-           'validRegex': '^' + days + '.' + months + '.' + '\d{4} ' + milhours + ':' + minutes,
+           'validRegex': '^' + days + '.' + months + '.' + r'\d{4} ' + milhours + ':' + minutes,
            'description': "DD.MM.YYYY 24Hr Time\n(w/o seconds)"
            },
 
@@ -1224,37 +1224,37 @@ masktags = {
        "USSOCIALSEC": {
            'mask': "###-##-####",
            'formatcodes': 'F',
-           'validRegex': "\d{3}-\d{2}-\d{4}",
+           'validRegex': r"\d{3}-\d{2}-\d{4}",
            'description': "Social Sec#"
            },
        "CREDITCARD": {
            'mask': "####-####-####-####",
            'formatcodes': 'F',
-           'validRegex': "\d{4}-\d{4}-\d{4}-\d{4}",
+           'validRegex': r"\d{4}-\d{4}-\d{4}-\d{4}",
            'description': "Credit Card"
            },
        "EXPDATEMMYY": {
            'mask': "##/##",
            'formatcodes': "F",
-           'validRegex': "^" + months + "/\d\d",
+           'validRegex': "^" + months + r"/\d\d",
            'description': "Expiration MM/YY"
            },
        "USZIP": {
            'mask': "#####",
            'formatcodes': 'F',
-           'validRegex': "^\d{5}",
+           'validRegex': r"^\d{5}",
            'description': "US 5-digit zip code"
            },
        "USZIPPLUS4": {
            'mask': "#####-####",
            'formatcodes': 'F',
-           'validRegex': "\d{5}-(\s{4}|\d{4})",
+           'validRegex': r"\d{5}-(\s{4}|\d{4})",
            'description': "US zip+4 code"
            },
        "PERCENT": {
            'mask': "0.##",
            'formatcodes': 'F',
-           'validRegex': "^0.\d\d",
+           'validRegex': r"^0.\d\d",
            'description': "Percentage"
            },
        "AGE": {
@@ -1267,13 +1267,13 @@ masktags = {
            'mask': "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
            'excludeChars': " \\/*&%$#!+='\"",
            'formatcodes': "F>",
-           'validRegex': "^\w+([\-\.]\w+)*@((([a-zA-Z0-9]+(\-[a-zA-Z0-9]+)*\.)+)[a-zA-Z]{2,4}|\[(\d|\d\d|(1\d\d|2[0-4]\d|25[0-5]))(\.(\d|\d\d|(1\d\d|2[0-4]\d|25[0-5]))){3}\]) *$",
+           'validRegex': r"^\w+([\-\.]\w+)*@((([a-zA-Z0-9]+(\-[a-zA-Z0-9]+)*\.)+)[a-zA-Z]{2,4}|\[(\d|\d\d|(1\d\d|2[0-4]\d|25[0-5]))(\.(\d|\d\d|(1\d\d|2[0-4]\d|25[0-5]))){3}\]) *$",
            'description': "Email address"
            },
        "IPADDR": {
            'mask': "###.###.###.###",
            'formatcodes': 'F_Sr',
-           'validRegex': "(  \d| \d\d|(1\d\d|2[0-4]\d|25[0-5]))(\.(  \d| \d\d|(1\d\d|2[0-4]\d|25[0-5]))){3}",
+           'validRegex': r"(  \d| \d\d|(1\d\d|2[0-4]\d|25[0-5]))(\.(  \d| \d\d|(1\d\d|2[0-4]\d|25[0-5]))){3}",
            'description': "IP Address\n(see IpAddrCtrl)"
            }
        }
@@ -1439,7 +1439,7 @@ class Field:
         # Verify proper numeric format params:
         if self._groupdigits and self._groupChar == self._decimalChar:
 ##            dbg(indent=0, suspend=0)
-            ae = AttributeError("groupChar '%s' cannot be the same as decimalChar '%s'" % (self._groupChar, self._decimalChar))
+            ae = AttributeError(f"groupChar '{self._groupChar}' cannot be the same as decimalChar '{self._decimalChar}'")
             ae.attribute = self._groupChar
             raise ae
 
@@ -1465,7 +1465,7 @@ class Field:
                         self._filter = re.compile(self._validRegex)
                 except:
 ##                    dbg(indent=0, suspend=0)
-                    raise TypeError('%s: validRegex "%s" not a legal regular expression' % (str(self._index), self._validRegex))
+                    raise TypeError('{}: validRegex "{}" not a legal regular expression'.format(str(self._index), self._validRegex))
             else:
                 self._filter = None
 
@@ -1490,7 +1490,7 @@ class Field:
                 raise TypeError('%s: choices must be a sequence of strings' % str(self._index))
             elif len( self._choices) > 0:
                 for choice in self._choices:
-                    if not isinstance(choice, six.string_types):
+                    if not isinstance(choice, str):
 ##                        dbg(indent=0, suspend=0)
                         raise TypeError('%s: choices must be a sequence of strings' % str(self._index))
 
@@ -1514,7 +1514,7 @@ class Field:
                             continue
                         if not self.IsValid(choice):
 ##                            dbg(indent=0, suspend=0)
-                            ve = ValueError('%s: "%s" is not a valid value for the control as specified.' % (str(self._index), choice))
+                            ve = ValueError('{}: "{}" is not a valid value for the control as specified.'.format(str(self._index), choice))
                             ve.value = choice
                             raise ve
                 self._hasList = True
@@ -1750,7 +1750,7 @@ class MaskedEditMixin:
         valid_parameters = list(MaskedEditMixin.valid_ctrl_params) + list(Field.valid_params)
         for key in kwargs:
             if key.replace('Color', 'Colour') not in valid_parameters:
-                raise TypeError('%s: invalid parameter "%s"' % (name, key))
+                raise TypeError(f'{name}: invalid parameter "{key}"')
 
         ## Set up dictionary that can be used by subclasses to override or add to default
         ## behavior for individual characters.  Derived subclasses needing to change
@@ -1863,7 +1863,7 @@ class MaskedEditMixin:
             key = key.replace('Color', 'Colour')    # for b-c, and standard wxPython spelling
             if key not in valid_parameters:
 ##                dbg(indent=0, suspend=0)
-                ae = AttributeError('Invalid keyword argument "%s" for control "%s"' % (key, self.name))
+                ae = AttributeError(f'Invalid keyword argument "{key}" for control "{self.name}"')
                 ae.attribute = key
                 raise ae
             elif key in Field.valid_params:
@@ -1954,10 +1954,10 @@ class MaskedEditMixin:
         for key in ('emptyBackgroundColour', 'invalidBackgroundColour', 'validBackgroundColour',
                     'foregroundColour', 'signedForegroundColour'):
             if key in ctrl_kwargs:
-                if isinstance(ctrl_kwargs[key], six.string_types):
+                if isinstance(ctrl_kwargs[key], str):
                     c = wx.Colour(ctrl_kwargs[key])
                     if c.Get() == (-1, -1, -1):
-                        raise TypeError('%s not a legal color specification for %s' % (repr(ctrl_kwargs[key]), key))
+                        raise TypeError('{} not a legal color specification for {}'.format(repr(ctrl_kwargs[key]), key))
                     else:
                         # replace attribute with wxColour object:
                         setattr(self, '_' + key, c)
@@ -1965,7 +1965,7 @@ class MaskedEditMixin:
                         c._name = ctrl_kwargs[key]
 
                 elif type(ctrl_kwargs[key]) != type(wx.BLACK):
-                    raise TypeError('%s not a legal color specification for %s' % (repr(ctrl_kwargs[key]), key))
+                    raise TypeError('{} not a legal color specification for {}'.format(repr(ctrl_kwargs[key]), key))
 
 
 ##        dbg('self._retainFieldValidation:', self._retainFieldValidation)
@@ -2089,7 +2089,7 @@ class MaskedEditMixin:
         elif paramname in Field.valid_params:
             return self._ctrl_constraints._GetParameter(paramname)
         else:
-            TypeError('"%s".GetCtrlParameter: invalid parameter "%s"' % (self.name, paramname))
+            TypeError(f'"{self.name}".GetCtrlParameter: invalid parameter "{paramname}"')
 
     def GetMaskParameter(self, paramname):
         """ old name for the GetCtrlParameters function  (DEPRECATED)"""
@@ -2132,7 +2132,7 @@ class MaskedEditMixin:
         parameters.)
         """
         if field_index not in self._field_indices:
-            ie = IndexError('%s is not a valid field for control "%s".' % (str(field_index), self.name))
+            ie = IndexError('{} is not a valid field for control "{}".'.format(str(field_index), self.name))
             ie.index = field_index
             raise ie
         # set parameters as requested:
@@ -2175,13 +2175,13 @@ class MaskedEditMixin:
         Routine provided for getting a parameter of an individual field.
         """
         if field_index not in self._field_indices:
-            ie = IndexError('%s is not a valid field for control "%s".' % (str(field_index), self.name))
+            ie = IndexError('{} is not a valid field for control "{}".'.format(str(field_index), self.name))
             ie.index = field_index
             raise ie
         elif paramname in Field.valid_params:
             return self._fields[field_index]._GetParameter(paramname)
         else:
-            ae = AttributeError('"%s".GetFieldParameter: invalid parameter "%s"' % (self.name, paramname))
+            ae = AttributeError(f'"{self.name}".GetFieldParameter: invalid parameter "{paramname}"')
             ae.attribute = paramname
             raise ae
 
@@ -2259,7 +2259,7 @@ class MaskedEditMixin:
         """
 ##        dbg('_processMask: mask', mask, indent=1)
         # regular expression for parsing c{n} syntax:
-        rex = re.compile('([' + "".join(maskchars) + '])\{(\d+)\}')
+        rex = re.compile('([' + "".join(maskchars) + r'])\{(\d+)\}')
         s = mask
         match = rex.search(s)
         while match:    # found an(other) occurrence
@@ -2551,7 +2551,7 @@ class MaskedEditMixin:
 ##            dbg('self._defaultValue:', self._defaultValue)
             if not self.IsEmpty(self._defaultValue) and not self.IsValid(self._defaultValue):
 ####                dbg(indent=0)
-                ve = ValueError('Default value of "%s" is not a valid value for control "%s"' % (self._defaultValue, self.name))
+                ve = ValueError(f'Default value of "{self._defaultValue}" is not a valid value for control "{self.name}"')
                 ve.value = self._defaultValue
                 raise ve
 
@@ -3068,17 +3068,11 @@ class MaskedEditMixin:
                 char = unichr(event.GetUnicodeKey())
 ##                dbg('unicode char:', char)
 
-            excludes = six.text_type()
-            if not isinstance(field._excludeChars, six.text_type):
-                if six.PY3:
-                    excludes += field._excludeChars
-                else:
-                    excludes += field._excludeChars.decode(self._defaultEncoding)
-            if not isinstance(self._ctrl_constraints, six.text_type):
-                if six.PY3:
-                    excludes += field._excludeChars
-                else:
-                    excludes += self._ctrl_constraints._excludeChars.decode(self._defaultEncoding)
+            excludes = ''
+            if not isinstance(field._excludeChars, str):
+                excludes += field._excludeChars
+            if not isinstance(self._ctrl_constraints, str):
+                excludes += field._excludeChars
             else:
                 excludes += self._ctrl_constraints._excludeChars
 
@@ -3232,11 +3226,11 @@ class MaskedEditMixin:
         return self._fields[self._lookupField[pos]]
 
     def SetForegroundColour(self, colour):
-        super(MaskedEditMixin, self).SetForegroundColour(colour)
+        super().SetForegroundColour(colour)
         self._foregroundColour = colour
 
     def SetBackgroundColour(self, colour):
-        super(MaskedEditMixin, self).SetBackgroundColour(colour)
+        super().SetBackgroundColour(colour)
         self._validBackgroundColour = colour
 
     def ClearValue(self):
@@ -3345,7 +3339,7 @@ class MaskedEditMixin:
         """ Default Ctrl-S handler; prints value information if demo enabled. """
 ##        dbg("MaskedEditMixin::_OnCtrl_S")
         if self._demo:
-            print('MaskedEditMixin.GetValue()       = "%s"\nMaskedEditMixin.GetPlainValue() = "%s"' % (self.GetValue(), self.GetPlainValue()))
+            print(f'MaskedEditMixin.GetValue()       = "{self.GetValue()}"\nMaskedEditMixin.GetPlainValue() = "{self.GetPlainValue()}"')
             print("Valid? => " + str(self.IsValid()))
             print("Current field, start, end, value =", str( self._FindFieldExtent(getslice=True)))
         return False
@@ -4636,7 +4630,7 @@ class MaskedEditMixin:
 
         # convert okchars to unicode if required; will force subsequent appendings to
         # result in unicode strings
-        if not six.PY3 and not isinstance(okchars, six.text_type):
+        if not six.PY3 and not isinstance(okchars, str):
             okchars = okchars.decode(self._defaultEncoding)
 
         field = self._FindField(pos)
@@ -5225,7 +5219,7 @@ class MaskedEditMixin:
                 left  = text[0:pos]
                 right   = text[pos+1:]
 
-            if not isinstance(char, six.text_type):
+            if not isinstance(char, str):
                 # convert the keyboard constant to a unicode value, to
                 # ensure it can be concatenated into the control value:
                 if not six.PY3:
@@ -5764,7 +5758,7 @@ class MaskedEditMixin:
         else:
             item = 'selection'
 ##        dbg('maxlength:', maxlength)
-        if not six.PY3 and not isinstance(paste_text, six.text_type):
+        if not six.PY3 and not isinstance(paste_text, str):
             paste_text = paste_text.decode(self._defaultEncoding)
 
         length_considered = len(paste_text)
@@ -5773,7 +5767,7 @@ class MaskedEditMixin:
             if raise_on_invalid:
 ##                dbg(indent=0, suspend=0)
                 if item == 'control':
-                    ve = ValueError('"%s" will not fit into the control "%s"' % (paste_text, self.name))
+                    ve = ValueError(f'"{paste_text}" will not fit into the control "{self.name}"')
                     ve.value = paste_text
                     raise ve
                 else:
@@ -5834,7 +5828,7 @@ class MaskedEditMixin:
 
         if not valid_paste and raise_on_invalid:
 ##            dbg('raising exception', indent=0, suspend=0)
-            ve = ValueError('"%s" cannot be inserted into the control "%s"' % (paste_text, self.name))
+            ve = ValueError(f'"{paste_text}" cannot be inserted into the control "{self.name}"')
             ve.value = paste_text
             raise ve
 
@@ -5843,7 +5837,7 @@ class MaskedEditMixin:
             valid_paste = False
             if raise_on_invalid:
 ##                dbg('raising exception', indent=0, suspend=0)
-                ve = ValueError('"%s" will not fit into the control "%s"' % (paste_text, self.name))
+                ve = ValueError(f'"{paste_text}" will not fit into the control "{self.name}"')
                 ve.value = paste_text
                 raise ve
 
@@ -5871,7 +5865,7 @@ class MaskedEditMixin:
 
         if paste_text is not None:
 
-            if not six.PY3 and not isinstance(paste_text, six.text_type):
+            if not six.PY3 and not isinstance(paste_text, str):
                 paste_text = paste_text.decode(self._defaultEncoding)
 
 ##            dbg('paste text: "%s"' % paste_text)
@@ -6396,14 +6390,14 @@ class MaskedEditAccessorsMixin:
 
     for param in exposed_basectrl_params:
         propname = param[0].upper() + param[1:]
-        exec('def Set%s(self, value): self.SetCtrlParameters(%s=value)' % (propname, param))
+        exec(f'def Set{propname}(self, value): self.SetCtrlParameters({param}=value)')
         exec('def Get%s(self): return self.GetCtrlParameter("%s")''' % (propname, param))
 
         if param.find('Colour') != -1:
             # add non-british spellings, for backward-compatibility
             propname.replace('Colour', 'Color')
 
-            exec('def Set%s(self, value): self.SetCtrlParameters(%s=value)' % (propname, param))
+            exec(f'def Set{propname}(self, value): self.SetCtrlParameters({param}=value)')
             exec('def Get%s(self): return self.GetCtrlParameter("%s")''' % (propname, param))
 
 
@@ -6457,7 +6451,7 @@ def _isTimeType( fmtstring ):
 
 
 def _isFloatingPoint( fmtstring):
-    filter = re.compile("[ ]?[#]+\.[#]+\n")
+    filter = re.compile("[ ]?[#]+\\.[#]+\n")
     if re.match(filter,fmtstring+"\n"): return True
     return False
 
@@ -6499,11 +6493,11 @@ def _getDateSepChar(dateStr):
 def _makeDate( year, month, day, dateFmt, dateStr):
     sep    = _getDateSepChar( dateStr)
     if dateFmt == "MDY":
-        return "%s%s%s%s%s" % (month,sep,day,sep,year)  ## year, month, date parts
+        return f"{month}{sep}{day}{sep}{year}"  ## year, month, date parts
     elif dateFmt == "DMY":
-        return "%s%s%s%s%s" % (day,sep,month,sep,year)  ## year, month, date parts
+        return f"{day}{sep}{month}{sep}{year}"  ## year, month, date parts
     elif dateFmt == "YMD":
-        return "%s%s%s%s%s" % (year,sep,month,sep,day)  ## year, month, date parts
+        return f"{year}{sep}{month}{sep}{day}"  ## year, month, date parts
     else:
         return None
 
@@ -6580,20 +6574,20 @@ Try entering nonsensical or partial values in validated fields to see what happe
             # the options!
             controls = [
             #description        mask                    excl format     regexp                              range,list,initial
-           ("Phone No",         "(###) ###-#### x:###", "", 'F!^-R',    "^\(\d\d\d\) \d\d\d-\d\d\d\d",    (),[],''),
+           ("Phone No",         "(###) ###-#### x:###", "", 'F!^-R',    r"^\(\d\d\d\) \d\d\d-\d\d\d\d",    (),[],''),
            ("Last Name Only",   "C{14}",                "", 'F {list}', '^[A-Z][a-zA-Z]+',                  (),('Smith','Jones','Williams'),''),
            ("Full Name",        "C{14}",                "", 'F_',       '^[A-Z][a-zA-Z]+ [A-Z][a-zA-Z]+',   (),[],''),
-           ("Social Sec#",      "###-##-####",          "", 'F',        "\d{3}-\d{2}-\d{4}",                (),[],''),
-           ("U.S. Zip+4",       "#{5}-#{4}",            "", 'F',        "\d{5}-(\s{4}|\d{4})",(),[],''),
+           ("Social Sec#",      "###-##-####",          "", 'F',        r"\d{3}-\d{2}-\d{4}",                (),[],''),
+           ("U.S. Zip+4",       "#{5}-#{4}",            "", 'F',        r"\d{5}-(\s{4}|\d{4})",(),[],''),
            ("U.S. State (2 char)\n(with default)","AA",                 "", 'F!',       "[A-Z]{2}",                         (),states, 'AZ'),
-           ("Customer No",      "\CAA-###",              "", 'F!',      "C[A-Z]{2}-\d{3}",                   (),[],''),
+           ("Customer No",      r"\CAA-###",              "", 'F!',      r"C[A-Z]{2}-\d{3}",                   (),[],''),
            ("Date (MDY) + Time\n(with default)",      "##/##/#### ##:## AM",  'BCDEFGHIJKLMNOQRSTUVWXYZ','DFR!',"",                (),[], r'03/05/2003 12:00 AM'),
            ("Invoice Total",    "#{9}.##",              "", 'F-R,',     "",                                 (),[], ''),
            ("Integer (signed)\n(with default)", "#{6}",                 "", 'F-R',      "",                                 (),[], '0     '),
            ("Integer (unsigned)\n(with default), 1-399", "######",      "", 'F',        "",                                 (1,399),[], '1     '),
            ("Month selector",   "XXX",                  "", 'F',        "",                                 (),
                 ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],""),
-           ("fraction selector","#/##",                 "", 'F',        "^\d\/\d\d?",                       (),
+           ("fraction selector","#/##",                 "", 'F',        r"^\d\/\d\d?",                       (),
                 ['2/3', '3/4', '1/2', '1/4', '1/8', '1/16', '1/32', '1/64'], "")
            ]
 
@@ -6758,7 +6752,7 @@ To see a great example of validations in action, try entering a bad email addres
         def onClickPrint(self, event):
             for format in masktags:
                 sep = "+------------------------+"
-                print("%s\n%s  \n  Mask: %s \n  RE Validation string: %s\n" % (sep,format, masktags[format]['mask'], masktags[format]['validRegex']))
+                print("{}\n{}  \n  Mask: {} \n  RE Validation string: {}\n".format(sep,format, masktags[format]['mask'], masktags[format]['validRegex']))
 
 ## ---------- ---------- ---------- ---------- ---------- ---------- ----------
 

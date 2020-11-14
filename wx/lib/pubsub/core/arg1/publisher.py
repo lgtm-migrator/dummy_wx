@@ -37,4 +37,3 @@ class Publisher(PublisherBase):
 
     def getMsgProtocol(self):
         return 'arg1'
-

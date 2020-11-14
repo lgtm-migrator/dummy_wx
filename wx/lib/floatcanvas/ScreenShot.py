@@ -1785,4 +1785,3 @@ def getScreenShotBitmap():
 def getScreenShotImage():
     stream = BytesIO(getScreenShotData())
     return ImageFromStream(stream)
-

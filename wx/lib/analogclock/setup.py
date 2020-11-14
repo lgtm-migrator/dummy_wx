@@ -487,4 +487,3 @@ class Setup(wx.Dialog):
         self.UpdateControls()
 
         wx.EndBusyCursor()
-

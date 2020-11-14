@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # pylint: disable=E1101, C0330, C0103
 #   E1101: Module X has no Y member
 #   C0330: Wrong continued indentation

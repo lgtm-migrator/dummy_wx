@@ -320,7 +320,7 @@ def MakeDisabledBitmap(original):
 # programmer to set colours, sizes and gradient shadings for ButtonPanel
 # ---------------------------------------------------------------------------- #
 
-class BPArt(object):
+class BPArt:
     """
     :class:`BPArt` is an art provider class which does all of the drawing for :class:`ButtonPanel`.
     This allows the library caller to customize the :class:`BPArt` or to completely replace
@@ -791,9 +791,9 @@ class BPArt(object):
         col1 = self._gradient_colour_to
 
         rf, gf, bf = 0, 0, 0
-        rstep = float((col2.Red() - col1.Red()))/float(size)
-        gstep = float((col2.Green() - col1.Green()))/float(size)
-        bstep = float((col2.Blue() - col1.Blue()))/float(size)
+        rstep = float(col2.Red() - col1.Red())/float(size)
+        gstep = float(col2.Green() - col1.Green())/float(size)
+        bstep = float(col2.Blue() - col1.Blue())/float(size)
 
         for coord in range(start, start + size):
 
@@ -988,7 +988,7 @@ class Control(wx.EvtHandler):
         pass
 
 
-class Sizer(object):
+class Sizer:
     """
     This is a mix-in class to add pseudo support to :class:`wx.Sizer`. Just create
     a new class that derives from this class and :class:`wx.Sizer` and intercepts
@@ -2809,7 +2809,7 @@ if __name__ == '__main__':
             obj = event.GetEventObject()
 
             # This will print the button label
-            print((obj.GetText()))
+            print(obj.GetText())
 
 
     # our normal wxApp-derived class, as usual

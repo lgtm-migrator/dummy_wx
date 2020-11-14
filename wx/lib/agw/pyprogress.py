@@ -358,9 +358,9 @@ class ProgressGauge(wx.Window):
         r1, g1, b1 = int(col1.Red()), int(col1.Green()), int(col1.Blue())
         r2, g2, b2 = int(col2.Red()), int(col2.Green()), int(col2.Blue())
 
-        rstep = float((r2 - r1)) / interval
-        gstep = float((g2 - g1)) / interval
-        bstep = float((b2 - b1)) / interval
+        rstep = float(r2 - r1) / interval
+        gstep = float(g2 - g1) / interval
+        bstep = float(b2 - b1) / interval
 
         rf, gf, bf = 0, 0, 0
         dc.SetBrush(wx.TRANSPARENT_BRUSH)

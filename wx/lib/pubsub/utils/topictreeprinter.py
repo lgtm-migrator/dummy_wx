@@ -92,7 +92,7 @@ class TopicTreePrinter(ITopicTreeVisitor):
             topicName = self.ALL_TOPICS_NAME
         else:
             topicName = topicObj.getNodeName()
-        head = '%s Topic "%s"' % (self.__topicsBullet, topicName)
+        head = f'{self.__topicsBullet} Topic "{topicName}"'
         self.__output.append( self.__formatDefn(indent, head) )
         indent += self.__indentStep
 
@@ -114,12 +114,12 @@ class TopicTreePrinter(ITopicTreeVisitor):
         has item name, and an optional definition separated from
         item by sep. """
         if defn:
-            prefix = '%s%s%s' % (' '*indent, item, sep)
+            prefix = '{}{}{}'.format(' '*indent, item, sep)
             self.__wrapper.initial_indent = prefix
             self.__wrapper.subsequent_indent = ' '*(indent+self.__indentStep)
             return self.__wrapper.fill(defn)
         else:
-            return '%s%s' % (' '*indent, item)
+            return '{}{}'.format(' '*indent, item)
 
     def __printTopicDescription(self, indent, topicObj):
         # topic description
@@ -135,7 +135,7 @@ class TopicTreePrinter(ITopicTreeVisitor):
             headName = 'Names of Message arguments:'
             if desc:
                 headName = 'Descriptions of message arguments:'
-            head = '%s %s' % (self.__topicItemsBullet, headName)
+            head = f'{self.__topicItemsBullet} {headName}'
             self.__output.append( self.__formatDefn(indent, head) )
             tmpIndent = indent + self.__indentStep
             required = topicObj.getArgs()[0]
@@ -144,7 +144,7 @@ class TopicTreePrinter(ITopicTreeVisitor):
                     arg = ''
                 elif key in required:
                     arg = '(required) %s' % arg
-                msg = '%s %s' % (self.__topicArgsBullet,key)
+                msg = f'{self.__topicArgsBullet} {key}'
                 self.__output.append( self.__formatDefn(tmpIndent, msg, arg) )
 
     def __printTopicArgNames(self, indent, topicObj):
@@ -156,7 +156,7 @@ class TopicTreePrinter(ITopicTreeVisitor):
             self.__output.append( self.__formatDefn(indent, item) )
             tmpIndent = indent + self.__indentStep
             for listener in topicObj.getListenersIter():
-                item = '%s %s (from %s)' % (self.__topicArgsBullet, listener.name(), listener.module())
+                item = f'{self.__topicArgsBullet} {listener.name()} (from {listener.module()})'
                 self.__output.append( self.__formatDefn(tmpIndent, item) )
 
 
@@ -191,5 +191,3 @@ def printTreeDocs(rootTopic=None, topicMgr=None, **kwargs):
     printer = TopicTreePrinter(**kwargs)
     traverser = TopicTreeTraverser(printer)
     traverser.traverse(rootTopic)
-
-

@@ -206,7 +206,7 @@ class _MyStatusBar(wx.StatusBar):
 
 
 
-class PyInformationalMessagesFrame(object):
+class PyInformationalMessagesFrame:
     def __init__(self,
                  progname="",
                  text="informational messages",
@@ -228,7 +228,7 @@ class PyInformationalMessagesFrame(object):
             self.othermenu.Enable(i,1)
 
         self.frame  = None
-        self.title  = "%s %s" % (progname,text)
+        self.title  = f"{progname} {text}"
         self.parent = None # use the SetParent method if desired...
         self.softspace = 1 # of rather limited use
 
@@ -309,7 +309,7 @@ class PyInformationalMessagesFrame(object):
                         filename = os.path.abspath(self.f.name)
 
                         self.frame.sb.SetStatusText("File '%s' opened..." % filename, 0)
-                    except EnvironmentError:
+                    except OSError:
                         self.frame.sb.SetStatusText("File creation failed "
                                                     "(filename '%s')..." % filename, 0)
                     self.text.AppendText(
@@ -417,7 +417,7 @@ class PyInformationalMessagesFrame(object):
         else:
             try:
                 self.f = open(os.path.abspath(dlg.GetPath()),'w')
-            except EnvironmentError:
+            except OSError:
                 dlg.Destroy()
                 return 0
             dlg.Destroy()
@@ -468,7 +468,7 @@ class PyInformationalMessagesFrame(object):
 
 
 
-class Dummy_PyInformationalMessagesFrame(object):
+class Dummy_PyInformationalMessagesFrame:
     def __init__(self,progname=""):
         self.softspace = 1
     def __call__(self,*args):
@@ -487,4 +487,3 @@ class Dummy_PyInformationalMessagesFrame(object):
         pass
     def SetParent(self,wX):
         pass
-

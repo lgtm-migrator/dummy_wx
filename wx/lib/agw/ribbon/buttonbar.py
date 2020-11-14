@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         buttonbar.py
 # Purpose:
@@ -58,7 +57,7 @@ EVT_RIBBONBUTTONBAR_CLICKED = wx.PyEventBinder(wxEVT_COMMAND_RIBBONBUTTON_CLICKE
 EVT_RIBBONBUTTONBAR_DROPDOWN_CLICKED = wx.PyEventBinder(wxEVT_COMMAND_RIBBONBUTTON_DROPDOWN_CLICKED, 1)
 
 
-class RibbonButtonBarButtonSizeInfo(object):
+class RibbonButtonBarButtonSizeInfo:
 
     def __init__(self):
 
@@ -68,7 +67,7 @@ class RibbonButtonBarButtonSizeInfo(object):
         self.dropdown_region = wx.Rect()
 
 
-class RibbonButtonBarButtonInstance(object):
+class RibbonButtonBarButtonInstance:
 
     def __init__(self):
 
@@ -77,7 +76,7 @@ class RibbonButtonBarButtonInstance(object):
         self.size = wx.Size()
 
 
-class RibbonButtonBarButtonBase(object):
+class RibbonButtonBarButtonBase:
 
     def __init__(self):
 
@@ -127,7 +126,7 @@ class RibbonButtonBarButtonBase(object):
                 return False, None
 
 
-class RibbonButtonBarLayout(object):
+class RibbonButtonBarLayout:
 
     def __init__(self):
 
@@ -345,7 +344,7 @@ class RibbonButtonBar(RibbonControl):
         if not bitmap.IsOk() and not bitmap_small.IsOk():
             raise Exception("Invalid main bitmap")
 
-        if not isinstance(help_string, six.string_types):
+        if not isinstance(help_string, str):
             raise Exception("Invalid help string parameter")
 
         if not self._buttons:
@@ -1315,5 +1314,3 @@ class RibbonButtonBar(RibbonControl):
         """ Returns the default border style for :class:`RibbonButtonBar`. """
 
         return wx.BORDER_NONE
-
-

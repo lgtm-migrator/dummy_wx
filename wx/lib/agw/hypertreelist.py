@@ -406,7 +406,7 @@ def IsBufferingSupported():
     return False
 
 
-class TreeListColumnInfo(object):
+class TreeListColumnInfo:
     """
     Class used to store information (width, alignment flags, colours, etc...) about a
     :class:`HyperTreeList` column header.
@@ -431,7 +431,7 @@ class TreeListColumnInfo(object):
         :param `edit`: ``True`` to set the column as editable, ``False`` otherwise.
         """
 
-        if isinstance(input, six.string_types):
+        if isinstance(input, str):
             self._text = input
             self._width = width
             self._flag = flag
@@ -1846,7 +1846,7 @@ class TreeListItem(GenericTreeItem):
 #-----------------------------------------------------------------------------
 
 
-class EditCtrl(object):
+class EditCtrl:
     """
     Base class for controls used for in-place edit.
     """
@@ -1933,7 +1933,7 @@ class EditCtrl(object):
         x += image_w + wcheck
         w -= image_w + 2*_MARGIN + wcheck
 
-        super(EditCtrl, self).__init__(parent, id, value, wx.Point(x,y),
+        super().__init__(parent, id, value, wx.Point(x,y),
                                        wx.Size(w+15, h),
                                        style=style|wx.SIMPLE_BORDER,
                                        name=name, **kwargs)
@@ -2033,7 +2033,7 @@ class EditTextCtrl(EditCtrl, wx.TextCtrl):
         :param `name`: the window name.
         """
 
-        super(EditTextCtrl, self).__init__(parent, id, item, column, owner,
+        super().__init__(parent, id, item, column, owner,
                                            value, pos, size, style, validator,
                                            name, **kwargs)
         self.SelectAll()
@@ -3606,7 +3606,7 @@ class TreeListMainWindow(CustomTreeCtrl):
         if self._curColumn == -1:
             self._curColumn = 0
 
-        self.SetItemText(self._editItem, six.text_type(value), self._curColumn)
+        self.SetItemText(self._editItem, str(value), self._curColumn)
 
 
     def OnCancelEdit(self):
@@ -5146,4 +5146,3 @@ if __name__ == '__main__':
     frame.Show()
 
     app.MainLoop()
-

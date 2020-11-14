@@ -102,7 +102,7 @@ def _makeAttribString(evt):
                              ]:
             try:
                 value = getattr(evt, name)()
-                attribs += "%s : %s\n" % (name, value)
+                attribs += f"{name} : {value}\n"
             except Exception:
                 pass
 
@@ -459,4 +459,3 @@ if __name__ == '__main__':
     #wx.lib.inspection.InspectionTool().Show()
 
     app.MainLoop()
-

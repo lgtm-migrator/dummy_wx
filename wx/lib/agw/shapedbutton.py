@@ -1256,7 +1256,7 @@ class SBitmapTextButton(SBitmapButton):
 # SBitmapTextButton In The Corresponding ToggleButtons.
 #----------------------------------------------------------------------
 
-class __SToggleMixin(object):
+class __SToggleMixin:
     """
     A mixin that allows to transform any of :class:`SButton`, :class:`SBitmapButton` and
     :class:`SBitmapTextButton` in the corresponding toggle buttons.

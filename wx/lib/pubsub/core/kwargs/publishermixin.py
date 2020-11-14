@@ -24,7 +24,7 @@ class PublisherMixin:
         self._publish(msgKwargs)
 
     ############## IMPLEMENTATION ###############
-    
+
     class IterState:
         def __init__(self, msgKwargs):
             self.filteredArgs = msgKwargs
@@ -62,4 +62,3 @@ class PublisherMixin:
         Note that at each level, msgKwargs is filtered so only those
         args that are defined for the topic are sent to listeners. """
         listener(iterState.filteredArgs, self, msgKwargs)
-

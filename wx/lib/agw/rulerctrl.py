@@ -342,7 +342,7 @@ class RulerCtrlEvent(wx.CommandEvent):
 # Class Label
 # ---------------------------------------------------------------------------- #
 
-class Label(object):
+class Label:
     """
     Auxilary class. Just holds information about a label in :class:`RulerCtrl`.
     """
@@ -367,7 +367,7 @@ class Label(object):
 # Class Indicator
 # ---------------------------------------------------------------------------- #
 
-class Indicator(object):
+class Indicator:
     """
     This class holds all the information about a single indicator inside :class:`RulerCtrl`.
 
@@ -1884,4 +1884,3 @@ if __name__ == '__main__':
     frame.Show()
 
     app.MainLoop()
-

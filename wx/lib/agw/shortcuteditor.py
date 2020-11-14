@@ -1160,7 +1160,7 @@ class ShortcutEvent(wx.PyCommandEvent):
 # a tree, with children and parents.
 # ----------------------------------------------------------------------------
 
-class Shortcut(object):
+class Shortcut:
     """
     :class:`Shortcut` is a class containing the details for a shortcut, whether from
     a menu item, an accelerator or a user-defined shortcut. It behaves like
@@ -2630,5 +2630,3 @@ class ShortcutEditor(wx.Dialog):
 
         self.PreShow()
         wx.Dialog.Show(self, show)
-
-

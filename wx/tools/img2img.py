@@ -82,4 +82,3 @@ def main(args, outType, outExt, doc):
             ok, msg = convert(file, maskClr, outputDir, outputName,
                               outType, outExt)
             print(msg)
-

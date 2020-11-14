@@ -69,7 +69,7 @@ class CCellEditor(wx.grid.PyGridCellEditor):
             NOTE: There is no need to everride this if you don't need
             to do something out of the ordinary.
         """
-        super(CCellEditor, self).Show(show, attr)
+        super().Show(show, attr)
 
     def PaintBackground(self, rect, attr):
         """ Draws the part of the cell not occupied by the edit control.  The
@@ -80,7 +80,7 @@ class CCellEditor(wx.grid.PyGridCellEditor):
             to do something out of the ordinary.
         """
         # Call base class method.
-        super(CCellEditor, self).PaintBackground(rect, attr)
+        super().PaintBackground(rect, attr)
 
     def BeginEdit(self, row, col, grid):
         """ Fetch the value from the table and prepare edit control to begin editing.
@@ -158,7 +158,7 @@ class CCellEditor(wx.grid.PyGridCellEditor):
             NOTE: There is no need to everride this if you don't need
             to do something out of the ordinary.
         """
-        super(CCellEditor, self).Destroy()
+        super().Destroy()
 
     def Clone(self):
         """ Create a new object which is the copy of this one. Must Override. """

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         drawn.py
 # Purpose:      DrawnShape class
@@ -52,7 +51,7 @@ DRAWOP_DRAW_SPLINE           = 29
 DRAWOP_DRAW_ELLIPTIC_ARC     = 30
 
 
-class DrawOp(object):
+class DrawOp:
     def __init__(self, theOp):
         self._op = theOp
 
@@ -318,7 +317,7 @@ class OpPolyDraw(DrawOp):
                                   x1, y1, x2, y2)
 
 
-class PseudoMetaFile(object):
+class PseudoMetaFile:
     """
     A simple metafile-like class which can load data from a Windows
     metafile on all platforms.

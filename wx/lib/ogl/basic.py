@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         basic.py
 # Purpose:      The basic OGL shapes
@@ -47,7 +46,7 @@ def OGLCleanUp():
     pass
 
 
-class ShapeTextLine(object):
+class ShapeTextLine:
     """The :class:`ShapeTextLine` class."""
     def __init__(self, the_x, the_y, the_line):
         """
@@ -102,7 +101,7 @@ class ShapeTextLine(object):
         return self._line
 
 
-class ShapeEvtHandler(object):
+class ShapeEvtHandler:
     """The :class:`ShapeEvtHandler` class."""
     def __init__(self, prev = None, shape = None):
         """
@@ -376,7 +375,7 @@ class Shape(ShapeEvtHandler):
         self._regions.append(region)
 
     def __str__(self):
-        return "<%s.%s>" % (self.__class__.__module__, self.__class__.__name__)
+        return f"<{self.__class__.__module__}.{self.__class__.__name__}>"
 
     def GetClassName(self):
         return str(self.__class__).split(".")[-1][:-2]
@@ -3575,7 +3574,7 @@ class TextShape(RectangleShape):
         pass
 
 
-class ShapeRegion(object):
+class ShapeRegion:
     """The :class:`ShapeRegion` class."""
     def __init__(self, region = None):
         """

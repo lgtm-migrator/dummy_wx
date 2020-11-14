@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         dockart.py
 # Purpose:
@@ -49,7 +48,7 @@ if wx.Platform == "__WXMSW__":
 
 # -- AuiDefaultDockArt class implementation --
 
-class AuiDefaultDockArt(object):
+class AuiDefaultDockArt:
     """
     Dock art provider code - a dock provider provides all drawing functionality to the AUI dock manager.
     This allows the dock manager to have a plugable look-and-feel.
@@ -1191,4 +1190,3 @@ class ModernDockArt(AuiDefaultDockArt):
             # Fallback to default closebutton if themes are not enabled
             rect2 = wx.Rect(rect.x-4, rect.y+2, rect.width, rect.height)
             AuiDefaultDockArt.DrawPaneButton(self, dc, window, button, button_state, rect2, pane)
-

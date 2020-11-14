@@ -17,5 +17,3 @@ class TreeConfig:
         self.notificationMgr = NotificationMgr(notificationHandler)
         self.listenerExcHandler = listenerExcHandler
         self.raiseOnTopicUnspecified = False
-
-

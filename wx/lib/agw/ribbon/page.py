@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         page.py
 # Purpose:
@@ -942,5 +941,3 @@ class RibbonPage(RibbonControl):
         """ Returns the default border style for :class:`RibbonPage`. """
 
         return wx.BORDER_NONE
-
-

@@ -45,7 +45,7 @@
 # o wxMaskedNumCtrl -> masked.NumCtrl
 #
 
-"""
+r"""
 masked.NumCtrl:
   - allows you to get and set integer or floating point numbers as value,</LI>
   - provides bounds support and optional value limiting,</LI>
@@ -465,14 +465,14 @@ class NumCtrlAccessorsMixin:
         )
     for param in exposed_basectrl_params:
         propname = param[0].upper() + param[1:]
-        exec('def Set%s(self, value): self.SetCtrlParameters(%s=value)' % (propname, param))
+        exec(f'def Set{propname}(self, value): self.SetCtrlParameters({param}=value)')
         exec('def Get%s(self): return self.GetCtrlParameter("%s")''' % (propname, param))
 
         if param.find('Colour') != -1:
             # add non-british spellings, for backward-compatibility
             propname.replace('Colour', 'Color')
 
-            exec('def Set%s(self, value): self.SetCtrlParameters(%s=value)' % (propname, param))
+            exec(f'def Set{propname}(self, value): self.SetCtrlParameters({param}=value)')
             exec('def Get%s(self): return self.GetCtrlParameter("%s")''' % (propname, param))
 
 
@@ -1641,7 +1641,7 @@ class NumCtrl(BaseMaskedTextCtrl, NumCtrlAccessorsMixin):
 ##            dbg(indent=0)
             return self._template
 
-        elif isinstance(value, six.string_types):
+        elif isinstance(value, str):
             value = self._GetNumValue(value)
 ##            dbg('cleansed num value: "%s"' % value)
             if value == "":

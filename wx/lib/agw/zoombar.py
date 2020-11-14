@@ -338,7 +338,7 @@ def MakeDisabledBitmap(original):
 
 # ----------------------------------------------------------------------------
 
-class ZoomBarImage(object):
+class ZoomBarImage:
     """
     This simple class holds information about a :class:`ZoomBar` button, such as normal
     bitmaps, disabled bitmap, button label, etc...
@@ -574,7 +574,7 @@ class ZoomBarImage(object):
         return self._enabled
 
 
-class ImageBar(object):
+class ImageBar:
     """ This class holds the background button bar on which the buttons float. """
 
     def __init__(self, bitmap=None):
@@ -1335,4 +1335,3 @@ class ZoomBar(wx.Control):
                 return index
 
         return wx.NOT_FOUND
-

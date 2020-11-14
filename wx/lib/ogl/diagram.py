@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         diagram.py
 # Purpose:      Diagram class
@@ -18,7 +17,7 @@ import wx
 DEFAULT_MOUSE_TOLERANCE = 3
 
 
-class Diagram(object):
+class Diagram:
     """
     The :class:`Diagram` encapsulates an entire diagram, with methods for
     drawing. A diagram has an associated :class:`ShapeCanvas`.

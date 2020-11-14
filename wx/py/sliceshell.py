@@ -353,8 +353,8 @@ class SlicesShellFrame(frame.Frame, frame.ShellFrameMixin):
             file=wx.FileSelector('Open a PySlices File',
                                  wildcard='*.pyslices',
                                  default_path=self.currentDirectory)
-        if file!=None and file!=u'':
-            with open(file,'r') as fid:
+        if file!=None and file!='':
+            with open(file) as fid:
                 self.sliceshell.LoadPySlicesFile(fid)
 
             self.currentDirectory = os.path.split(file)[0]
@@ -981,11 +981,7 @@ class SlicesShell(editwindow.EditWindow):
         This sets "close", "exit" and "quit" to a helpful string.
         """
         from six import PY3
-        if PY3:
-            import builtins
-        else:
-            import __builtin__
-            builtins = __builtin__
+        import builtins
         builtins.close = builtins.exit = builtins.quit = \
             'Click on the close button to leave the application.'
         builtins.cd = cd
@@ -1014,12 +1010,9 @@ class SlicesShell(editwindow.EditWindow):
         """Execute the user's PYTHONSTARTUP script if they have one."""
         if startupScript and os.path.isfile(startupScript):
             text = 'Startup script executed: ' + startupScript
-            if PY3:
-                self.push('print(%r)' % text)
-                self.push('with open(%r, "r") as f:\n'
-                          '    exec(f.read())\n' % (startupScript))
-            else:
-                self.push('print(%r); execfile(%r)' % (text, startupScript))
+            self.push('print(%r)' % text)
+            self.push('with open(%r, "r") as f:\n'
+                      '    exec(f.read())\n' % (startupScript))
             self.interp.startupScript = startupScript
         else:
             self.push('')
@@ -1937,8 +1930,8 @@ class SlicesShell(editwindow.EditWindow):
         elif controlDown and key in (ord('L'), ord('l')):
             #print('Load it')
             file = wx.FileSelector("Load File As New Slice")
-            if file != u'':
-                with open(file,'r') as fid:
+            if file != '':
+                with open(file) as fid:
                     self.LoadPyFileAsSlice(fid)
 
         elif controlDown and key in (ord('D'), ord('d')):
@@ -2142,7 +2135,7 @@ class SlicesShell(editwindow.EditWindow):
         import re
 
         #sort out only "good" words
-        newlist = re.split("[ \.\[\]=}(\)\,0-9\"]", joined)
+        newlist = re.split("[ \\.\\[\\]=}(\\)\\,0-9\"]", joined)
 
         #length > 1 (mix out "trash")
         thlist = []
@@ -3724,7 +3717,7 @@ class SlicesShell(editwindow.EditWindow):
                 fid_write(outputStartText)
                 addComment=True
             if addComment:
-                fid_write(u'#')
+                fid_write('#')
 
             fid_write(self.GetLine(i))
 

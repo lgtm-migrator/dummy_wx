@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         oglmisc.py
 # Purpose:      Miscellaneous OGL support functions
@@ -554,9 +553,9 @@ def DrawArcToEllipse(x1, y1, width1, height1, x2, y2, x3, y3):
     if abs(x2 - x3) < 0.05:
         x4 = x2
         if y3 > y2:
-            y4 = y1 - math.sqrt((b1 * b1 - (((x2 - x1) * (x2 - x1)) * (b1 * b1) / (a1 * a1))))
+            y4 = y1 - math.sqrt(b1 * b1 - (((x2 - x1) * (x2 - x1)) * (b1 * b1) / (a1 * a1)))
         else:
-            y4 = y1 + math.sqrt((b1 * b1 - (((x2 - x1) * (x2 - x1)) * (b1 * b1) / (a1 * a1))))
+            y4 = y1 + math.sqrt(b1 * b1 - (((x2 - x1) * (x2 - x1)) * (b1 * b1) / (a1 * a1)))
         return x4, y4
 
     # Calculate the x and y coordinates of the point where arc intersects ellipse

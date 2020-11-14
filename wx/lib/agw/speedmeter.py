@@ -830,9 +830,9 @@ class SpeedMeter(BufferedWindow):
 
             numsteps = 200
 
-            rstep = float((r2 - r1)) / numsteps
-            gstep = float((g2 - g1)) / numsteps
-            bstep = float((b2 - b1)) / numsteps
+            rstep = float(r2 - r1) / numsteps
+            gstep = float(g2 - g1) / numsteps
+            bstep = float(b2 - b1) / numsteps
 
             rf, gf, bf = 0, 0, 0
 

@@ -363,7 +363,7 @@ def ConvertToMonochrome(bmp):
 # Class FMRendererMgr
 # ---------------------------------------------------------------------------- #
 
-class FMRendererMgr(object):
+class FMRendererMgr:
     """
     This class represents a manager that handles all the renderers defined.
     Every instance of this class will share the same state, so everyone can
@@ -431,7 +431,7 @@ class FMRendererMgr(object):
 # Class FMRenderer
 # ---------------------------------------------------------------------------- #
 
-class FMRenderer(object):
+class FMRenderer:
     """
     Base class for the :class:`FlatMenu` renderers. This class implements the common
     methods of all the renderers.
@@ -1884,7 +1884,7 @@ def GetMRUEntryLabel(n, path):
 # File history management
 # ----------------------------------------------------------------------------
 
-class FileHistory(object):
+class FileHistory:
     """
     The :class:`FileHistory` encapsulates a user interface convenience, the list of most
     recently visited files as shown on a menu (usually the File menu).
@@ -2197,7 +2197,7 @@ class FlatMenuEvent(wx.PyCommandEvent):
 # Class MenuEntryInfo
 # ---------------------------------------------------------------------------- #
 
-class MenuEntryInfo(object):
+class MenuEntryInfo:
     """
     Internal class which holds information about a menu.
     """
@@ -2226,7 +2226,7 @@ class MenuEntryInfo(object):
         :param integer `cmd`: the menu accelerator identifier.
         """
 
-        if isinstance(titleOrMenu, six.string_types):
+        if isinstance(titleOrMenu, str):
 
             self._title = titleOrMenu
             self._menu = menu
@@ -3595,7 +3595,7 @@ class FlatMenuBar(wx.Panel):
         if self._showCustomize:
             if invT + invM > 0:
                 self._moreMenu.AppendSeparator()
-            item = FlatMenuItem(self._moreMenu, self._popupDlgCmdId, _(six.u("Customize...")))
+            item = FlatMenuItem(self._moreMenu, self._popupDlgCmdId, _("Customize..."))
             self._moreMenu.AppendItem(item)
 
 
@@ -3934,7 +3934,7 @@ class ShadowPopupWindow(wx.PopupWindow):
 # Class FlatMenuButton
 #--------------------------------------------------------
 
-class FlatMenuButton(object):
+class FlatMenuButton:
     """
     A nice small class that functions like :class:`wx.BitmapButton`, the reason I did
     not used :class:`wx.BitmapButton` is that on Linux, it has some extra margins that
@@ -4129,7 +4129,7 @@ class FlatMenuButton(object):
 # Class FlatMenuItemGroup
 #--------------------------------------------------------
 
-class FlatMenuItemGroup(object):
+class FlatMenuItemGroup:
     """
     A class that manages a group of radio menu items.
     """
@@ -4508,7 +4508,7 @@ class FlatMenuBase(ShadowPopupWindow):
 # Class ToolBarItem
 #--------------------------------------------------------
 
-class ToolBarItem(object):
+class ToolBarItem:
     """
     A simple class that holds information about a toolbar item.
     """
@@ -4534,7 +4534,7 @@ class ToolBarItem(object):
 # Class FlatToolBarItem
 #--------------------------------------------------------
 
-class FlatToolbarItem(object):
+class FlatToolbarItem:
     """
     This class represents a toolbar item.
     """
@@ -4803,7 +4803,7 @@ class FlatToolbarItem(object):
 # Class FlatMenuItem
 #--------------------------------------------------------
 
-class FlatMenuItem(object):
+class FlatMenuItem:
     """
     A class that represents an item in a menu.
     """
@@ -7318,5 +7318,3 @@ class FocusHandler(wx.EvtHandler):
         """
 
         wx.PostEvent(self._menu, event)
-
-

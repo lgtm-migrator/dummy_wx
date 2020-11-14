@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         aui_utilities.py
 # Purpose:
@@ -655,4 +654,3 @@ def CopyAttributes(newArt, oldArt):
             setattr(newArt, attr, getattr(oldArt, attr))
 
     return newArt
-

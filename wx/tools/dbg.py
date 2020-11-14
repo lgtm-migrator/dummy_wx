@@ -265,4 +265,3 @@ if __name__ == "__main__":
     f.foo("should print")
     dbg('test completed.', enable=0)
     dbg('(double-checking ;-)')
-

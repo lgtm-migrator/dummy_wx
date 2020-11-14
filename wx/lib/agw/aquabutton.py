@@ -903,7 +903,7 @@ class AquaButton(wx.Control):
         self.GetEventHandler().ProcessEvent(evt)
 
 
-class __ToggleMixin(object):
+class __ToggleMixin:
     """
     A mixin that allows to transform :class:`AquaButton` in the corresponding toggle button.
     """
@@ -1124,4 +1124,3 @@ class __ToggleMixin(object):
 class AquaToggleButton(__ToggleMixin, AquaButton):
     """ An :class:`AquaButton` toggle button. """
     pass
-

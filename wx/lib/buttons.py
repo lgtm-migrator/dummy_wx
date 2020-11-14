@@ -937,7 +937,7 @@ class GenBitmapTextButton(GenBitmapButton):
 #----------------------------------------------------------------------
 
 
-class __ToggleMixin(object):
+class __ToggleMixin:
     """
     A mixin that allows to transform :class:`GenButton` in the corresponding
     toggle button.
@@ -1073,7 +1073,7 @@ class GenBitmapTextToggleButton(__ToggleMixin, GenBitmapTextButton):
 #----------------------------------------------------------------------
 
 
-class __ThemedMixin(object):
+class __ThemedMixin:
     """ Uses the native renderer to draw the bezel, also handle mouse-overs. """
 
 

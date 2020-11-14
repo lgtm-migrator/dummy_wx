@@ -45,7 +45,7 @@ The name-value pairs in all the nested PARAM tags are packaged up as
 strings into a python dictionary and passed to the __init__ method of
 the class as keyword arguments.  This means that they are all
 accessible from the __init__ method as regular parameters, or you use
-the special Python \*\*kw syntax in your __init__ method to get the
+the special Python \\*\\*kw syntax in your __init__ method to get the
 dictionary directly.
 
 Some parameter values are special and if they are present then they will

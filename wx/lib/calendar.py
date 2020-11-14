@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # #----------------------------------------------------------------------------
 # Name:         calendar.py
 # Purpose:      Calendar display control

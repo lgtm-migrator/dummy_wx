@@ -291,4 +291,3 @@ if __name__ == '__main__':
     p.SetSizer(s)
     f.Show()
     app.MainLoop()
-

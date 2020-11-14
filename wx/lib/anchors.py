@@ -100,4 +100,3 @@ class LayoutAnchors(wx.LayoutConstraints):
             if not side2Anchor:
                 centre.PercentOf(parent, sizeEdge,
                                  int(((cPos + cSize / 2.0) / pSize)*100))
-

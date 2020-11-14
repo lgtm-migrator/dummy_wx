@@ -439,8 +439,8 @@ def SplitThousands(s, tSep=',', dSep='.'):
 
     """
 
-    if not isinstance(s, six.string_types):
-        s = six.u(s)
+    if not isinstance(s, str):
+        s = s
 
     cnt = 0
     numChars = dSep + '0123456789'
@@ -531,7 +531,7 @@ def FontFromFont(font):
     return new_font
 
 
-class Excel(object):
+class Excel:
     """
     A simple class that holds a COM interface to Excel.
 
@@ -597,7 +597,7 @@ class Excel(object):
             return cell.Text
 
 
-class XLSText(object):
+class XLSText:
     """
     This is a class which holds information about the cell content, in terms
     of actual cell value, font, text colour, alignment and formatting.
@@ -837,7 +837,7 @@ class XLSText(object):
                 value = representation%value
             except ValueError:
                 # Fall back to string
-                value = six.u(value)
+                value = value
 
             if "#," in number_format:
                 value = SplitThousands(value)
@@ -1129,7 +1129,7 @@ class XLSRichText(XLSText):
             start += width
 
 
-class XLSBackground(object):
+class XLSBackground:
     """
     This is a class which holds information about the cell background, in terms
     of background colour and background pattern (hatching).
@@ -1230,7 +1230,7 @@ class XLSBackground(object):
         dc.DestroyClippingRegion()
 
 
-class XLSBorder(object):
+class XLSBorder:
     """
     This is a class which holds information about a single cell border, in terms
     of its location (top, left, bottom, right, diagonal), its colour, width and
@@ -1400,7 +1400,7 @@ class XLSBorder(object):
                 dc.DrawLine(x+w+1, y+1, x+w+1, y+h)
 
 
-class XLSBorderFactory(object):
+class XLSBorderFactory:
     """
     This is a factory class which holds information about all the borders in a
     cell. Its implementation and use is merely to simplify the handling of the
@@ -1446,7 +1446,7 @@ class XLSBorderFactory(object):
             border.Draw(dc, rect)
 
 
-class XLSComment(object):
+class XLSComment:
     """
     This is a class which holds information about the content of the "comment
     window" (aka note) in Excel.
@@ -1484,7 +1484,7 @@ class XLSComment(object):
         dc.DrawPolygon(points)
 
 
-class XLSCell(object):
+class XLSCell:
     """
     This is a class which holds information about a single cell in :class:`XLSGrid`.
     It stores (via auxiliary classes), all details about cell background, text,

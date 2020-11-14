@@ -737,4 +737,3 @@ def updateColourDB():
             wx.TheColourDatabase.AddColour(name, colour)
 
         _haveUpdated = True
-

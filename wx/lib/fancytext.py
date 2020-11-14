@@ -265,10 +265,7 @@ def _addGreek():
     for i, name in enumerate(_greek_letters):
         def start(self, attrs, code=chr(alpha+i)):
             self.start_font({"encoding" : _greekEncoding})
-            if not PY3:
-                self.characterData(code.decode('iso8859-7'))
-            else:
-                self.characterData(code)
+            self.characterData(code)
             self.end_font()
         setattr(Renderer, "start_%s" % name, start)
         setattr(Renderer, "end_%s" % name, end)
@@ -276,10 +273,7 @@ def _addGreek():
             continue # There is no capital for altsigma
         def start(self, attrs, code=chr(Alpha+i)):
             self.start_font({"encoding" : _greekEncoding})
-            if not PY3:
-                self.characterData(code.decode('iso8859-7'))
-            else:
-                self.characterData(code)
+            self.characterData(code)
             self.end_font()
         setattr(Renderer, "start_%s" % name.capitalize(), start)
         setattr(Renderer, "end_%s" % name.capitalize(), end)
@@ -373,7 +367,7 @@ def RenderToRenderer(str, renderer, enclose=True):
         p.CharacterDataHandler = renderer.characterData
         p.Parse(str, 1)
     except xml.parsers.expat.error as err:
-        raise ValueError('error parsing text text "%s": %s' % (str, err))
+        raise ValueError(f'error parsing text text "{str}": {err}')
 
 
 # Public interface
@@ -501,5 +495,3 @@ The End"""
 
 if __name__ == "__main__":
     test()
-
-

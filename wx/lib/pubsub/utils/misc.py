@@ -96,5 +96,3 @@ class Enum:
             self.value = value
             if self.value not in Enum.values:
                 Enum.values.add(self.value)
-
-

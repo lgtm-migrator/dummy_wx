@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         toolbar.py
 # Purpose:
@@ -113,7 +112,7 @@ class RibbonToolBarEvent(wx.PyCommandEvent):
         return self._bar.PopupMenu(menu)
 
 
-class RibbonToolBarToolBase(object):
+class RibbonToolBarToolBase:
 
     def __init__(self):
 
@@ -129,7 +128,7 @@ class RibbonToolBarToolBase(object):
         self.state = None
 
 
-class RibbonToolBarToolGroup(object):
+class RibbonToolBarToolGroup:
 
     def __init__(self):
 
@@ -1438,4 +1437,3 @@ class RibbonToolBar(RibbonControl):
                         self.EnableTool(id, event.GetEnabled())
                     if event.GetSetChecked():
                         self.ToggleTool(id, event.GetChecked())
-

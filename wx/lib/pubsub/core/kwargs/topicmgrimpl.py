@@ -10,4 +10,3 @@ def getRootTopicSpec():
     argsDocs = {}
     reqdArgs = ()
     return argsDocs, reqdArgs
-

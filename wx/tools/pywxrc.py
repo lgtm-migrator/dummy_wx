@@ -286,7 +286,7 @@ class XmlResourceCompiler:
                 gettextStrings += self.FindStringsInNode(resourceDocument.firstChild)
 
         # now write it all out
-        print_(self.templates.FILE_HEADER, file=outputFile)
+        print(self.templates.FILE_HEADER, file=outputFile)
 
         # Note: Technically it is not legal to have anything other
         # than ascii for class and variable names, but since the user
@@ -294,24 +294,24 @@ class XmlResourceCompiler:
         # allow for it here, and then let Python complain about it
         # later when they try to run the program.
         if subclasses:
-            subclasses = self.ReplaceBlocks(u"\n".join(subclasses))
-            print_(subclasses, file=outputFile)
+            subclasses = self.ReplaceBlocks("\n".join(subclasses))
+            print(subclasses, file=outputFile)
         if classes:
-            classes = self.ReplaceBlocks(u"\n".join(classes))
-            print_(classes, file=outputFile)
+            classes = self.ReplaceBlocks("\n".join(classes))
+            print(classes, file=outputFile)
 
-        print_(self.templates.INIT_RESOURE_HEADER, file=outputFile)
+        print(self.templates.INIT_RESOURE_HEADER, file=outputFile)
         if embedResources:
-            print_(self.templates.PREPARE_MEMFS, file=outputFile)
-        resources = u"\n".join(resources)
-        print_(resources, file=outputFile)
+            print(self.templates.PREPARE_MEMFS, file=outputFile)
+        resources = "\n".join(resources)
+        print(resources, file=outputFile)
 
         if generateGetText:
             # gettextStrings is a list of unicode strings as returned by ConvertText
-            conversions = [u'    _("%s")' % s for s in gettextStrings]
-            conversion_block = u"\n".join(conversions)
+            conversions = ['    _("%s")' % s for s in gettextStrings]
+            conversion_block = "\n".join(conversions)
             conversion_func = self.templates.GETTEXT_DUMMY_FUNC % conversion_block
-            print_(conversion_func, file=outputFile)
+            print(conversion_func, file=outputFile)
 
     #-------------------------------------------------------------------
 
@@ -327,7 +327,7 @@ class XmlResourceCompiler:
             strings = self.FindStringsInNode(resource)
             # strings is a list of unicode strings as returned by ConvertText
             strings = ['_("%s");' % s for s in strings]
-            print_("\n".join(strings), file=outputFile)
+            print("\n".join(strings), file=outputFile)
 
     #-------------------------------------------------------------------
 
@@ -521,7 +521,7 @@ class XmlResourceCompiler:
         # Generate subclasses
         for subclass in subclasses:
             windowClass = bases[subclass]
-            subclass = re.sub("^\S+\.", "", subclass)
+            subclass = re.sub(r"^\S+\.", "", subclass)
             windowClass = re.sub("^wx", "", windowClass)
             outputList.append(self.templates.SUBCLASS_HEADER % locals())
             outputList.append('\n')
@@ -556,10 +556,10 @@ class XmlResourceCompiler:
                     if widgetClass == "MenuItem" and windowClass != "MenuBar":
                         if widgetName[:2] == "wx":
                             eventObject = 'id=wx.%s' % re.sub("^wx", "", widgetName)
-                        eventHandler = "On%s_%s" % (event[4:].capitalize(), widgetName)
+                        eventHandler = "On{}_{}".format(event[4:].capitalize(), widgetName)
                         if widgetName in vars: eventObject = "self.%s" % widgetName
                     else:
-                        eventHandler = "On%s_%s" % (event[4:].capitalize(), widgetName)
+                        eventHandler = "On{}_{}".format(event[4:].capitalize(), widgetName)
                         if widgetName in vars: eventObject = "self.%s" % widgetName
                     if not eventObject:
                         eventObject = "id=xrc.XRCID('%s')" % widgetName
@@ -633,7 +633,7 @@ class XmlResourceCompiler:
         linelng = 0
         for i in range(fileLen):
             s = buffer[i:i+1]
-            c = byte2int(s)
+            c = s[0]
             if s == b'\n':
                 tmp = s
                 linelng = 0
@@ -766,7 +766,7 @@ class XmlResourceCompiler:
             \n => \\n
             \r => \\r
             \t => \\t
-            \ => \\
+            \\ => \\
             " => \"
 
         Returns result as string, which is bytes in py2 or unicode in py3.
@@ -823,7 +823,7 @@ class XmlResourceCompiler:
                 mo = reEndBlock.match(l)
                 if mo:
                     if mo.groups()[0] != block:
-                        print("pywxrc: error: block mismatch: %s != %s" % (block, mo.groups()[0]))
+                        print("pywxrc: error: block mismatch: {} != {}".format(block, mo.groups()[0]))
                     block = None
         return ''.join(output)
 
@@ -849,14 +849,14 @@ class XmlResourceCompiler:
                         mo = reEndBlock.match(l)
                         if mo:
                             if mo.groups()[0] != block:
-                                print("pywxrc: error: block mismatch: %s != %s" % (block, mo.groups()[0]))
+                                print("pywxrc: error: block mismatch: {} != {}".format(block, mo.groups()[0]))
                             self.blocks[block] = "".join(blockLines)
                             block = None
 
             try:
                 outputFile = open(outputFilename, "wt")
-            except IOError:
-                raise IOError("Can't write output to '%s'" % outputFilename)
+            except OSError:
+                raise OSError("Can't write output to '%s'" % outputFilename)
         return outputFile
 
 
@@ -939,11 +939,11 @@ def main(args=None):
             sys.exit(1)
 
 
-    except IOError as exc:
-        print_("%s." % str(exc), file=sys.stderr)
+    except OSError as exc:
+        print("%s." % str(exc), file=sys.stderr)
     else:
         if outputFilename != "-":
-            print_("Resources written to %s." % outputFilename, file=sys.stderr)
+            print("Resources written to %s." % outputFilename, file=sys.stderr)
 
 if __name__ == "__main__":
     main(sys.argv[1:])

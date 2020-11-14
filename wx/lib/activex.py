@@ -155,7 +155,7 @@ class ActiveXCtrl(wx.msw.PyAxBaseWindow):
         if res == hr.S_OK:
             return True
         else:
-            return super(ActiveXCtrl, self).MSWTranslateMessage(msg)
+            return super().MSWTranslateMessage(msg)
 
 
     # TBD: Are the focus handlers needed?
@@ -170,7 +170,3 @@ class ActiveXCtrl(wx.msw.PyAxBaseWindow):
         self._evt_connections = None
 
 #------------------------------------------------------------------------------
-
-
-
-

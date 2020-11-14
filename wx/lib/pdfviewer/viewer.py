@@ -199,7 +199,7 @@ class pdfViewer(wx.ScrolledWindow):
             return BytesIO(stream)
 
         self.pdfpathname = ''
-        if isinstance(pdf_file, string_types):
+        if isinstance(pdf_file, str):
             # a filename/path string, save its name
             self.pdfpathname = pdf_file
             # remove comment from next line to test using a file-like object
@@ -470,7 +470,7 @@ class pdfViewer(wx.ScrolledWindow):
 
 #============================================================================
 
-class mupdfProcessor(object):
+class mupdfProcessor:
     """
     Create an instance of this class to open a PDF file, process the contents of
     each page and render each one on demand using the GPL mupdf library, which is
@@ -483,7 +483,7 @@ class mupdfProcessor(object):
         Could also be a string representing a path to a PDF file.
         """
         self.parent = parent
-        if isinstance(pdf_file, string_types):
+        if isinstance(pdf_file, str):
             # a filename/path string, pass the name to fitz.open
             pathname = pdf_file
             self.pdfdoc = fitz.open(pathname)
@@ -532,7 +532,7 @@ class mupdfProcessor(object):
 
 #============================================================================
 
-class pypdfProcessor(object):
+class pypdfProcessor:
     """
     Create an instance of this class to open a PDF file, process the contents of
     every page using PyPDF2 then render each one on demand
@@ -990,7 +990,7 @@ class pypdfProcessor(object):
 
 #----------------------------------------------------------------------------
 
-class pdfState(object):
+class pdfState:
     """
     Instance holds the current pdf graphics and text state. It can be
     saved (pushed) and restored (popped) by the owning parent

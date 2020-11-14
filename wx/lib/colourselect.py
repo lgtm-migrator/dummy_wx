@@ -120,7 +120,7 @@ EVT_COLOURSELECT = wx.PyEventBinder(wxEVT_COMMAND_COLOURSELECT, 1)
 
 #----------------------------------------------------------------------------
 
-class CustomColourData(object):
+class CustomColourData:
     """
     A simple container for tracking custom colours to be shown in the colour
     dialog, and which facilitates reuse of this collection across multiple
@@ -187,7 +187,7 @@ class ColourSelect(wx.lib.buttons.GenBitmapButton):
 
         size.width = size.width if size.width != -1 else w
         size.height = size.height if size.height != -1 else h
-        super(ColourSelect, self).__init__(parent, id, wx.Bitmap(w,h),
+        super().__init__(parent, id, wx.Bitmap(w,h),
                                  pos=pos, size=size, style=style,
                                  name='ColourSelect')
 
@@ -382,4 +382,3 @@ class ColourSelect(wx.lib.buttons.GenBitmapButton):
         # moved after dlg.Destroy, since who knows what the callback will do...
         if changed:
             self.OnChange()
-

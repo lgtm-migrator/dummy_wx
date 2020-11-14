@@ -120,5 +120,3 @@ Chris.Barker@noaa.gov
 """
 
 __version__ = "0.9.18"
-
-

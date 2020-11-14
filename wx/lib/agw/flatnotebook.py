@@ -1018,7 +1018,7 @@ class FNBDropSource(wx.DropSource):
 # FlatNotebooks.
 # ---------------------------------------------------------------------------- #
 
-class FNBDragInfo(object):
+class FNBDragInfo:
     """
     Stores all the information to allow drag and drop between different
     :class:`FlatNotebook` instances.
@@ -1074,7 +1074,7 @@ class FNBDropTarget(wx.DropTarget):
         wx.DropTarget.__init__(self)
 
         self._parent = parent
-        self._dataobject = wx.CustomDataObject(wx.DataFormat(six.u('FlatNotebook')))
+        self._dataobject = wx.CustomDataObject(wx.DataFormat('FlatNotebook'))
         self.SetDataObject(self._dataobject)
 
 
@@ -1103,7 +1103,7 @@ class FNBDropTarget(wx.DropTarget):
 # Contains parameters for every FlatNotebook page
 # ---------------------------------------------------------------------------- #
 
-class PageInfo(object):
+class PageInfo:
     """
     This class holds all the information (caption, image, etc...) belonging to a
     single tab in :class:`FlatNotebook`.
@@ -1703,7 +1703,7 @@ class TabNavigatorWindow(wx.Dialog):
 # Class FNBRenderer
 # ---------------------------------------------------------------------------- #
 
-class FNBRenderer(object):
+class FNBRenderer:
     """
     Parent class for the 6 renderers defined: `Standard`, `VC71`, `Fancy`, `Firefox 2`,
     `VC8` and `Ribbon`. This class implements the common methods of all 6 renderers.
@@ -2475,7 +2475,7 @@ class FNBRenderer(object):
 # appropriate one when drawing is needed
 # ---------------------------------------------------------------------------- #
 
-class FNBRendererMgr(object):
+class FNBRendererMgr:
     """
     This class represents a manager that handles all the 6 renderers defined
     and calls the appropriate one when drawing is needed.
@@ -5836,7 +5836,7 @@ class PageContainer(wx.Panel):
                     self._isdragging = True
                     draginfo = FNBDragInfo(self, tabIdx)
                     drginfo = pickle.dumps(draginfo)
-                    dataobject = wx.CustomDataObject(wx.DataFormat(six.u('FlatNotebook')))
+                    dataobject = wx.CustomDataObject(wx.DataFormat('FlatNotebook'))
                     dataobject.SetData(drginfo)
                     dragSource = FNBDropSource(self)
                     dragSource.SetData(dataobject)
@@ -6549,7 +6549,7 @@ class PageContainer(wx.Panel):
         if page < len(self._pagesInfoVec):
             return self._pagesInfoVec[page].GetCaption()
         else:
-            return six.u('')
+            return ''
 
 
     def SetPageText(self, page, text):
@@ -6667,4 +6667,3 @@ class FlatNotebookCompatible(FlatNotebook):
         """
 
         FlatNotebook.SetSelection(self, page)
-

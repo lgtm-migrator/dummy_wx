@@ -667,9 +667,9 @@ class KnobCtrl(BufferedWindow):
 
         flrect = maxsize
 
-        rstep = float((r2 - r1)) / flrect
-        gstep = float((g2 - g1)) / flrect
-        bstep = float((b2 - b1)) / flrect
+        rstep = float(r2 - r1) / flrect
+        gstep = float(g2 - g1) / flrect
+        bstep = float(b2 - b1) / flrect
 
         rf, gf, bf = 0, 0, 0
         dc.SetBrush(wx.TRANSPARENT_BRUSH)

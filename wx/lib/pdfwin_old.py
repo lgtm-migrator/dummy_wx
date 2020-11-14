@@ -25,7 +25,7 @@ def get_acroversion():
         acrokeys, acroversions = [], []
         try:
             adobesoft = _winreg.OpenKey(regKey, r'Software\Adobe')
-        except WindowsError:
+        except OSError:
             regKey = _winreg.HKEY_CURRENT_USER
             adobesoft = _winreg.OpenKey(regKey, r'Software\Adobe')
 

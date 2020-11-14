@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         auibar.py
 # Purpose:
@@ -70,7 +69,7 @@ class CommandToolBarEvent(wx.PyCommandEvent):
         :param integer `win_id`: the window identification number.
         """
 
-        if type(command_type) in six.integer_types:
+        if type(command_type) in (int,):
             wx.PyCommandEvent.__init__(self, command_type, win_id)
         else:
             wx.PyCommandEvent.__init__(self, command_type.GetEventType(), command_type.GetId())
@@ -160,7 +159,7 @@ class AuiToolBarEvent(CommandToolBarEvent):
 
         CommandToolBarEvent.__init__(self, command_type, win_id)
 
-        if type(command_type) in six.integer_types:
+        if type(command_type) in (int,):
             self.notify = wx.NotifyEvent(command_type, win_id)
         else:
             self.notify = wx.NotifyEvent(command_type.GetEventType(), command_type.GetId())
@@ -269,7 +268,7 @@ class ToolbarCommandCapture(wx.EvtHandler):
 
 # ----------------------------------------------------------------------
 
-class AuiToolBarItem(object):
+class AuiToolBarItem:
     """
     AuiToolBarItem is a toolbar element.
 
@@ -738,7 +737,7 @@ class AuiToolBarItem(object):
 
 # ----------------------------------------------------------------------
 
-class AuiDefaultToolBarArt(object):
+class AuiDefaultToolBarArt:
     """
     Toolbar art provider code - a tab provider provides all drawing functionality to the :class:`AuiToolBar`.
     This allows the :class:`AuiToolBar` to have a plugable look-and-feel.
@@ -4017,4 +4016,3 @@ class AuiToolBar(wx.Control):
 
         manager = self.GetAuiManager()
         manager.StopPreviewTimer()
-

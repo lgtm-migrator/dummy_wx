@@ -18,10 +18,7 @@ This module contains a custom dialog class used to personalize the appearance of
 import wx
 import six
 
-if six.PY2:
-    from UserDict import UserDict
-else:
-    from collections import UserDict
+from collections import UserDict
 
 from .artmanager import ArtManager
 from .fmresources import *
@@ -536,5 +533,3 @@ class FMCustomizeDlg(wx.Dialog):
             ArtManager.Get().SetRaiseToolbar(event.IsChecked())
             mb.Refresh()
             return
-
-

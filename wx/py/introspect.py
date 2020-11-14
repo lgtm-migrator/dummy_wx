@@ -208,7 +208,7 @@ def getCallTip(command='', locals=None):
         docpieces = doc.split('\n\n')
         tip2 = docpieces[0]
         tip3 = '\n\n'.join(docpieces[1:])
-        tip = '%s%s\n\n%s' % (tip1, tip2, tip3)
+        tip = f'{tip1}{tip2}\n\n{tip3}'
     else:
         tip = tip1
     calltip = (name, argspec[1:-1], tip.strip())
@@ -307,7 +307,7 @@ def getTokens(command):
     """Return list of token tuples for command."""
 
     # In case the command is unicode try encoding it
-    if isinstance(command,  string_types):
+    if isinstance(command,  str):
         try:
             command = command.encode('utf-8')
         except UnicodeEncodeError:
@@ -321,13 +321,8 @@ def getTokens(command):
     #   tokens = [token for token in tokenize.generate_tokens(f.readline)]
     # because of need to append as much as possible before TokenError.
     try:
-        if not PY3:
-            def eater(*args):
-                tokens.append(args)
-            tokenize.tokenize_loop(f.readline, eater)
-        else:
-            for t in tokenize.tokenize(f.readline):
-                tokens.append(t)
+        for t in tokenize.tokenize(f.readline):
+            tokens.append(t)
     except tokenize.TokenError:
         # This is due to a premature EOF, which we expect since we are
         # feeding in fragments of Python code.

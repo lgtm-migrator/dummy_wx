@@ -259,4 +259,3 @@ class FlashWindow(wx.lib.activex.ActiveXCtrl):
     def _set_MovieData(self, MovieData):
         self.ctrl.MovieData = MovieData
     moviedata = property(_get_MovieData, _set_MovieData)
-

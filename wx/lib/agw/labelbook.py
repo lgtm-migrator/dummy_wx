@@ -339,7 +339,7 @@ class ImageNotebookEvent(wx.PyCommandEvent):
 # Class ImageInfo
 # ---------------------------------------------------------------------------- #
 
-class ImageInfo(object):
+class ImageInfo:
     """
     This class holds all the information (caption, image, etc...) belonging to a
     single tab in :class:`LabelBook`.
@@ -3024,5 +3024,3 @@ class LabelBook(FlatBookBase):
 
         self._pages.Refresh()
         event.Skip()
-
-

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         art_aui.py
 # Purpose:
@@ -1280,4 +1279,3 @@ class RibbonAUIArtProvider(RibbonMSWArtProvider):
             dc.DrawBitmap(self._toolbar_drop_bitmap, bg_rect.x + avail_width + 2, bg_rect.y + (bg_rect.height / 2) - 2, True)
 
         dc.DrawBitmap(bitmap, bg_rect.x + (avail_width - bitmap.GetWidth()) / 2, bg_rect.y + (bg_rect.height - bitmap.GetHeight()) / 2, True)
-

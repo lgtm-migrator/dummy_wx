@@ -1,6 +1,4 @@
-
-
-class PyEventBinder(object):
+class PyEventBinder:
 	def __init__(self, evtType=None, expectedIDs=0):
 		pass
 

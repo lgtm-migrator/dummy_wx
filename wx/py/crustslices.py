@@ -286,8 +286,8 @@ class CrustSlicesFrame(crust.CrustFrame):
             file=wx.FileSelector('Open a PySlices File',
                                  wildcard='*.pyslices',
                                  default_path=self.currentDirectory)
-        if file!=None and file!=u'':
-            with open(file,'r') as fid:
+        if file!=None and file!='':
+            with open(file) as fid:
                 self.sliceshell.LoadPySlicesFile(fid)
             self.currentDirectory = os.path.split(file)[0]
             self.SetTitle( os.path.split(file)[1] + ' - PySlices')

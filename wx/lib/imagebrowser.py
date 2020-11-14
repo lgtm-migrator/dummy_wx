@@ -84,7 +84,7 @@ if 'wxOSX' in wx.PlatformInfo:
     import wx.lib.buttons
     class BitmapButton(wx.lib.buttons.GenBitmapButton):
         def __init__(self, *args, **kw):
-            super(BitmapButton, self).__init__(*args, **kw)
+            super().__init__(*args, **kw)
             self.SetBezelWidth(1)
             self.SetInitialSize()
             print(self.GetSize(), self.GetBestSize())
@@ -796,7 +796,7 @@ class FindFiles:
             if ch == "*":
                 f = f + ".*"
             elif ch == ".":
-                f = f + "\."
+                f = f + r"\."
             elif ch == "?":
                 f = f + "."
             else:
@@ -850,4 +850,3 @@ IMG_CATALOG['CropFrame'] = PyEmbeddedImage(
     "iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAA3NCSVQICAjb4U/gAAAASUlE"
     "QVQYlb2QMQrAQAgEZ0P+q0/RF5tCuIMUh2myhcgyjCAMIiAiDoS7XxPTCLrXZmaAJKCqgMz8"
     "YHpD7ThBkvpcz93z6wtGeQD/sQ8bfXs8NAAAAABJRU5ErkJggg==")
-

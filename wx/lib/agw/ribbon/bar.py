@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         bar.py
 # Licence:      wxWindows license
@@ -607,7 +606,7 @@ class RibbonBar(RibbonControl):
     def SetActivePage(self, page):
         """ See comments on :meth:`~RibbonBar.SetActivePageByIndex` and :meth:`~RibbonBar.SetActivePageByPage`. """
 
-        if isinstance(page, six.integer_types):
+        if isinstance(page, int):
             return self.SetActivePageByIndex(page)
 
         return self.SetActivePageByPage(page)
@@ -1257,5 +1256,3 @@ class RibbonBar(RibbonControl):
         """ Returns the default border style for :class:`RibbonBar`. """
 
         return wx.BORDER_NONE
-
-

@@ -96,7 +96,7 @@ from wx.lib.inspection import InspectionTool
 
 #----------------------------------------------------------------------------
 
-class InspectionMixin(object):
+class InspectionMixin:
     """
     This class is intended to be used as a mix-in with the :class:`App`.
     When used it will add the ability to popup a
@@ -181,4 +181,3 @@ class InspectableApp(wx.App, InspectionMixin):
         return True
 
 #---------------------------------------------------------------------------
-

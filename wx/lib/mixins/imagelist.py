@@ -72,6 +72,3 @@ class MagicImageList:
         '''Get the actual icon object for a node'''
         if hasattr (node,"DIAGRAMICON"):
             return node.DIAGRAMICON
-
-
-

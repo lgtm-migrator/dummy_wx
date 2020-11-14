@@ -1,4 +1,3 @@
-
 #
 #  **** THIS IS STILL A WIP ****
 #
@@ -79,7 +78,7 @@ class TreeListCtrl(HTL.HyperTreeList):
                  pos=wx.DefaultPosition, size=wx.DefaultSize,
                  style=0, agwStyle=wx.TR_DEFAULT_STYLE,
                  validator=wx.DefaultValidator, name="treelistctrl"):
-        super(TreeListCtrl, self).__init__(parent, id, pos, size, style,
+        super().__init__(parent, id, pos, size, style,
                                            agwStyle, validator, name)
 
 

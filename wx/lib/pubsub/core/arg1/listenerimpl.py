@@ -27,16 +27,16 @@ class Message:
 class Listener(ListenerBase):
     """
     Wraps a callable so it can be stored by weak reference and introspected
-    to verify that it adheres to a topic's MDS. 
-    
-    A Listener instance has the same hash value as the callable that it wraps. 
+    to verify that it adheres to a topic's MDS.
 
-    A callable will be given data when a message is sent to it. In the arg1 
-    protocol only one object can be sent via sendMessage, it is put in a 
-    Message object in its "data" field, the listener receives the Message 
-    object. 
+    A Listener instance has the same hash value as the callable that it wraps.
+
+    A callable will be given data when a message is sent to it. In the arg1
+    protocol only one object can be sent via sendMessage, it is put in a
+    Message object in its "data" field, the listener receives the Message
+    object.
     """
-    
+
     def __call__(self, actualTopic, data):
         """Call the listener with data. Note that it raises RuntimeError
         if listener is dead. Should always return True (False would require
@@ -78,7 +78,7 @@ class ListenerValidator(ValidatorBase):
         numReqdArgs = paramsInfo.numRequired
         if numReqdArgs > 1:
             allReqd = paramsInfo.getRequiredArgs()
-            msg = 'only one of %s can be a required agument' % (allReqd,)
+            msg = f'only one of {allReqd} can be a required agument'
             raise ListenerMismatchError(msg, listener, allReqd)
 
         # if no required args but listener has *args, then we
@@ -90,8 +90,6 @@ class ListenerValidator(ValidatorBase):
         needArgName = policies.msgDataArgName
         firstArgName = paramsInfo.allParams[0]
         if (needArgName is not None) and firstArgName != needArgName:
-            msg = 'listener arg name must be "%s" (is "%s")' % (needArgName, firstArgName)
+            msg = f'listener arg name must be "{needArgName}" (is "{firstArgName}")'
             effTopicArgs = [needArgName]
             raise ListenerMismatchError(msg, listener, effTopicArgs)
-
-

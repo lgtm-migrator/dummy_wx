@@ -971,4 +971,3 @@ class Editor(wx.ScrolledWindow):
 
     def SelectNotify(self, Selecting, SelectionBegin, SelectionEnd):
         pass
-

@@ -292,7 +292,7 @@ class DispatcherListing(wx.TextCtrl):
         if not self:
             dispatcher.disconnect(receiver=self.spy)
             return
-        text = '%r from %s' % (signal, sender)
+        text = f'{signal!r} from {sender}'
         self.SetInsertionPointEnd()
         start, end = self.GetSelection()
         if start != end:
@@ -400,4 +400,3 @@ class CrustFrame(frame.Frame, frame.ShellFrameMixin):
         if self.config is not None:
             self.SaveSettings(force=True)
             self.config.Flush()
-

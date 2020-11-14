@@ -727,5 +727,3 @@ class GradientButton(wx.Control):
         evt.SetButtonObj(self)
         evt.SetEventObject(self)
         self.GetEventHandler().ProcessEvent(evt)
-
-

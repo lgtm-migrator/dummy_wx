@@ -32,12 +32,8 @@ import os
 import atexit
 import six
 
-if six.PY3:
-    from urllib.request import urlopen
-    from urllib.error import URLError
-else:
-    from urllib2 import urlopen
-    from urllib2 import URLError
+from urllib.request import urlopen
+from urllib.error import URLError
 
 from wx.lib.dialogs import MultiMessageBox
 
@@ -65,7 +61,7 @@ class UpdateAbortedError(RuntimeError):
     pass
 
 
-class SoftwareUpdate(object):
+class SoftwareUpdate:
     """
     Mix this class with :class:`App` and call :meth:`InitForUpdates` from the derived class'
     OnInit method. Be sure that the :class:`App` has set a display name
@@ -214,7 +210,7 @@ class SoftwareUpdate(object):
             # be run *after* theirs. So we'll create an instance of an info object
             # and register its method now, and then fill in the details below
             # once we decide what we want to do.
-            class RestartInfo(object):
+            class RestartInfo:
                 def __init__(self):
                     self.exe = None
                 def restart(self):
@@ -357,5 +353,3 @@ class SoftwareUpdate(object):
                         break
 
 #----------------------------------------------------------------------
-
-

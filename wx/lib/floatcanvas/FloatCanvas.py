@@ -42,7 +42,6 @@ Many samples are available in the `wxPhoenix/samples/floatcanvas` folder.
 
 """
 
-from __future__ import division
 
 import sys
 mac = sys.platform.startswith("darwin")
@@ -90,7 +89,7 @@ class _MouseEvent(wx.PyCommandEvent):
     """
 
     def __init__(self, EventType, NativeEvent, WinID, Coords = None):
-        super(_MouseEvent, self).__init__()
+        super().__init__()
 
         self.SetEventType( EventType )
         self._NativeEvent = NativeEvent
@@ -925,7 +924,7 @@ class FloatCanvas(wx.Panel):
         Lengths should be a NX2 array of (x,y) coordinates, or
         a 2-tuple, or sequence of 2-tuples.
         """
-        return  ( (N.asarray(Lengths, N.float)*self.TransformVector) ).astype('i')
+        return  ( N.asarray(Lengths, N.float)*self.TransformVector ).astype('i')
 
     def ScalePixelToWorld(self,Lengths):
         """
@@ -1022,5 +1021,3 @@ def _makeFloatCanvasAddMethods(): ## lrk's code for doing this in module __init_
         FloatCanvas.__dict__[methodname].__doc__ = docstring
 
 _makeFloatCanvasAddMethods()
-
-

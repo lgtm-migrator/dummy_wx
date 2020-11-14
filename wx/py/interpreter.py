@@ -166,5 +166,3 @@ class InterpreterAlaCarte(Interpreter):
                              stdin=stdin, stdout=stdout, stderr=stderr)
         sys.ps1 = ps1
         sys.ps2 = ps2
-
-

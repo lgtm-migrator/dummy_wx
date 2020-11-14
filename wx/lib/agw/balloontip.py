@@ -487,7 +487,7 @@ class BalloonFrame(wx.Frame):
 # This Is The Main BalloonTip Implementation
 # ---------------------------------------------------------------
 
-class BalloonTip(object):
+class BalloonTip:
     """
     :class:`BalloonTip` is a class that allows you to display tooltips in a balloon style
     window.
@@ -1153,5 +1153,3 @@ if __name__ == '__main__':
     frame.Show()
 
     app.MainLoop()
-
-

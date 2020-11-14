@@ -12,7 +12,6 @@ but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 """
 
-from __future__ import absolute_import
 
 # 12/14/2003 - Jeff Grimmett (grimmtooth@softhome.net)
 #
@@ -43,7 +42,7 @@ ColourChangedEventBase, EVT_COLOUR_CHANGED = newevent.NewEvent()
 class ColourChangedEvent(ColourChangedEventBase):
     """Adds GetColour()/GetValue() for compatibility with ColourPickerCtrl and colourselect"""
     def __init__(self, newColour):
-        super(ColourChangedEvent, self).__init__(newColour = newColour)
+        super().__init__(newColour = newColour)
 
     def GetColour(self):
         return self.newColour
@@ -571,7 +570,7 @@ def main():
 
     class CCTestDialog(wx.Dialog):
         def __init__(self, parent, initColour):
-            super(CCTestDialog, self).__init__(parent, title="Pick A Colo(u)r")
+            super().__init__(parent, title="Pick A Colo(u)r")
 
             sizer = wx.BoxSizer(wx.VERTICAL)
             self.chooser = PyColourChooser(self, wx.ID_ANY)
@@ -583,7 +582,7 @@ def main():
 
     class CCTestFrame(wx.Frame):
         def __init__(self):
-            super(CCTestFrame, self).__init__(None, -1, 'PyColourChooser Test')
+            super().__init__(None, -1, 'PyColourChooser Test')
             sizer = wx.BoxSizer(wx.VERTICAL)
 
             sizer.Add(wx.StaticText(self, label="CLICK ME"), 0, wx.CENTER)

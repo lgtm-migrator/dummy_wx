@@ -96,5 +96,3 @@ class ExcPublisher(IListenerExcHandler):
         Traceback to all subscribers of topic self.topicUncaughtExc. """
         tbInfo = TracebackInfo()
         self.__topicObj.publish(listenerStr=listenerID, excTraceback=tbInfo)
-
-

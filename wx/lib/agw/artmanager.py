@@ -37,7 +37,7 @@ if wx.Platform == "__WXMSW__":
         _libimported = None
 
 
-class DCSaver(object):
+class DCSaver:
     """
     Construct a DC saver. The dc is copied as-is.
     """
@@ -66,7 +66,7 @@ class DCSaver(object):
 # Class RendererBase
 # ---------------------------------------------------------------------------- #
 
-class RendererBase(object):
+class RendererBase:
     """ Base class for all theme renderers. """
 
     def __init__(self):
@@ -2106,5 +2106,3 @@ class ArtManager(wx.EvtHandler):
         """
 
         self._raiseTB = rais
-
-

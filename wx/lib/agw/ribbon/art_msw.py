@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         art_msw.py
 # Purpose:
@@ -80,7 +79,7 @@ def SingleLine(dc, rect, start, finish):
     dc.DrawLine(start.x + rect.x, start.y + rect.y, finish.x + rect.x, finish.y + rect.y)
 
 
-class RibbonMSWArtProvider(object):
+class RibbonMSWArtProvider:
 
     def __init__(self, set_colour_scheme=True):
 
@@ -2732,4 +2731,3 @@ class RibbonMSWArtProvider(object):
             dropdown_region = wx.Rect(0, 0, 0, 0)
 
         return size, dropdown_region
-

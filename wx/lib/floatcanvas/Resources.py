@@ -316,4 +316,3 @@ def getMagMinus16Bitmap():
 def getMagMinus16Image():
     stream = BytesIO(getMagMinus16Data())
     return ImageFromStream(stream)
-

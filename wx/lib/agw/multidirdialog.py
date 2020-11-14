@@ -607,9 +607,8 @@ if __name__ == '__main__':
 
     paths = dlg.GetPaths()
     for indx, path in enumerate(paths):
-        print(("Path %d: %s"%(indx+1, path)))
+        print("Path %d: %s"%(indx+1, path))
 
     dlg.Destroy()
 
     app.MainLoop()
-

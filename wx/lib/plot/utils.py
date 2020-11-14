@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # pylint: disable=E1101, C0330, C0103
 #   E1101: Module X has no Y member
 #   C0330: Wrong continued indentation
@@ -25,7 +24,7 @@ import numpy as np
 class PlotPendingDeprecation(wx.wxPyDeprecationWarning):
     pass
 
-class DisplaySide(object):
+class DisplaySide:
     """
     Generic class for describing which sides of a box are displayed.
 
@@ -86,7 +85,7 @@ class DisplaySide(object):
             err_str = "attribute must be one of {}"
             raise NameError(err_str.format(self.valid_names))
         if not isinstance(value, bool):
-            raise TypeError("'{}' must be a boolean".format(name))
+            raise TypeError(f"'{name}' must be a boolean")
         self.__dict__[name] = value
 
     def __len__(self):
@@ -116,7 +115,7 @@ class DisplaySide(object):
 
 # TODO: replace with wx.DCPenChanger/wx.DCBrushChanger, etc.
 #       Alternatively, replace those with this function...
-class TempStyle(object):
+class TempStyle:
     """
     Decorator / Context Manager to revert pen or brush changes.
 
@@ -164,7 +163,7 @@ class TempStyle(object):
     def __init__(self, which='both', dc=None):
         if which not in self._valid_types:
             raise ValueError(
-                "`which` must be one of {}".format(self._valid_types)
+                f"`which` must be one of {self._valid_types}"
             )
         self.which = which
         self.dc = dc

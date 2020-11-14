@@ -12,6 +12,3 @@
 #
 # o 2.5 compatibility update.
 #
-
-
-

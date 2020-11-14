@@ -146,7 +146,7 @@ NullGraphicsPath = None
 # This class probably isn't needed at all anymore since we'll just use None
 # instead of the Null objects, but we'll keep it anyway in case it's needed to
 # help write compatible code.
-class GraphicsObject(object):
+class GraphicsObject:
     """
     Base class for the other ``Graphics*`` classes.
 
@@ -1069,7 +1069,7 @@ class GraphicsPath(GraphicsObject):
 
 #---------------------------------------------------------------------------
 
-class GraphicsGradientStop(object):
+class GraphicsGradientStop:
     """
     This class represents a single color-stop in a gradient brush. The
     position is a floating point value between zero and 1.0 which represents
@@ -1097,7 +1097,7 @@ class GraphicsGradientStop(object):
 
 
 
-class GraphicsGradientStops(object):
+class GraphicsGradientStops:
     """
     An ordered collection of gradient color stops
     (i.e. a :class:`GraphicsGradientStop`) for a gradient brush. There is
@@ -1886,7 +1886,7 @@ def _makeColour(colour):
     Helper which makes a wx.Colour from any of the allowed typemaps (string,
     tuple, etc.)
     """
-    if isinstance(colour, (six.string_types, tuple)):
+    if isinstance(colour, ((str,), tuple)):
         return wx.NamedColour(colour)
     else:
         return colour
@@ -1899,7 +1899,7 @@ def _colourToValues(c):
     return tuple( [x/255.0 for x in c.Get(True)] )
 
 
-class _OffsetHelper(object):
+class _OffsetHelper:
     """A helper used by the context class."""
     def __init__(self, ctx):
         self.ctx = ctx

@@ -431,12 +431,9 @@ class Shell(editwindow.EditWindow):
         """Execute the user's PYTHONSTARTUP script if they have one."""
         if startupScript and os.path.isfile(startupScript):
             text = 'Startup script executed: ' + startupScript
-            if PY3:
-                self.push('print(%r)' % text)
-                self.push('with open(%r, "r") as f:\n'
-                          '    exec(f.read())\n' % (startupScript))
-            else:
-                self.push('print(%r); execfile(%r)' % (text, startupScript))
+            self.push('print(%r)' % text)
+            self.push('with open(%r, "r") as f:\n'
+                      '    exec(f.read())\n' % (startupScript))
             self.interp.startupScript = startupScript
         else:
             self.push('')
@@ -761,7 +758,7 @@ class Shell(editwindow.EditWindow):
         import re
 
         #sort out only "good" words
-        newlist = re.split("[ \.\[\]=}(\)\,0-9\"]", joined)
+        newlist = re.split("[ \\.\\[\\]=}(\\)\\,0-9\"]", joined)
 
         #length > 1 (mix out "trash")
         thlist = []

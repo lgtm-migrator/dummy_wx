@@ -52,7 +52,7 @@ else:
         MAXSIZE = int((1 << 31) - 1)
     else:
         # It's possible to have sizeof(long) != sizeof(Py_ssize_t).
-        class X(object):
+        class X:
             def __len__(self):
                 return 1 << 31
         try:
@@ -77,7 +77,7 @@ def _import_module(name):
     return sys.modules[name]
 
 
-class _LazyDescr(object):
+class _LazyDescr:
 
     def __init__(self, name):
         self.name = name
@@ -93,7 +93,7 @@ class _LazyDescr(object):
 class MovedModule(_LazyDescr):
 
     def __init__(self, name, old, new=None):
-        super(MovedModule, self).__init__(name)
+        super().__init__(name)
         if PY3:
             if new is None:
                 new = name
@@ -108,7 +108,7 @@ class MovedModule(_LazyDescr):
 class MovedAttribute(_LazyDescr):
 
     def __init__(self, name, old_mod, new_mod, old_attr=None, new_attr=None):
-        super(MovedAttribute, self).__init__(name)
+        super().__init__(name)
         if PY3:
             if new_mod is None:
                 new_mod = name
@@ -348,7 +348,7 @@ def remove_move(name):
         try:
             del moves.__dict__[name]
         except KeyError:
-            raise AttributeError("no such move, %r" % (name,))
+            raise AttributeError(f"no such move, {name!r}")
 
 
 if PY3:
@@ -408,7 +408,7 @@ else:
     def create_bound_method(func, obj):
         return types.MethodType(func, obj, obj.__class__)
 
-    class Iterator(object):
+    class Iterator:
 
         def next(self):
             return type(self).__next__(self)
@@ -578,7 +578,7 @@ def add_metaclass(metaclass):
 
 def getexcobj():
     return sys.exc_info()[1]
-    
+
 if PY3:
     xrange = range
 else:
@@ -598,11 +598,10 @@ else:
         return dictObj.values()
     def nextiter(container):
         return container.next()
-        
+
 if PY3:
     def isstring(obj):
         return isinstance(obj, str)
 else:
     def isstring(obj):
         return isinstance(obj, (str, unicode))
-

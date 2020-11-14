@@ -21,8 +21,3 @@ EACH PAGE containing the icons (at the bottom of the page for example).
 The HTML code for this link is:
 
   <a href="http://www.axialis.com/free/icons">Icons</a> by <a href="http://www.axialis.com">Axialis Team</a>
-
-
-
-
-

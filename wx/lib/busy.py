@@ -19,7 +19,7 @@ from wx.lib.stattext import GenStaticText as StaticText
 #---------------------------------------------------------------------------
 
 
-class BusyInfo(object):
+class BusyInfo:
     """
     This class is just like :class:`wx.BusyInfo`, except that its default
     size is smaller, (unless the size of the message requires a larger window

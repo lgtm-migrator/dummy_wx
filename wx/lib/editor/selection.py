@@ -40,5 +40,3 @@ def Selection(SelectBegin,SelectEnd, sx, width, line, data):
     if (eCol < end):
         pieces += [(data[eCol:end], False)]
     return pieces
-
-

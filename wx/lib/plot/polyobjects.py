@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # pylint: disable=E1101, C0330, C0103
 #   E1101: Module X has no Y member
 #   C0330: Wrong continued indentation
@@ -36,7 +35,7 @@ from .utils import TempStyle
 from .utils import pairwise
 
 
-class PolyPoints(object):
+class PolyPoints:
     """
     Base Class for lines and markers.
 
@@ -607,7 +606,7 @@ class PolyMarker(PolyPoints):
         return (s, s)
 
     def _drawmarkers(self, dc, coords, marker, size=1):
-        f = getattr(self, "_{}".format(marker))
+        f = getattr(self, f"_{marker}")
         f(dc, coords, size)
 
     def _circle(self, dc, coords, size=1):
@@ -1197,7 +1196,7 @@ class PolyBoxPlot(PolyPoints):
         dc.DrawRectangleList(rect.astype(np.int32))
 
 
-class PlotGraphics(object):
+class PlotGraphics:
     """
     Creates a PlotGraphics object.
 

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # pylint: disable=E1101, C0330, C0103
 #   E1101: Module X has no Y member
 #   C0330: Wrong continued indentation
@@ -301,7 +300,7 @@ def _draw10Objects():
 # ---------------------------------------------------------------------------
 ### Demo Application
 # ---------------------------------------------------------------------------
-class PlotDemoApp(object):
+class PlotDemoApp:
     def __init__(self):
         self.app = wx.App()
         self.frame = PlotDemoMainFrame(None, -1, "PlotCanvas")
@@ -482,7 +481,7 @@ class PlotDemoMainFrame(wx.Frame):
                          "Bottom+Left", "All")
         self.axesSubMenu = submenu
         for _i, item in enumerate(submenu_items, 2401):
-            submenu.AppendCheckItem(_i, item, "Enables {} axis".format(item))
+            submenu.AppendCheckItem(_i, item, f"Enables {item} axis")
             submenu.Check(_i, True)
 
         self.Bind(wx.EVT_MENU, self.OnEnableAxesBottom, id=2401)

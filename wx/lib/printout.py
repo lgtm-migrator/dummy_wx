@@ -29,7 +29,7 @@ import  wx
 
 import six
 
-class PrintBase(object):
+class PrintBase:
     def SetPrintFont(self, font):      # set the DC font parameters
         fattr = font["Attr"]
         if fattr[0] == 1:
@@ -273,7 +273,7 @@ class PrintTableDraw(wx.ScrolledWindow, PrintBase):
         self.column.append(pos_x)
 
         #module logic expects two dimensional data -- fix input if needed
-        if isinstance(self.data, six.string_types):
+        if isinstance(self.data, str):
             self.data = [[copy.copy(self.data)]] # a string becomes a single cell
         try:
             rows = len(self.data)
@@ -282,7 +282,7 @@ class PrintTableDraw(wx.ScrolledWindow, PrintBase):
             rows = 1
         first_value = self.data[0]
 
-        if isinstance(first_value, six.string_types): # a sequence of strings
+        if isinstance(first_value, str): # a sequence of strings
             if self.label == [] and self.set_column == []:
                 data = []
                 for x in self.data:     #becomes one column
@@ -562,7 +562,7 @@ class PrintTableDraw(wx.ScrolledWindow, PrintBase):
         self.col = 0
         max_y = 0
         for vtxt in row_val:
-            if not isinstance(vtxt, six.string_types):
+            if not isinstance(vtxt, str):
                 vtxt = str(vtxt)
             self.region = self.column[self.col+1] - self.column[self.col]
             self.indent = self.column[self.col]
@@ -664,7 +664,7 @@ class PrintTableDraw(wx.ScrolledWindow, PrintBase):
         self.sizeh = DC.MaxX()
 
 
-class PrintTable(object):
+class PrintTable:
     def __init__(self, parentFrame=None):
         self.data = []
         self.set_column = []
@@ -1003,7 +1003,7 @@ class PrintTable(object):
         self.ptwidth = width
         self.ptheight = height
 
-class PrintGrid(object):
+class PrintGrid:
     def __init__(self, parent, grid, format = [], total_col = None, total_row = None):
         if total_row is None:
             total_row = grid.GetNumberRows()
@@ -1064,10 +1064,10 @@ class SetPrintout(wx.Printout):
         self.end_pg = 1000
 
     def OnBeginDocument(self, start, end):
-        return super(SetPrintout, self).OnBeginDocument(start, end)
+        return super().OnBeginDocument(start, end)
 
     def OnEndDocument(self):
-        super(SetPrintout, self).OnEndDocument()
+        super().OnEndDocument()
 
     def HasPage(self, page):
         try:
@@ -1087,7 +1087,7 @@ class SetPrintout(wx.Printout):
         return (str_pg, end_pg, str_pg, end_pg)
 
     def OnPreparePrinting(self):
-        super(SetPrintout, self).OnPreparePrinting()
+        super().OnPreparePrinting()
 
     def OnBeginPrinting(self):
         dc = self.GetDC()
@@ -1103,7 +1103,7 @@ class SetPrintout(wx.Printout):
         scaleY = float(h) / 1000
         self.printUserScale = min(scaleX, scaleY)
 
-        super(SetPrintout, self).OnBeginPrinting()
+        super().OnBeginPrinting()
 
     def GetSize(self):
         self.psizew, self.psizeh = self.GetPPIPrinter()

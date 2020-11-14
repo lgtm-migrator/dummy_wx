@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         gallery.py
 # Purpose:
@@ -107,7 +106,7 @@ class RibbonGalleryEvent(wx.PyCommandEvent):
         self._item = item
 
 
-class RibbonGalleryItem(object):
+class RibbonGalleryItem:
 
     def __init__(self):
 
@@ -969,5 +968,3 @@ class RibbonGallery(RibbonControl):
         """ Returns the default border style for :class:`RibbonGallery`. """
 
         return wx.BORDER_NONE
-
-

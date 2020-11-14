@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Name:         CDate.py
 # Purpose:      Date and Calendar classes
 #
@@ -15,7 +14,6 @@
 #               in a string format, then an error was raised.
 #
 """Date and calendar classes and date utitility methods."""
-from __future__ import division
 import time
 
 # I18N
@@ -165,7 +163,7 @@ def daysPerMonth(month, year):
     return ndays
 
 
-class now(object):
+class now:
     """A now date class"""
     def __init__(self):
         """
@@ -183,7 +181,7 @@ class now(object):
         self.julian = julianDay(self.year, self.month, self.day)
 
 
-class Date(object):
+class Date:
     """A date class"""
     def __init__(self, year, month, day):
         """

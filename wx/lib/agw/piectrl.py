@@ -378,7 +378,7 @@ class PieCtrlLegend(wx.Window):
 # Colour And Label.
 #----------------------------------------------------------------------
 
-class PiePart(object):
+class PiePart:
     """
     This class handles the legend segments properties, such as value,
     colour and label.

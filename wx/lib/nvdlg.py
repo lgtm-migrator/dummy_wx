@@ -152,5 +152,3 @@ if __name__ == '__main__':
         print(dlg.username, dlg.passwd)
     dlg.Destroy()
     app.MainLoop()
-
-

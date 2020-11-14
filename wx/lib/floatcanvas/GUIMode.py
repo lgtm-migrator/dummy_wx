@@ -28,7 +28,7 @@ from . import FCEvents, Resources
 from .Utilities import BBox
 
 
-class Cursors(object):
+class Cursors:
     """
     Class to hold the standard Cursors
 
@@ -62,7 +62,7 @@ class Cursors(object):
             self.MagMinusCursor = wx.Cursor(img)
 
 
-class GUIBase(object):
+class GUIBase:
     """
     Basic Mouse mode and baseclass for other GUImode.
 

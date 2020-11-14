@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         lines.py
 # Purpose:      LineShape class
@@ -79,7 +78,7 @@ class LineControlPoint(ControlPoint):
 
 
 
-class ArrowHead(object):
+class ArrowHead:
     """
     The arrow head class.
     """
@@ -1806,4 +1805,3 @@ class LineShape(Shape):
             labelShape.FormatText(dc, s, i)
             self.DrawRegion(dc, labelShape._shapeRegion, xx, yy)
         return True
-

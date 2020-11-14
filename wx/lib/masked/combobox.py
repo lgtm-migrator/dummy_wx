@@ -478,10 +478,10 @@ class BaseMaskedComboBox( wx.ComboBox, MaskedEditMixin ):
         penalty.
         """
         if self._mask:
-            if not isinstance(choice, six.string_types):
+            if not isinstance(choice, str):
                 raise TypeError('%s: choices must be a sequence of strings' % str(self._index))
             elif not self.IsValid(choice):
-                raise ValueError('%s: "%s" is not a valid value for the control as specified.' % (str(self._index), choice))
+                raise ValueError('{}: "{}" is not a valid value for the control as specified.'.format(str(self._index), choice))
 
             if not self._ctrl_constraints._choices:
                 self._ctrl_constraints._compareChoices = []
@@ -509,7 +509,7 @@ class BaseMaskedComboBox( wx.ComboBox, MaskedEditMixin ):
             if( not self.IsValid(choice) and
                (not self._ctrl_constraints.IsEmpty(choice) or
                 (self._ctrl_constraints.IsEmpty(choice) and self._ctrl_constraints._validRequired) ) ):
-                raise ValueError('"%s" is not a valid value for the control "%s" as specified.' % (choice, self.name))
+                raise ValueError(f'"{choice}" is not a valid value for the control "{self.name}" as specified.')
 
         wx.ComboBox.Append(self, choice, clientData)
 
@@ -731,7 +731,7 @@ class BaseMaskedComboBox( wx.ComboBox, MaskedEditMixin ):
             # work around bug in wx 2.5
             wx.CallAfter(self.SetInsertionPoint, 0)
             wx.CallAfter(self.SetInsertionPoint, end)
-        elif isinstance(match_index, six.string_types):
+        elif isinstance(match_index, str):
 ##            dbg('CallAfter SetValue')
             #  Preserve the textbox contents
             #  See commentary in _OnReturn docstring.

@@ -1,4 +1,3 @@
-
 """
 This is a way to save the startup time when running img2py on lots of
 files...
@@ -7,7 +6,7 @@ import sys, os
 if os.path.abspath('..') not in sys.path:
     sys.path.append(os.path.abspath('..'))
 
-vspdir =  'f:/Python%s-sp.v%s' % ( '25', '660')  # version-specific site-packages
+vspdir =  'f:/Python{}-sp.v{}'.format( '25', '660')  # version-specific site-packages
 if os.path.exists(vspdir) and vspdir not in sys.path:
     sys.path.append(vspdir)
 
@@ -34,4 +33,3 @@ if __name__ == "__main__":
     for line in command_lines:
         args = line.split()
         img2py.main(args)
-

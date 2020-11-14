@@ -276,7 +276,7 @@ class PyInfoFrame(wx.Frame):
 # The actual PyBusyInfo implementation
 # -------------------------------------------------------------------- #
 
-class PyBusyInfo(object):
+class PyBusyInfo:
     """
     Constructs a busy info window as child of parent and displays a message in it.
     """
@@ -396,4 +396,3 @@ if __name__ == '__main__':
     frame.Show()
 
     app.MainLoop()
-

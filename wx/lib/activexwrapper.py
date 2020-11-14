@@ -146,8 +146,3 @@ def axw_Cleanup(self):
     #del self._wnd
     self.close()
     pass
-
-
-
-
-

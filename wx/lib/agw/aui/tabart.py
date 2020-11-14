@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         tabart.py
 # Purpose:
@@ -110,7 +109,7 @@ class AuiCommandCapture(wx.EvtHandler):
         return False
 
 
-class AuiDefaultTabArt(object):
+class AuiDefaultTabArt:
     """
     Tab art provider code - a tab provider provides all drawing functionality to the :class:`~wx.lib.agw.aui.auibook.AuiNotebook`.
     This allows the :class:`~wx.lib.agw.aui.auibook.AuiNotebook` to have a plugable look-and-feel.
@@ -986,7 +985,7 @@ class AuiDefaultTabArt(object):
         return -1
 
 
-class AuiSimpleTabArt(object):
+class AuiSimpleTabArt:
     """ A simple-looking implementation of a tab art. """
 
     def __init__(self):
@@ -2765,5 +2764,3 @@ class ChromeTabArt(AuiDefaultTabArt):
         dc.DestroyClippingRegion()
 
         return out_tab_rect, out_button_rect, x_extent
-
-

@@ -329,14 +329,14 @@ class TimeCtrlAccessorsMixin:
         )
     for param in exposed_basectrl_params:
         propname = param[0].upper() + param[1:]
-        exec('def Set%s(self, value): self.SetCtrlParameters(%s=value)' % (propname, param))
+        exec(f'def Set{propname}(self, value): self.SetCtrlParameters({param}=value)')
         exec('def Get%s(self): return self.GetCtrlParameter("%s")''' % (propname, param))
 
         if param.find('Colour') != -1:
             # add non-british spellings, for backward-compatibility
             propname.replace('Colour', 'Color')
 
-            exec('def Set%s(self, value): self.SetCtrlParameters(%s=value)' % (propname, param))
+            exec(f'def Set{propname}(self, value): self.SetCtrlParameters({param}=value)')
             exec('def Get%s(self): return self.GetCtrlParameter("%s")''' % (propname, param))
 
 
@@ -582,7 +582,7 @@ class TimeCtrl(BaseMaskedTextCtrl):
                 # Set hour field to zero-pad, right-insert, require explicit field change,
                 # select entire field on entry, and require a resultant valid entry
                 # to allow character entry:
-                hourfield = Field(formatcodes='0r<SV', validRegex='0\d|1\d|2[0123]', validRequired=True)
+                hourfield = Field(formatcodes='0r<SV', validRegex=r'0\d|1\d|2[0123]', validRequired=True)
             else:
                 if self.__displaySeconds:  maskededit_kwargs['autoformat'] = 'TIMEHHMMSS'
                 else:                      maskededit_kwargs['autoformat'] = 'TIMEHHMM'
@@ -595,7 +595,7 @@ class TimeCtrl(BaseMaskedTextCtrl):
 
             # Field 1 is always a zero-padded right-insert minute field,
             # similarly configured as above:
-            minutefield = Field(formatcodes='0r<SV', validRegex='[0-5]\d', validRequired=True)
+            minutefield = Field(formatcodes='0r<SV', validRegex=r'[0-5]\d', validRequired=True)
 
             fields = [ hourfield, minutefield ]
             if self.__displaySeconds:
@@ -762,8 +762,8 @@ class TimeCtrl(BaseMaskedTextCtrl):
 ##            dbg('value = "%s"' % value)
 
         valid = True    # assume true
-        if isinstance(value, six.string_types):
-            value = six.text_type(value)  # convert to regular string
+        if isinstance(value, str):
+            value = str(value)  # convert to regular string
 
             # Construct constant wxDateTime, then try to parse the string:
             wxdt = wx.DateTime.FromDMY(1, 0, 1970)
@@ -1385,7 +1385,7 @@ class TimeCtrl(BaseMaskedTextCtrl):
         if self.IsLimited() and not self.IsInBounds(value):
 ##            dbg(indent=0)
             raise ValueError (
-                'value %s is not within the bounds of the control' % six.text_type(value) )
+                'value %s is not within the bounds of the control' % str(value) )
 ##        dbg(indent=0)
         return value
 

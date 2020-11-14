@@ -145,7 +145,7 @@ class ArgsInfo:
 
         # method 3: FASTEST:
         argNames = set(self.getArgs()).intersection(msgKwargs)
-        newKwargs = dict( (k,msgKwargs[k]) for k in argNames )
+        newKwargs = { k:msgKwargs[k] for k in argNames }
 
         return newKwargs
 
@@ -213,5 +213,3 @@ class ArgsInfo:
         # notify our children
         for childAI in self.childrenAI:
             childAI.__notifyParentCompleted()
-
-

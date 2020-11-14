@@ -158,4 +158,3 @@ class NavCanvas(wx.Panel):
         """Event handler to zoom to fit."""
         self.Canvas.ZoomToBB()
         self.Canvas.SetFocus() # Otherwise the focus stays on the Button, and wheel events are lost.
-

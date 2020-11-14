@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         composit.py
 # Purpose:      Composite class
@@ -42,7 +41,7 @@ CONSTRAINT_MIDALIGNED_LEFT      = 14
 CONSTRAINT_MIDALIGNED_RIGHT     = 15
 
 
-class ConstraintType(object):
+class ConstraintType:
     """The :class:`ConstraintType` class."""
     def __init__(self, theType, theName, thePhrase):
         """
@@ -129,7 +128,7 @@ ConstraintTypes = [
     ]
 
 
-class Constraint(object):
+class Constraint:
     """
     The :class:`Constraint` class helps specify how child shapes are laid out
     with respect to siblings and parents.
@@ -155,7 +154,7 @@ class Constraint(object):
         self._constrainedObjects = constrained[:]
 
     def __repr__(self):
-        return "<%s.%s>" % (self.__class__.__module__, self.__class__.__name__)
+        return f"<{self.__class__.__module__}.{self.__class__.__name__}>"
 
     def SetSpacing(self, x, y):
         """
@@ -1572,5 +1571,3 @@ class DivisionShape(CompositeShape):
         mouse_y = dc.LogicalToDeviceY(y - y1 * unit_y)
 
         self._canvas.PopupMenu(menu, (mouse_x, mouse_y))
-
-

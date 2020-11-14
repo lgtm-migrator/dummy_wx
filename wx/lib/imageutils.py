@@ -160,4 +160,3 @@ def stepColour(c, step):
     b = _blendColour(b, bg, dstep)
 
     return wx.Colour(int(r), int(g), int(b))
-

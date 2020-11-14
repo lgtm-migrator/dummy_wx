@@ -840,7 +840,7 @@ class ShellFrameMixin:
         if self.dataDir:
             try:
                 enc = 'utf-8'
-                hist = b'\x00\n'.join([h.encode(enc) 
+                hist = b'\x00\n'.join([h.encode(enc)
                                        for h in self.shell.history])
                 name = os.path.join(self.dataDir, 'history')
                 with open(name, 'wb') as f:
@@ -907,7 +907,7 @@ class ShellFrameMixin:
             with open(fileName, "w") as f:
                 f.write(text)
         except:
-            d = wx.MessageDialog(self, u'Error saving session',u'Error',
+            d = wx.MessageDialog(self, 'Error saving session','Error',
                                  wx.OK | wx.ICON_ERROR)
             d.ShowModal()
             d.Destroy()
@@ -918,7 +918,7 @@ class ShellFrameMixin:
             import io
             # Use newline=None to translate \n \r \r\n to \n on read.  The
             # old-style mode='U' is deprecated.
-            with io.open(self.startupScript, 'r', newline=None, encoding='utf-8') as fid:
+            with open(self.startupScript, 'r', newline=None, encoding='utf-8') as fid:
                 text = fid.read()
         else:
             text = ''

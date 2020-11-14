@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 A simple example showing how to use lib.plot from wxPython.
 

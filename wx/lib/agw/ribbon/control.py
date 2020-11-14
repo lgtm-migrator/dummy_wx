@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         control.py
 # Purpose:
@@ -200,6 +199,3 @@ class RibbonControl(wx.Control):
         """
 
         pass
-
-
-

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         art_msw.py
 # Purpose:
@@ -49,4 +48,3 @@ from .art_aui import RibbonAUIArtProvider
 class RibbonOSXArtProvider(RibbonAUIArtProvider):
 
     pass
-

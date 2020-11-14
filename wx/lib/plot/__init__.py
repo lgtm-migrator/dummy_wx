@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # pylint: disable=C0413
 #   C0413: Import should be placed at the top of the module
 """

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         art_default.py
 # Purpose:
@@ -77,5 +76,3 @@ else:
         def __init__(self):
 
             RibbonOSXArtProvider.__init__(self)
-
-

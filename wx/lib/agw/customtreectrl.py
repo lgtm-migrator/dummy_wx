@@ -826,7 +826,7 @@ class DragImage(wx.DragImage):
 # TreeItemAttr: a structure containing the visual attributes of an item
 # ----------------------------------------------------------------------------
 
-class TreeItemAttr(object):
+class TreeItemAttr:
     """
     Creates the item attributes (text colour, background colour and font).
 
@@ -1548,7 +1548,7 @@ class TreeFindTimer(wx.Timer):
 # CustomTreeCtrl.
 # -----------------------------------------------------------------------------
 
-class GenericTreeItem(object):
+class GenericTreeItem:
     """
     This class holds all the information and methods for every single item in
     :class:`CustomTreeCtrl`. This is a generic implementation of :class:`TreeItem`.
@@ -6418,9 +6418,9 @@ class CustomTreeCtrl(wx.ScrolledWindow):
 
         flrect = float(rect.height)
 
-        rstep = float((r2 - r1)) / flrect
-        gstep = float((g2 - g1)) / flrect
-        bstep = float((b2 - b1)) / flrect
+        rstep = float(r2 - r1) / flrect
+        gstep = float(g2 - g1) / flrect
+        bstep = float(b2 - b1) / flrect
 
         rf, gf, bf = 0, 0, 0
 
@@ -6466,9 +6466,9 @@ class CustomTreeCtrl(wx.ScrolledWindow):
 
         flrect = float(rect.width)
 
-        rstep = float((r2 - r1)) / flrect
-        gstep = float((g2 - g1)) / flrect
-        bstep = float((b2 - b1)) / flrect
+        rstep = float(r2 - r1) / flrect
+        gstep = float(g2 - g1) / flrect
+        bstep = float(b2 - b1) / flrect
 
         rf, gf, bf = 0, 0, 0
 
@@ -6524,9 +6524,9 @@ class CustomTreeCtrl(wx.ScrolledWindow):
         if flrect < 1:
             flrect = self._lineHeight
 
-        rstep = float((r2 - r1)) / flrect
-        gstep = float((g2 - g1)) / flrect
-        bstep = float((b2 - b1)) / flrect
+        rstep = float(r2 - r1) / flrect
+        gstep = float(g2 - g1) / flrect
+        bstep = float(b2 - b1) / flrect
 
         rf, gf, bf = 0, 0, 0
         dc.SetPen(wx.TRANSPARENT_PEN)

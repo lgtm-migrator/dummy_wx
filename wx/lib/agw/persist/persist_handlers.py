@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # --------------------------------------------------------------------------- #
 #
 # Tags:        phoenix-port, unittest, documented, py3-port
@@ -99,7 +98,7 @@ def CreateFont(font):
 
 # ----------------------------------------------------------------------------------- #
 
-class AbstractHandler(object):
+class AbstractHandler:
     """
     Base class for persistent windows, uses the window name as persistent name by
     default and automatically reacts to the window destruction.

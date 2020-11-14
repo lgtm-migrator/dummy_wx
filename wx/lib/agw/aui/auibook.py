@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 #----------------------------------------------------------------------------
 # Name:         auibook.py
 # Purpose:
@@ -320,7 +319,7 @@ class TabTextCtrl(ExpandoTextCtrl):
 
 # ----------------------------------------------------------------------
 
-class AuiNotebookPage(object):
+class AuiNotebookPage:
     """
     A simple class which holds information about tab captions, bitmaps and
     colours.
@@ -359,7 +358,7 @@ class AuiNotebookPage(object):
 
 # ----------------------------------------------------------------------
 
-class AuiTabContainerButton(object):
+class AuiTabContainerButton:
     """
     A simple class which holds information about tab buttons and their state.
     """
@@ -392,7 +391,7 @@ class CommandNotebookEvent(wx.PyCommandEvent):
         :param integer `win_id`: the window identification number.
         """
 
-        if type(command_type) in six.integer_types:
+        if type(command_type) in (int,):
             wx.PyCommandEvent.__init__(self, command_type, win_id)
         else:
             wx.PyCommandEvent.__init__(self, command_type.GetEventType(), command_type.GetId())
@@ -525,7 +524,7 @@ class AuiNotebookEvent(CommandNotebookEvent):
 
         CommandNotebookEvent.__init__(self, command_type, win_id)
 
-        if type(command_type) in six.integer_types:
+        if type(command_type) in (int,):
             self.notify = wx.NotifyEvent(command_type, win_id)
         else:
             self.notify = wx.NotifyEvent(command_type.GetEventType(), command_type.GetId())
@@ -570,7 +569,7 @@ class AuiNotebookEvent(CommandNotebookEvent):
 # Class TabNavigatorProps
 # ---------------------------------------------------------------------------- #
 
-class TabNavigatorProps(object):
+class TabNavigatorProps:
     """
     Data storage class for managing and providing access to :class:`TabNavigatorWindow` properties.
     """
@@ -578,7 +577,7 @@ class TabNavigatorProps(object):
     def __init__(self):
         """ Default class constructor. """
 
-        super(TabNavigatorProps, self).__init__()
+        super().__init__()
 
         # Attributes
         self._icon = wx.NullBitmap
@@ -898,7 +897,7 @@ class TabNavigatorWindow(wx.Dialog):
 # ----------------------------------------------------------------------
 # -- AuiTabContainer class implementation --
 
-class AuiTabContainer(object):
+class AuiTabContainer:
     """
     AuiTabContainer is a class which contains information about each tab.
     It also can render an entire tab control to a specified DC.
@@ -1174,7 +1173,7 @@ class AuiTabContainer(object):
         :param `wndOrInt`: an instance of :class:`wx.Window` or an integer specifying a tab index.
         """
 
-        if type(wndOrInt) in six.integer_types:
+        if type(wndOrInt) in (int,):
 
             if wndOrInt >= len(self._pages):
                 return False
@@ -4076,7 +4075,7 @@ class AuiNotebook(wx.Panel):
         if page >= self._tabs.GetPageCount():
             return False
 
-        if not isinstance(image, six.integer_types):
+        if not isinstance(image, int):
             raise Exception("The image parameter must be an integer, you passed " \
                             "%s"%repr(image))
 

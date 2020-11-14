@@ -454,6 +454,3 @@ if __name__ == "__main__":
         app.MainLoop()
     print('Creating dialog')
     test( )
-
-
-

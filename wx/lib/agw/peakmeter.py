@@ -238,7 +238,7 @@ def DarkenColour(crColour, byReduceVal):
     return wx.Colour(byRed, byGreen, byBlue)
 
 
-class PeakMeterData(object):
+class PeakMeterData:
     """ A simple class which holds data for our :class:`PeakMeterCtrl`. """
 
     def __init__(self, value=0, falloff=0, peak=0):
