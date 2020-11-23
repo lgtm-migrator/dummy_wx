@@ -25,17 +25,17 @@ the same "wx" package name to pretend to be wxPython.
 
 
 
-.. |travis| image:: https://img.shields.io/travis/com/domdfcoding/dummy_wx/master?logo=travis
-	:target: https://travis-ci.com/domdfcoding/dummy_wx
-	:alt: Travis Build Status
+.. |travis| image:: https://github.com/domdfcoding/dummy_wx/workflows/Linux%20Tests/badge.svg
+	:target: https://github.com/domdfcoding/dummy_wx/actions?query=workflow%3A%22Linux+Tests%22
+	:alt: Linux Test Status
 
 .. |actions_windows| image:: https://github.com/domdfcoding/dummy_wx/workflows/Windows%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/dummy_wx/actions?query=workflow%3A%22Windows+Tests%22
-	:alt: Windows Tests Status
+	:alt: Windows Test Status
 
 .. |actions_macos| image:: https://github.com/domdfcoding/dummy_wx/workflows/macOS%20Tests/badge.svg
 	:target: https://github.com/domdfcoding/dummy_wx/actions?query=workflow%3A%22macOS+Tests%22
-	:alt: macOS Tests Status
+	:alt: macOS Test Status
 
 .. |requires| image:: https://requires.io/github/domdfcoding/dummy_wx/requirements.svg?branch=master
 	:target: https://requires.io/github/domdfcoding/dummy_wx/requirements/?branch=master
