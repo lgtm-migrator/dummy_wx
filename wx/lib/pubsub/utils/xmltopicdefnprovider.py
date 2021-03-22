@@ -98,7 +98,7 @@ class XmlTopicDefnProvider(ITopicDefnProvider):
         self._topics = {}
         self._treeDoc = ''
         if format == TOPIC_TREE_FROM_FILE:
-            with open(xml, mode="r") as fid:
+            with open(xml) as fid:
                 self._parse_tree(_get_elem(fid.read()))
         elif format == TOPIC_TREE_FROM_STRING:
             self._parse_tree(_get_elem(xml))
