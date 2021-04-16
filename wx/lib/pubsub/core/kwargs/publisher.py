@@ -42,7 +42,7 @@ class PublisherArg1Stage2(Publisher):
         def __init__(self, kwargs, commonArgName):
             extra = kwargs.copy()
             del extra[commonArgName]
-            msg = 'Sender has too many kwargs ({})'.format( py2and3.keys(extra))
+            msg = f'Sender has too many kwargs ({py2and3.keys(extra)})'
             RuntimeError.__init__(self, msg)
 
     class SenderWrongKwargName(RuntimeError):

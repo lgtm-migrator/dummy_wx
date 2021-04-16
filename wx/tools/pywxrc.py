@@ -556,10 +556,10 @@ class XmlResourceCompiler:
                     if widgetClass == "MenuItem" and windowClass != "MenuBar":
                         if widgetName[:2] == "wx":
                             eventObject = 'id=wx.%s' % re.sub("^wx", "", widgetName)
-                        eventHandler = "On{}_{}".format(event[4:].capitalize(), widgetName)
+                        eventHandler = f"On{event[4:].capitalize()}_{widgetName}"
                         if widgetName in vars: eventObject = "self.%s" % widgetName
                     else:
-                        eventHandler = "On{}_{}".format(event[4:].capitalize(), widgetName)
+                        eventHandler = f"On{event[4:].capitalize()}_{widgetName}"
                         if widgetName in vars: eventObject = "self.%s" % widgetName
                     if not eventObject:
                         eventObject = "id=xrc.XRCID('%s')" % widgetName
@@ -823,7 +823,7 @@ class XmlResourceCompiler:
                 mo = reEndBlock.match(l)
                 if mo:
                     if mo.groups()[0] != block:
-                        print("pywxrc: error: block mismatch: {} != {}".format(block, mo.groups()[0]))
+                        print(f"pywxrc: error: block mismatch: {block} != {mo.groups()[0]}")
                     block = None
         return ''.join(output)
 
@@ -849,7 +849,7 @@ class XmlResourceCompiler:
                         mo = reEndBlock.match(l)
                         if mo:
                             if mo.groups()[0] != block:
-                                print("pywxrc: error: block mismatch: {} != {}".format(block, mo.groups()[0]))
+                                print(f"pywxrc: error: block mismatch: {block} != {mo.groups()[0]}")
                             self.blocks[block] = "".join(blockLines)
                             block = None
 

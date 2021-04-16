@@ -20,7 +20,7 @@ def _resolve_name(name, package, level):
         except ValueError:
             raise ValueError("attempted relative import beyond top-level "
                               "package")
-    return "{}.{}".format(package[:dot], name)
+    return f"{package[:dot]}.{name}"
 
 
 def _import_module(name, package=None):

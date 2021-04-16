@@ -230,7 +230,7 @@ class EventManager:
         """
         A string rep of a topic for debugging
         """
-        return '[{:<26} {}]'.format(aTopic[0].__name__, self.winString(aTopic[1]))
+        return f'[{aTopic[0].__name__:<26} {self.winString(aTopic[1])}]'
 
 
     def __listenerString(self, aListener):

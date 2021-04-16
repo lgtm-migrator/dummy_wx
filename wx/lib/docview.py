@@ -491,7 +491,7 @@ class Document(wx.EvtHandler):
             if backupFilename and copied:
                 os.remove(backupFilename)
 
-            wx.MessageBox("Could not save '{}'.  {}".format(FileNameFromPath(filename), sys.exc_value),
+            wx.MessageBox(f"Could not save '{FileNameFromPath(filename)}'.  {sys.exc_value}",
                           msgTitle,
                           wx.OK | wx.ICON_EXCLAMATION,
                           self.GetDocumentWindow())
@@ -535,7 +535,7 @@ class Document(wx.EvtHandler):
             if fileObject:
                 fileObject.close()  # file is still open, close it
 
-            wx.MessageBox("Could not open '{}'.  {}".format(FileNameFromPath(filename), sys.exc_value),
+            wx.MessageBox(f"Could not open '{FileNameFromPath(filename)}'.  {sys.exc_value}",
                           msgTitle,
                           wx.OK | wx.ICON_EXCLAMATION,
                           self.GetDocumentWindow())

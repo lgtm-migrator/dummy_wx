@@ -165,7 +165,7 @@ def _call(receiver, **kwds):
         fc = receiver.__code__
         acceptable = fc.co_varnames[0:fc.co_argcount]
     else:
-        raise DispatcherError('Unknown receiver {} of type {}'.format(receiver, type(receiver)))
+        raise DispatcherError(f'Unknown receiver {receiver} of type {type(receiver)}')
     if not (fc.co_flags & 8):
         # fc does not have a **kwds type parameter, therefore
         # remove unacceptable arguments.

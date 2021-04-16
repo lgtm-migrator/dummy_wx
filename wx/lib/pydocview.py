@@ -2211,7 +2211,7 @@ class _DocFrameFileDropTarget(wx.FileDropTarget):
             msgTitle = wx.GetApp().GetAppName()
             if not msgTitle:
                 msgTitle = _("File Error")
-            wx.MessageBox("Could not open '{}'.  '{}'".format(wx.lib.docview.FileNameFromPath(file), sys.exc_value),
+            wx.MessageBox(f"Could not open '{wx.lib.docview.FileNameFromPath(file)}'.  '{sys.exc_value}'",
                           msgTitle,
                           wx.OK | wx.ICON_EXCLAMATION,
                           self._docManager.FindSuitableParent())
@@ -3063,7 +3063,7 @@ class WindowMenuService(DocService):
                 if i == 0 and not self._sep:
                     self._sep = windowMenu.AppendSeparator()
                 if i < 9:
-                    menuLabel = "{}\tCtrl+{}".format(notebook.GetPageText(i), i+1)
+                    menuLabel = f"{notebook.GetPageText(i)}\tCtrl+{i+1}"
                 else:
                     menuLabel = notebook.GetPageText(i)
                 windowMenu.Append(self._selectWinIds[i], menuLabel)

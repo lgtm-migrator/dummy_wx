@@ -137,7 +137,7 @@ def download_urllib(url, filename):
 
             status = f"{file_size_dl:16}"
             if file_size:
-                status += "   [{:6.2f}%]".format(file_size_dl * 100 / file_size)
+                status += f"   [{file_size_dl * 100 / file_size:6.2f}%]"
             (keep_going, dummy_skip) = progress.Update(file_size_dl / block_sz,
                                                        message+status)
             wx.Sleep(0.08)  # Give the GUI some update time

@@ -1465,7 +1465,7 @@ class Field:
                         self._filter = re.compile(self._validRegex)
                 except:
 ##                    dbg(indent=0, suspend=0)
-                    raise TypeError('{}: validRegex "{}" not a legal regular expression'.format(str(self._index), self._validRegex))
+                    raise TypeError(f'{str(self._index)}: validRegex "{self._validRegex}" not a legal regular expression')
             else:
                 self._filter = None
 
@@ -1514,7 +1514,7 @@ class Field:
                             continue
                         if not self.IsValid(choice):
 ##                            dbg(indent=0, suspend=0)
-                            ve = ValueError('{}: "{}" is not a valid value for the control as specified.'.format(str(self._index), choice))
+                            ve = ValueError(f'{str(self._index)}: "{choice}" is not a valid value for the control as specified.')
                             ve.value = choice
                             raise ve
                 self._hasList = True
@@ -1957,7 +1957,7 @@ class MaskedEditMixin:
                 if isinstance(ctrl_kwargs[key], str):
                     c = wx.Colour(ctrl_kwargs[key])
                     if c.Get() == (-1, -1, -1):
-                        raise TypeError('{} not a legal color specification for {}'.format(repr(ctrl_kwargs[key]), key))
+                        raise TypeError(f'{repr(ctrl_kwargs[key])} not a legal color specification for {key}')
                     else:
                         # replace attribute with wxColour object:
                         setattr(self, '_' + key, c)
@@ -1965,7 +1965,7 @@ class MaskedEditMixin:
                         c._name = ctrl_kwargs[key]
 
                 elif type(ctrl_kwargs[key]) != type(wx.BLACK):
-                    raise TypeError('{} not a legal color specification for {}'.format(repr(ctrl_kwargs[key]), key))
+                    raise TypeError(f'{repr(ctrl_kwargs[key])} not a legal color specification for {key}')
 
 
 ##        dbg('self._retainFieldValidation:', self._retainFieldValidation)
@@ -2132,7 +2132,7 @@ class MaskedEditMixin:
         parameters.)
         """
         if field_index not in self._field_indices:
-            ie = IndexError('{} is not a valid field for control "{}".'.format(str(field_index), self.name))
+            ie = IndexError(f'{str(field_index)} is not a valid field for control "{self.name}".')
             ie.index = field_index
             raise ie
         # set parameters as requested:
@@ -2175,7 +2175,7 @@ class MaskedEditMixin:
         Routine provided for getting a parameter of an individual field.
         """
         if field_index not in self._field_indices:
-            ie = IndexError('{} is not a valid field for control "{}".'.format(str(field_index), self.name))
+            ie = IndexError(f'{str(field_index)} is not a valid field for control "{self.name}".')
             ie.index = field_index
             raise ie
         elif paramname in Field.valid_params:
