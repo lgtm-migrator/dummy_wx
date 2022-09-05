@@ -21,7 +21,7 @@ the same "wx" package name to pretend to be wxPython.
 	* - Activity
 	  - |commits-latest| |commits-since| |maintained| |pypi-downloads|
 	* - QA
-	  - |codefactor| |actions_flake8| |actions_mypy| |pre_commit_ci|
+	  - |codefactor| |actions_flake8| |actions_mypy|
 	* - Other
 	  - |license| |language| |requires|
 
@@ -45,8 +45,8 @@ the same "wx" package name to pretend to be wxPython.
 	:target: https://github.com/domdfcoding/dummy_wx/actions?query=workflow%3A%22mypy%22
 	:alt: mypy status
 
-.. |requires| image:: https://requires.io/github/domdfcoding/dummy_wx/requirements.svg?branch=master
-	:target: https://requires.io/github/domdfcoding/dummy_wx/requirements/?branch=master
+.. |requires| image:: https://dependency-dash.repo-helper.uk/github/domdfcoding/dummy_wx/badge.svg
+	:target: https://dependency-dash.repo-helper.uk/github/domdfcoding/dummy_wx/
 	:alt: Requirements Status
 
 .. |codefactor| image:: https://img.shields.io/codefactor/grade/github/domdfcoding/dummy_wx?logo=codefactor
@@ -84,15 +84,11 @@ the same "wx" package name to pretend to be wxPython.
 	:target: https://github.com/domdfcoding/dummy_wx/commit/master
 	:alt: GitHub last commit
 
-.. |maintained| image:: https://img.shields.io/maintenance/yes/2021
+.. |maintained| image:: https://img.shields.io/maintenance/yes/2022
 	:alt: Maintenance
 
 .. |pypi-downloads| image:: https://img.shields.io/pypi/dm/dummy_wx
 	:target: https://pypi.org/project/dummy_wx/
 	:alt: PyPI - Downloads
-
-.. |pre_commit_ci| image:: https://results.pre-commit.ci/badge/github/domdfcoding/dummy_wx/master.svg
-	:target: https://results.pre-commit.ci/latest/github/domdfcoding/dummy_wx/master
-	:alt: pre-commit.ci status
 
 .. end shields
