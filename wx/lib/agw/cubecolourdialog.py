@@ -2308,7 +2308,7 @@ class BrightCtrl(BaseLineCtrl):
         vstep = 1.0/(brightRect.height-1)
 
         for y_pos in range(brightRect.y, brightRect.height+brightRect.y):
-            r, g, b = [c * 255.0 for c in colorsys.hsv_to_rgb(h, s, v)]
+            r, g, b = (c * 255.0 for c in colorsys.hsv_to_rgb(h, s, v))
             colour = wx.Colour(int(r), int(g), int(b))
             dc.SetPen(wx.Pen(colour, 1, wx.PENSTYLE_SOLID))
             dc.DrawRectangle(brightRect.x, y_pos, brightRect.width, 1)

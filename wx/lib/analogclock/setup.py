@@ -332,10 +332,10 @@ class StylesPanel(bt.ButtonTreeCtrlPanel):
 
     def OnChanged(self, evt):
         clockStyle, hourStyle, minuteStyle = \
-          [functools.reduce(lambda x, y: x | y,
+          (functools.reduce(lambda x, y: x | y,
            [getattr(styles, item) \
             for item in self.GetStringItemsChecked(group)], 0) \
-            for group in self.groups]
+            for group in self.groups)
 
         self.clock.SetClockStyle(clockStyle)
         self.clock.SetTickStyle(hourStyle, styles.HOUR)

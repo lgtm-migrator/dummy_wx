@@ -887,12 +887,12 @@ def AdjustColour(colour, percent, alpha=wx.ALPHA_OPAQUE):
 
     """
 
-    radj, gadj, badj = [int(val * (abs(percent) / 100.)) for val in colour.Get()]
+    radj, gadj, badj = (int(val * (abs(percent) / 100.)) for val in colour.Get())
 
     if percent < 0:
-        radj, gadj, badj = [val * -1 for val in [radj, gadj, badj]]
+        radj, gadj, badj = (val * -1 for val in [radj, gadj, badj])
     else:
-        radj, gadj, badj = [val or 255 for val in [radj, gadj, badj]]
+        radj, gadj, badj = (val or 255 for val in [radj, gadj, badj])
 
     red = min(colour.Red() + radj, 255)
     green = min(colour.Green() + gadj, 255)

@@ -4425,7 +4425,7 @@ class MaskedEditMixin:
         'Fixes' an floating point control. Collapses spaces, right-justifies, etc.
         """
 ##        dbg('MaskedEditMixin::_adjustFloat, candidate = "%s"' % candidate, indent=1)
-        lenInt,lenFraction  = [len(s) for s in self._mask.split('.')]  ## Get integer, fraction lengths
+        lenInt,lenFraction  = (len(s) for s in self._mask.split('.'))  ## Get integer, fraction lengths
 
         if candidate is None: value = self._GetValue()
         else: value = candidate

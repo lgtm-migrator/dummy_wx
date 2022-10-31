@@ -30,7 +30,8 @@ import time
 import types
 import copy
 import shutil
-from six import BytesIO, string_types
+from six import string_types
+from io import BytesIO
 
 import wx
 
@@ -659,7 +660,7 @@ class pypdfProcessor:
             if operator == 'cm' and operand:        # new transformation matrix
                 # some operands need inverting because directions of y axis
                 # in pdf and graphics context are opposite
-                a, b, c, d, e, f = [float(n) for n in operand]
+                a, b, c, d, e, f = (float(n) for n in operand)
                 drawlist.append(['ConcatTransform', (a, -b, -c, d, e, -f), {}])
             elif operator == 'q':       # save state
                 self.saved_state.append(copy.deepcopy(g))
@@ -668,10 +669,10 @@ class pypdfProcessor:
                 self.gstate = self.saved_state.pop()
                 drawlist.append(['PopState', (), {}])
             elif operator == 'RG':      # Stroke RGB
-                rs, gs, bs = [int(float(n)*255) for n in operand]
+                rs, gs, bs = (int(float(n)*255) for n in operand)
                 g.strokeRGB = wx.Colour(rs, gs, bs)
             elif operator == 'rg':      # Fill RGB
-                rf, gf, bf = [int(float(n)*255) for n in operand]
+                rf, gf, bf = (int(float(n)*255) for n in operand)
                 g.fillRGB = wx.Colour(rf, gf, bf)
             elif operator == 'K':       # Stroke CMYK
                 rs, gs, bs = self.ConvertCMYK(operand)

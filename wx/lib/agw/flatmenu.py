@@ -4097,7 +4097,7 @@ class FlatMenuButton:
         :param `input2`: if not ``None``, it is an integer representing the button `y` position.
         """
 
-        if type(input) == type(1):
+        if type(input) == int:
             self._pos = wx.Point(input1, input2)
         else:
             self._pos = input1
@@ -4113,7 +4113,7 @@ class FlatMenuButton:
         :param `input2`: if not ``None``, it is an integer representing the button height.
         """
 
-        if type(input) == type(1):
+        if type(input) == int:
             self._size = wx.Size(input1, input2)
         else:
             self._size = input1
@@ -6647,7 +6647,7 @@ class FlatMenu(FlatMenuBase):
         :param `item`: can be either a menu item identifier or a plain :class:`FlatMenuItem`.
         """
 
-        if type(item) != type(1):
+        if type(item) != int:
             item = item.GetId()
 
         return self._RemoveById(item)
@@ -6674,7 +6674,7 @@ class FlatMenu(FlatMenuBase):
         :param `item`: can be either a menu item identifier or a plain :class:`FlatMenuItem`.
         """
 
-        if type(item) != type(1):
+        if type(item) != int:
             item = item.GetId()
 
         self._DestroyById(item)

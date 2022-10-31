@@ -854,7 +854,7 @@ class XmlResourceCompiler:
                             block = None
 
             try:
-                outputFile = open(outputFilename, "wt")
+                outputFile = open(outputFilename, "w")
             except OSError:
                 raise OSError("Can't write output to '%s'" % outputFilename)
         return outputFile

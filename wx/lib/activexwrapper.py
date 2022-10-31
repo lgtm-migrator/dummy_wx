@@ -66,7 +66,7 @@ def MakeActiveXClass(CoClass, eventClass=None, eventObj=None):
     """
 
 
-    if type(CoClass) == type(""):
+    if type(CoClass) == str:
         # use the CLSID to get the real class
         CoClass = win32com.client.CLSIDToClass(CoClass)
 

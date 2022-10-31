@@ -1325,7 +1325,7 @@ class FixedPoint:
         self.set_precision(precision)
         p = self.p
 
-        if isinstance(value, type("42.3e5")):
+        if isinstance(value, str):
             n, exp = _string2exact(value)
             # exact value is n*10**exp = n*10**(exp+p)/10**p
             effective_exp = exp + p
@@ -1346,7 +1346,7 @@ class FixedPoint:
             self.n, self.p = temp.n, temp.p
             return
 
-        if isinstance(value, type(42.0)):
+        if isinstance(value, float):
             # XXX ignoring infinities and NaNs and overflows for now
             import math
             f, e = math.frexp(abs(value))

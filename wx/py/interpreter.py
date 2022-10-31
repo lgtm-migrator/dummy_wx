@@ -25,7 +25,7 @@ class Interpreter(InteractiveInterpreter):
         self.stdout = stdout
         self.stderr = stderr
         if rawin:
-            from six.moves import builtins
+            import builtins
             builtins.raw_input = rawin
             del builtins
         if showInterpIntro:

@@ -15,7 +15,7 @@
 import base64
 
 import wx
-from six import BytesIO
+from io import BytesIO
 
 try:
     b64decode = base64.b64decode

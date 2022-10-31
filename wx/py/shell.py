@@ -403,7 +403,7 @@ class Shell(editwindow.EditWindow):
 
         This sets "close", "exit" and "quit" to a helpful string.
         """
-        from six.moves import builtins
+        import builtins
         builtins.close = builtins.exit = builtins.quit = \
             'Click on the close button to leave the application.'
         builtins.cd = cd
